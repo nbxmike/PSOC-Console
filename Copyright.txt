@@ -1,0 +1,2 @@
+The documents included in the PSOC-Console are Copyright Michael McCormack 2016,2017,2018
+These documents are licensed under the terms of the cern_ohl_v_1_2.txt which is included in the original distribution.
