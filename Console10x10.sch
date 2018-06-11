@@ -1,5 +1,6 @@
 EESchema Schematic File Version 2
-LIBS:aglet
+LIBS:Console-10x10
+LIBS:Console10x10-rescue
 LIBS:valves
 LIBS:power
 LIBS:device
@@ -29,6 +30,7 @@ LIBS:siliconi
 LIBS:opto
 LIBS:atmel
 LIBS:contrib
+LIBS:Console10x10-cache
 EELAYER 25 0
 EELAYER END
 $Descr A 11000 8500
@@ -38,8 +40,8 @@ Title ""
 Date ""
 Rev ""
 Comp ""
-Comment1 ""
-Comment2 ""
+Comment1 "Copyright Mike McCormack 2018"
+Comment2 "Licensed under CERN OHL v.1.2"
 Comment3 ""
 Comment4 ""
 $EndDescr
@@ -559,7 +561,7 @@ Wire Wire Line
 Text Label 3800 6800 0    60   ~ 0
 GND
 $Comp
-L R R4
+L R-RESCUE-Console10x10 R4
 U 1 1 56101B67
 P 2000 6250
 F 0 "R4" H 1850 6290 50  0000 C CNN
@@ -570,7 +572,7 @@ F 3 "" H 2000 6250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R5
+L R-RESCUE-Console10x10 R5
 U 1 1 56101C87
 P 2000 6700
 F 0 "R5" H 1850 6740 50  0000 C CNN
@@ -581,7 +583,7 @@ F 3 "" H 2000 6700 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R6
+L R-RESCUE-Console10x10 R6
 U 1 1 56101D51
 P 2000 6800
 F 0 "R6" H 1850 6840 50  0000 C CNN
@@ -592,7 +594,7 @@ F 3 "" H 2000 6800 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R1
+L R-RESCUE-Console10x10 R1
 U 1 1 56101E3D
 P 2000 5950
 F 0 "R1" H 1850 5990 50  0000 C CNN
@@ -603,7 +605,7 @@ F 3 "" H 2000 5950 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R2
+L R-RESCUE-Console10x10 R2
 U 1 1 56101E43
 P 2000 6050
 F 0 "R2" H 1850 6090 50  0000 C CNN
@@ -614,7 +616,7 @@ F 3 "" H 2000 6050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R3
+L R-RESCUE-Console10x10 R3
 U 1 1 56101E49
 P 2000 6150
 F 0 "R3" H 1850 6190 50  0000 C CNN
@@ -625,7 +627,7 @@ F 3 "" H 2000 6150 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R7
+L R-RESCUE-Console10x10 R7
 U 1 1 56101F3B
 P 2000 6900
 F 0 "R7" H 1850 6940 50  0000 C CNN
@@ -636,7 +638,7 @@ F 3 "" H 2000 6900 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R8
+L R-RESCUE-Console10x10 R8
 U 1 1 56101F41
 P 2000 7000
 F 0 "R8" H 1850 7040 50  0000 C CNN
@@ -667,7 +669,7 @@ Wire Wire Line
 Text Label 4850 950  0    60   ~ 0
 VDD
 $Comp
-L R R17
+L R-RESCUE-Console10x10 R17
 U 1 1 56103E75
 P 5250 1300
 F 0 "R17" H 5100 1250 50  0000 C CNN
@@ -678,7 +680,7 @@ F 3 "" H 5250 1300 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R13
+L R-RESCUE-Console10x10 R13
 U 1 1 56103E7B
 P 5150 1300
 F 0 "R13" H 5000 1250 50  0000 C CNN
@@ -689,7 +691,7 @@ F 3 "" H 5150 1300 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R9
+L R-RESCUE-Console10x10 R9
 U 1 1 56103E81
 P 5050 1300
 F 0 "R9" H 4900 1250 50  0000 C CNN
@@ -736,7 +738,7 @@ Wire Wire Line
 Text Label 4850 2150 0    60   ~ 0
 VDD
 $Comp
-L R R18
+L R-RESCUE-Console10x10 R18
 U 1 1 561031BF
 P 5250 2500
 F 0 "R18" H 5100 2450 50  0000 C CNN
@@ -747,7 +749,7 @@ F 3 "" H 5250 2500 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R14
+L R-RESCUE-Console10x10 R14
 U 1 1 561031C5
 P 5150 2500
 F 0 "R14" H 5000 2450 50  0000 C CNN
@@ -758,7 +760,7 @@ F 3 "" H 5150 2500 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R10
+L R-RESCUE-Console10x10 R10
 U 1 1 561031CB
 P 5050 2500
 F 0 "R10" H 4900 2450 50  0000 C CNN
@@ -805,7 +807,7 @@ Wire Wire Line
 Text Label 4850 3350 0    60   ~ 0
 VDD
 $Comp
-L R R19
+L R-RESCUE-Console10x10 R19
 U 1 1 561032C2
 P 5250 3700
 F 0 "R19" H 5100 3650 50  0000 C CNN
@@ -816,7 +818,7 @@ F 3 "" H 5250 3700 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R15
+L R-RESCUE-Console10x10 R15
 U 1 1 561032C8
 P 5150 3700
 F 0 "R15" H 5000 3650 50  0000 C CNN
@@ -827,7 +829,7 @@ F 3 "" H 5150 3700 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R11
+L R-RESCUE-Console10x10 R11
 U 1 1 561032CE
 P 5050 3700
 F 0 "R11" H 4900 3650 50  0000 C CNN
@@ -874,7 +876,7 @@ Wire Wire Line
 Text Label 6950 3350 0    60   ~ 0
 VDD
 $Comp
-L R R29
+L R-RESCUE-Console10x10 R29
 U 1 1 56103441
 P 7350 3700
 F 0 "R29" H 7200 3650 50  0000 C CNN
@@ -885,7 +887,7 @@ F 3 "" H 7350 3700 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R26
+L R-RESCUE-Console10x10 R26
 U 1 1 56103447
 P 7250 3700
 F 0 "R26" H 7100 3650 50  0000 C CNN
@@ -896,7 +898,7 @@ F 3 "" H 7250 3700 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R23
+L R-RESCUE-Console10x10 R23
 U 1 1 5610344D
 P 7150 3700
 F 0 "R23" H 7000 3650 50  0000 C CNN
@@ -943,7 +945,7 @@ Wire Wire Line
 Text Label 4850 4550 0    60   ~ 0
 VDD
 $Comp
-L R R20
+L R-RESCUE-Console10x10 R20
 U 1 1 56103A36
 P 5250 4900
 F 0 "R20" H 5100 4850 50  0000 C CNN
@@ -954,7 +956,7 @@ F 3 "" H 5250 4900 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R16
+L R-RESCUE-Console10x10 R16
 U 1 1 56103A3C
 P 5150 4900
 F 0 "R16" H 5000 4850 50  0000 C CNN
@@ -965,7 +967,7 @@ F 3 "" H 5150 4900 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R12
+L R-RESCUE-Console10x10 R12
 U 1 1 56103A42
 P 5050 4900
 F 0 "R12" H 4900 4850 50  0000 C CNN
@@ -1012,7 +1014,7 @@ Wire Wire Line
 Text Label 6950 950  0    60   ~ 0
 VDD
 $Comp
-L R R27
+L R-RESCUE-Console10x10 R27
 U 1 1 56104432
 P 7350 1300
 F 0 "R27" H 7200 1250 50  0000 C CNN
@@ -1023,7 +1025,7 @@ F 3 "" H 7350 1300 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R24
+L R-RESCUE-Console10x10 R24
 U 1 1 56104438
 P 7250 1300
 F 0 "R24" H 7100 1250 50  0000 C CNN
@@ -1034,7 +1036,7 @@ F 3 "" H 7250 1300 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R21
+L R-RESCUE-Console10x10 R21
 U 1 1 5610443E
 P 7150 1300
 F 0 "R21" H 7000 1250 50  0000 C CNN
@@ -1081,7 +1083,7 @@ Wire Wire Line
 Text Label 6950 2150 0    60   ~ 0
 VDD
 $Comp
-L R R28
+L R-RESCUE-Console10x10 R28
 U 1 1 561049E8
 P 7350 2500
 F 0 "R28" H 7200 2450 50  0000 C CNN
@@ -1092,7 +1094,7 @@ F 3 "" H 7350 2500 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R25
+L R-RESCUE-Console10x10 R25
 U 1 1 561049EE
 P 7250 2500
 F 0 "R25" H 7100 2450 50  0000 C CNN
@@ -1103,7 +1105,7 @@ F 3 "" H 7250 2500 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R22
+L R-RESCUE-Console10x10 R22
 U 1 1 561049F4
 P 7150 2500
 F 0 "R22" H 7000 2450 50  0000 C CNN
