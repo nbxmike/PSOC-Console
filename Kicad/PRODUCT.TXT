@@ -1,2 +1,12 @@
 Information can be added to but not removed from this file
-Mike McCormack - originator design, no product
+Mike McCormack - originator design, FRC Console - when built with a stock 5V 
+                 CY8CKIT-059 this eases the assembly of FIRST Robotic 
+				 Competition driver's station.  USB HID Joystick/Button/Slider
+				 interface.
+Mike McCormack - Hack of CY8CKIT-059 to run at 3.3V allows this to this to
+                 also interface to common console accessories such as PS/2
+				 or GameCube joysticks (with appropriate wiring).
+                 See https://community.cypress.com/thread/16071, and / or
+				     http://www.cypress.com/comment/337531, and / or 
+					 https://community.cypress.com/thread/16743, and / or 
+					 https://community.cypress.com/thread/14080
