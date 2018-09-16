@@ -1,0 +1,7 @@
+Last Modified Date & Time: 08/23/2018 11:44:08
+
+Composite-HID: Composite-HID.cydwr
+	cy_boot [v5.60] to [v5.70]
+	Em_EEPROM_Dynamic [v2.0] to [v2.20]
+
+

@@ -21,15 +21,30 @@ to 3.3V devices, and it has been done, it has been a painful kludge of wires
 and ICs glued in place.  Expect updated hardware in the August 2018 timeframe
 (boards are out for fab as I write.)
 
-Finally, the project has been assigned the USB ID of 0x1d50 | 0x6131 by the 
+The project has been assigned the USB ID of 0x1d50 | 0x6131 by the 
 openmoko USB OUI program.  Anticipating the hardware revision to 3.3V and its
 associated updated firmware, a second ID is reserved.  Obtaining unique USB
 IDs makes custom host support much easier should something other than stock
 HID drivers be desired at some future point.
 
+The project is broken down into three directories:
+  Kicad - this folder includes the Kicad source files, gerbers, BOMs, etc.
+    Kicad is a free schematic capture package the equal of many commercial
+	packages but as FOSS it places no restrictions on use of its outputs.
+  PSOC-Creator - This is the source for the firware and PLD of the CPU core
+    used for this project.  PSOC Creator is a free integrated development
+	enviroment which is not open source nor available for a package other than
+	Windows.  It sucks that to use Cypress hardware you are forced into such
+	a crap desktop but Cypress does not seem to care too much.
+  Documents - I have collected a number for reference documents that I have
+    included in this folder.  Should a copyright holder ask that I not provide
+	people this information source I will attempt to find open documents to 
+	replace them.
+	
 Licensing:
   Hardware - CERN
   Firmware - MIT
+  Documents - individual terms are in each document
   
 Enjoy
 

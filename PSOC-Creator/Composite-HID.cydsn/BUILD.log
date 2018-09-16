@@ -1,0 +1,81 @@
+--------------- Build Started: 08/30/2018 17:30:02 Project: Composite-HID, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/croutine.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\croutine.c -o .\CortexM3\ARM_GCC_541\Debug\croutine.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/event_groups.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\event_groups.c -o .\CortexM3\ARM_GCC_541\Debug\event_groups.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/FreeRTOS_CLI.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\FreeRTOS_CLI.c -o .\CortexM3\ARM_GCC_541\Debug\FreeRTOS_CLI.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/heap_4.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\heap_4.c -o .\CortexM3\ARM_GCC_541\Debug\heap_4.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/list.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\list.c -o .\CortexM3\ARM_GCC_541\Debug\list.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/port.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\port.c -o .\CortexM3\ARM_GCC_541\Debug\port.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/queue.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\queue.c -o .\CortexM3\ARM_GCC_541\Debug\queue.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/stream_buffer.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\stream_buffer.c -o .\CortexM3\ARM_GCC_541\Debug\stream_buffer.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/tasks.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\tasks.c -o .\CortexM3\ARM_GCC_541\Debug\tasks.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/timers.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\timers.c -o .\CortexM3\ARM_GCC_541\Debug\timers.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/virtual_uart.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\virtual_uart.c -o .\CortexM3\ARM_GCC_541\Debug\virtual_uart.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/FRSupport.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\FRSupport.c -o .\CortexM3\ARM_GCC_541\Debug\FRSupport.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/FRCLILibrary.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\FRCLILibrary.c -o .\CortexM3\ARM_GCC_541\Debug\FRCLILibrary.o
+Source\FRCLILibrary.c: In function 'timeCommand':
+Source\FRCLILibrary.c:46:19: warning: implicit declaration of function 'RTC_GetTime' [-Wimplicit-function-declaration]
+     uint32 time = RTC_GetTime();
+                   ^
+Source\FRCLILibrary.c:48:22: warning: implicit declaration of function 'RTC_GetHours' [-Wimplicit-function-declaration]
+     uint32_t hours = RTC_GetHours(time);
+                      ^
+Source\FRCLILibrary.c:49:24: warning: implicit declaration of function 'RTC_GetMinutes' [-Wimplicit-function-declaration]
+     uint32_t minutes = RTC_GetMinutes(time);
+                        ^
+Source\FRCLILibrary.c:50:24: warning: implicit declaration of function 'RTC_GetSecond' [-Wimplicit-function-declaration]
+     uint32_t seconds = RTC_GetSecond(time);
+                        ^
+Source\FRCLILibrary.c:51:21: warning: implicit declaration of function 'RTC_GetAmPm' [-Wimplicit-function-declaration]
+     uint32_t ampm = RTC_GetAmPm(time);
+                     ^
+Source\FRCLILibrary.c:52:122: error: 'RTC_AM' undeclared (first use in this function)
+     sprintf(pcWriteBuffer,"%02u:%02u:%02u %s\n",(unsigned int)hours,(unsigned int)minutes,(unsigned int)seconds,(ampm == RTC_AM)?"AM":"PM");
+                                                                                                                          ^
+Source\FRCLILibrary.c:52:122: note: each undeclared identifier is reported only once for each function it appears in
+Source\FRCLILibrary.c: In function 'setTimeCommand':
+Source\FRCLILibrary.c:104:5: warning: implicit declaration of function 'RTC_SetDateAndTime' [-Wimplicit-function-declaration]
+     RTC_SetDateAndTime(RTC_ConstructTime( RTC_24_HOURS_FORMAT, 0 ,hour,minute,0), RTC_GetDate());
+     ^
+Source\FRCLILibrary.c:104:24: warning: implicit declaration of function 'RTC_ConstructTime' [-Wimplicit-function-declaration]
+     RTC_SetDateAndTime(RTC_ConstructTime( RTC_24_HOURS_FORMAT, 0 ,hour,minute,0), RTC_GetDate());
+                        ^
+Source\FRCLILibrary.c:104:43: error: 'RTC_24_HOURS_FORMAT' undeclared (first use in this function)
+     RTC_SetDateAndTime(RTC_ConstructTime( RTC_24_HOURS_FORMAT, 0 ,hour,minute,0), RTC_GetDate());
+                                           ^
+Source\FRCLILibrary.c:104:83: warning: implicit declaration of function 'RTC_GetDate' [-Wimplicit-function-declaration]
+     RTC_SetDateAndTime(RTC_ConstructTime( RTC_24_HOURS_FORMAT, 0 ,hour,minute,0), RTC_GetDate());
+                                                                                   ^
+Source\FRCLILibrary.c: In function 'cliTask':
+Source\FRCLILibrary.c:136:5: warning: implicit declaration of function 'FreeRTOS_open' [-Wimplicit-function-declaration]
+     FreeRTOS_open( (const int8_t *)"/uart",0 );
+     ^
+Source\FRCLILibrary.c:137:5: warning: implicit declaration of function 'clearScreen' [-Wimplicit-function-declaration]
+     clearScreen();
+     ^
+Source\FRCLILibrary.c:139:5: warning: implicit declaration of function 'FreeRTOS_write' [-Wimplicit-function-declaration]
+     FreeRTOS_write(0,INTRO_STRING,strlen(INTRO_STRING));
+     ^
+Source\FRCLILibrary.c:141:5: warning: implicit declaration of function 'RTC_Start' [-Wimplicit-function-declaration]
+     RTC_Start();
+     ^
+Source\FRCLILibrary.c:143:35: error: 'clearCommandStruct' undeclared (first use in this function)
+     FreeRTOS_CLIRegisterCommand( &clearCommandStruct ); 
+                                   ^
+Source\FRCLILibrary.c:148:9: warning: implicit declaration of function 'FreeRTOS_read' [-Wimplicit-function-declaration]
+         FreeRTOS_read( 0, &cRxedChar, sizeof( cRxedChar ) );
+         ^
+Source\FRCLILibrary.c: In function 'ledTask':
+Source\FRCLILibrary.c:226:9: warning: implicit declaration of function 'RED_Write' [-Wimplicit-function-declaration]
+         RED_Write(~RED_Read());
+         ^
+Source\FRCLILibrary.c:226:20: warning: implicit declaration of function 'RED_Read' [-Wimplicit-function-declaration]
+         RED_Write(~RED_Read());
+                    ^
+Source\FRCLILibrary.c: In function 'main':
+Source\FRCLILibrary.c:234:5: warning: implicit declaration of function 'FreeRTOS_Start' [-Wimplicit-function-declaration]
+     FreeRTOS_Start();
+     ^
+The command 'arm-none-eabi-gcc.exe' failed with exit code '1'.
+--------------- Build Failed: 08/30/2018 17:30:06 ---------------
