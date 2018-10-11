@@ -1,7 +1,3 @@
-#ifndef FREERTOS_CONFIG_H
-#define FREERTOS_CONFIG_H
-#include <project.h>
-
 /* ========================================
  *
  * Copyright 2018 Michael McCormack
@@ -26,6 +22,19 @@
  *
  * ========================================
  */
+/** @file   FreeRTOSConfig.h
+ *  @author Mike McCormack (nbxmike)
+ *  @date   8/OCT/2018
+ *  @brief  Configuration requirements and options for FreeRTOS.
+ *
+ *  Largely collected from FreeRTOS docs/webpages and other peoples examples, 
+ *  I beleive it is not up to the point of an independant work and applying
+ *  my copyright and license terms.
+ */
+
+#ifndef FREERTOS_CONFIG_H
+#define FREERTOS_CONFIG_H
+#include <project.h>
 
 #define configUSE_PREEMPTION						1
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION		0
@@ -96,9 +105,9 @@
  * See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html. */
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY    (5 << (8 - configPRIO_BITS))
 
-/* Define to trap errors during development. */
-/*  A very, very bad practice                */
-
+/*  A very, very bad trap for development, MUST REPLACE  */
+/* TODO - don't let good code die                        */
+  
 #define configASSERT(x)                                     \
   if ((x) == 0) { taskDISABLE_INTERRUPTS(); for ( ; ;) {; } \
   }

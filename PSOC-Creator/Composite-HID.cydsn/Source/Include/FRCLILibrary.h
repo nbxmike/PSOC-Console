@@ -22,10 +22,19 @@
  *
  * ========================================
  */
+/** @file   FRCLILibrary.h
+ *  @author Mike McCormack (nbxmike)
+ *  @date   8/OCT/2018
+ *  @brief  Constants and protorype related to the FreeRTOS CLI
+ */
+
 #ifndef FRCLILIBRARY
 #define FRCLILIBRARY
 
-void ledTask(void *arg);
+#define CLI_MAX_INPUT	  50
+#define CLI_MAX_OUTPUT	128
+#define START_MESSAGE   "Doctor Livingstone, I presume?\n"
+  
 void cliTask(void *arg);
 
 #endif

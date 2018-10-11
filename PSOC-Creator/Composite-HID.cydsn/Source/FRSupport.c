@@ -22,6 +22,13 @@
  *
  * ========================================
  */
+/**
+ * @file   FRSupport.c
+ * @author Mike McCormack (nbxmike)
+ * @date   8/OCT/2018
+ * @brief  Attempt to prepackage FreeRTOS support for Cypress PSOC 5LP usage.
+ */
+
 #include "project.h"
 #include "FreeRTOS.h"
 #include "FRSupport.h"
@@ -29,15 +36,17 @@
 
 TickType_t BlinkyWakeTime;
 
-
+/** @brief FRsetup initializes stuff needed for FreeRTOS
+ *
+ * FRsetup initializes the interrupt hooks needed by FreeRTOS and also
+ * creates the LED heartbeat task just so there is always some task
+ * for FreeRTOS.  The heartbeat can be deleted, I just like to see
+ * something happen when I start a project.
+ */
 void FRsetup() {
-  /* Handler for Cortex Supervisor Call - address 11 */
+  /* Handler for Cortex calls - part of Cortex-M3 port */
   CyIntSetSysVector(CORTEX_INTERRUPT_BASE + SVCall_IRQn, (cyisraddress)vPortSVCHandler);
-
-  /* Handler for Cortex PendSV Call - address 14 */
   CyIntSetSysVector(CORTEX_INTERRUPT_BASE + PendSV_IRQn, (cyisraddress)xPortPendSVHandler);
-
-  /* Handler for Cortex SYSTICK - address 15 */
   CyIntSetSysVector(CORTEX_INTERRUPT_BASE + SysTick_IRQn, (cyisraddress)xPortSysTickHandler);
 
   xTaskCreate(                  /* Create LED task, which will blink the '059 LED */
@@ -50,15 +59,26 @@ void FRsetup() {
 }
 
 
-/* Very simple task to blink and LED, defined here so there is always a starting task */
-void Blinky_Task(void *arg) {
-  (void)arg;  // Just to get rid of compiler warning . . .
-  BlinkyWakeTime = xTaskGetTickCount();
-
+/** @brief Blinky_Task blinks the local heartbeat LED, defined here so there is always a starting task
+ *
+ * This task needs to be modified for each board that it is run on, for Cypress
+ * PSOC boards the following are the LED locations (incomplete I am aware):
+ *  CY8KIT-059 - P2.1
+ *  CY8KIT-029 - P1.6
+ *  CY8KIT-040 - P3.1
+ * and of course you need to map these pins to your TopDesign.cysch register
+ * names.  Blink rate is presently hard coded for 1Hz.
+ */
+void Blinky_Task(void *arg) 
+{
+  (void)arg;
+  TickType_t xBlinkyWakeTime;
+  
+  xBlinkyWakeTime = xTaskGetTickCount();
   while (1)
   {
-    Indicators_Write(0x01 ^ Indicators_Read());
-    vTaskDelayUntil(&BlinkyWakeTime, 500);
+    Indicators_Write(0x80^Indicators_Read());
+    vTaskDelayUntil( &xBlinkyWakeTime, 500 );  
   }
 }
 

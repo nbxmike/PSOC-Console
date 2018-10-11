@@ -1,81 +1,26 @@
---------------- Build Started: 08/30/2018 17:30:02 Project: Composite-HID, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 10/03/2018 16:23:38 Project: Composite-HID, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/croutine.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\croutine.c -o .\CortexM3\ARM_GCC_541\Debug\croutine.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/event_groups.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\event_groups.c -o .\CortexM3\ARM_GCC_541\Debug\event_groups.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/FreeRTOS_CLI.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\FreeRTOS_CLI.c -o .\CortexM3\ARM_GCC_541\Debug\FreeRTOS_CLI.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/heap_4.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\heap_4.c -o .\CortexM3\ARM_GCC_541\Debug\heap_4.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/list.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\list.c -o .\CortexM3\ARM_GCC_541\Debug\list.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/port.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\port.c -o .\CortexM3\ARM_GCC_541\Debug\port.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/queue.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\queue.c -o .\CortexM3\ARM_GCC_541\Debug\queue.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/stream_buffer.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\stream_buffer.c -o .\CortexM3\ARM_GCC_541\Debug\stream_buffer.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/tasks.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\tasks.c -o .\CortexM3\ARM_GCC_541\Debug\tasks.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/timers.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS\timers.c -o .\CortexM3\ARM_GCC_541\Debug\timers.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/virtual_uart.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\virtual_uart.c -o .\CortexM3\ARM_GCC_541\Debug\virtual_uart.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/FRSupport.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\FRSupport.c -o .\CortexM3\ARM_GCC_541\Debug\FRSupport.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/FRCLILibrary.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\FRCLILibrary.c -o .\CortexM3\ARM_GCC_541\Debug\FRCLILibrary.o
-Source\FRCLILibrary.c: In function 'timeCommand':
-Source\FRCLILibrary.c:46:19: warning: implicit declaration of function 'RTC_GetTime' [-Wimplicit-function-declaration]
-     uint32 time = RTC_GetTime();
-                   ^
-Source\FRCLILibrary.c:48:22: warning: implicit declaration of function 'RTC_GetHours' [-Wimplicit-function-declaration]
-     uint32_t hours = RTC_GetHours(time);
-                      ^
-Source\FRCLILibrary.c:49:24: warning: implicit declaration of function 'RTC_GetMinutes' [-Wimplicit-function-declaration]
-     uint32_t minutes = RTC_GetMinutes(time);
-                        ^
-Source\FRCLILibrary.c:50:24: warning: implicit declaration of function 'RTC_GetSecond' [-Wimplicit-function-declaration]
-     uint32_t seconds = RTC_GetSecond(time);
-                        ^
-Source\FRCLILibrary.c:51:21: warning: implicit declaration of function 'RTC_GetAmPm' [-Wimplicit-function-declaration]
-     uint32_t ampm = RTC_GetAmPm(time);
-                     ^
-Source\FRCLILibrary.c:52:122: error: 'RTC_AM' undeclared (first use in this function)
-     sprintf(pcWriteBuffer,"%02u:%02u:%02u %s\n",(unsigned int)hours,(unsigned int)minutes,(unsigned int)seconds,(ampm == RTC_AM)?"AM":"PM");
-                                                                                                                          ^
-Source\FRCLILibrary.c:52:122: note: each undeclared identifier is reported only once for each function it appears in
-Source\FRCLILibrary.c: In function 'setTimeCommand':
-Source\FRCLILibrary.c:104:5: warning: implicit declaration of function 'RTC_SetDateAndTime' [-Wimplicit-function-declaration]
-     RTC_SetDateAndTime(RTC_ConstructTime( RTC_24_HOURS_FORMAT, 0 ,hour,minute,0), RTC_GetDate());
-     ^
-Source\FRCLILibrary.c:104:24: warning: implicit declaration of function 'RTC_ConstructTime' [-Wimplicit-function-declaration]
-     RTC_SetDateAndTime(RTC_ConstructTime( RTC_24_HOURS_FORMAT, 0 ,hour,minute,0), RTC_GetDate());
-                        ^
-Source\FRCLILibrary.c:104:43: error: 'RTC_24_HOURS_FORMAT' undeclared (first use in this function)
-     RTC_SetDateAndTime(RTC_ConstructTime( RTC_24_HOURS_FORMAT, 0 ,hour,minute,0), RTC_GetDate());
-                                           ^
-Source\FRCLILibrary.c:104:83: warning: implicit declaration of function 'RTC_GetDate' [-Wimplicit-function-declaration]
-     RTC_SetDateAndTime(RTC_ConstructTime( RTC_24_HOURS_FORMAT, 0 ,hour,minute,0), RTC_GetDate());
-                                                                                   ^
-Source\FRCLILibrary.c: In function 'cliTask':
-Source\FRCLILibrary.c:136:5: warning: implicit declaration of function 'FreeRTOS_open' [-Wimplicit-function-declaration]
-     FreeRTOS_open( (const int8_t *)"/uart",0 );
-     ^
-Source\FRCLILibrary.c:137:5: warning: implicit declaration of function 'clearScreen' [-Wimplicit-function-declaration]
-     clearScreen();
-     ^
-Source\FRCLILibrary.c:139:5: warning: implicit declaration of function 'FreeRTOS_write' [-Wimplicit-function-declaration]
-     FreeRTOS_write(0,INTRO_STRING,strlen(INTRO_STRING));
-     ^
-Source\FRCLILibrary.c:141:5: warning: implicit declaration of function 'RTC_Start' [-Wimplicit-function-declaration]
-     RTC_Start();
-     ^
-Source\FRCLILibrary.c:143:35: error: 'clearCommandStruct' undeclared (first use in this function)
-     FreeRTOS_CLIRegisterCommand( &clearCommandStruct ); 
-                                   ^
-Source\FRCLILibrary.c:148:9: warning: implicit declaration of function 'FreeRTOS_read' [-Wimplicit-function-declaration]
-         FreeRTOS_read( 0, &cRxedChar, sizeof( cRxedChar ) );
-         ^
-Source\FRCLILibrary.c: In function 'ledTask':
-Source\FRCLILibrary.c:226:9: warning: implicit declaration of function 'RED_Write' [-Wimplicit-function-declaration]
-         RED_Write(~RED_Read());
-         ^
-Source\FRCLILibrary.c:226:20: warning: implicit declaration of function 'RED_Read' [-Wimplicit-function-declaration]
-         RED_Write(~RED_Read());
-                    ^
-Source\FRCLILibrary.c: In function 'main':
-Source\FRCLILibrary.c:234:5: warning: implicit declaration of function 'FreeRTOS_Start' [-Wimplicit-function-declaration]
-     FreeRTOS_Start();
-     ^
-The command 'arm-none-eabi-gcc.exe' failed with exit code '1'.
---------------- Build Failed: 08/30/2018 17:30:06 ---------------
+Source\FRCLILibrary.c: In function 'echoCommand':
+Source\FRCLILibrary.c:195:10: warning: passing argument 1 of 'strcpy' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   strcpy(pcCommandString, pcWriteBuffer);
+          ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC5/CyLib.h:22,
+                 from Generated_Source\PSoC5/USBCOMP.h:22,
+                 from Generated_Source\PSoC5/project.h:22,
+                 from Source\FRCLILibrary.c:35:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:30:8: note: expected 'char * restrict' but argument is of type 'const char *'
+ char  *_EXFUN(strcpy,(char *__restrict, const char *__restrict));
+        ^
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\Composite-HID.a .\CortexM3\ARM_GCC_541\Debug\USBCOMP.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_audio.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_boot.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_cdc.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_cls.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_descr.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_drv.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_episr.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_hid.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_pm.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_std.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_vnd.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_midi.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_msc.o .\CortexM3\ARM_GCC_541\Debug\EEPROM_1.o .\CortexM3\ARM_GCC_541\Debug\PSx_MISO.o .\CortexM3\ARM_GCC_541\Debug\PSx_ACK_0.o .\CortexM3\ARM_GCC_541\Debug\PSx_Control.o .\CortexM3\ARM_GCC_541\Debug\PSx_Control_PM.o .\CortexM3\ARM_GCC_541\Debug\PSx_SCLK.o .\CortexM3\ARM_GCC_541\Debug\PSx_MOSI.o .\CortexM3\ARM_GCC_541\Debug\PSx_SS_0.o .\CortexM3\ARM_GCC_541\Debug\PSx_ACKs.o .\CortexM3\ARM_GCC_541\Debug\PSx_SS_1.o .\CortexM3\ARM_GCC_541\Debug\ButtonReg1.o .\CortexM3\ARM_GCC_541\Debug\Clock_1.o .\CortexM3\ARM_GCC_541\Debug\ButtonReg2.o .\CortexM3\ARM_GCC_541\Debug\Indicators.o .\CortexM3\ARM_GCC_541\Debug\Indicators_PM.o .\CortexM3\ARM_GCC_541\Debug\Out_1.o .\CortexM3\ARM_GCC_541\Debug\Out_2.o .\CortexM3\ARM_GCC_541\Debug\Out_3.o .\CortexM3\ARM_GCC_541\Debug\Out_4.o .\CortexM3\ARM_GCC_541\Debug\Out_5.o .\CortexM3\ARM_GCC_541\Debug\Out_6.o .\CortexM3\ARM_GCC_541\Debug\Out_7.o .\CortexM3\ARM_GCC_541\Debug\Out_8.o .\CortexM3\ARM_GCC_541\Debug\Analog_X.o .\CortexM3\ARM_GCC_541\Debug\Analog_Y.o .\CortexM3\ARM_GCC_541\Debug\Analog_Z.o .\CortexM3\ARM_GCC_541\Debug\Analog_RX.o .\CortexM3\ARM_GCC_541\Debug\Analog_RY.o .\CortexM3\ARM_GCC_541\Debug\Analog_RZ.o .\CortexM3\ARM_GCC_541\Debug\Analog_Slider.o .\CortexM3\ARM_GCC_541\Debug\Analog_Dial.o .\CortexM3\ARM_GCC_541\Debug\ADC.o .\CortexM3\ARM_GCC_541\Debug\ADC_PM.o .\CortexM3\ARM_GCC_541\Debug\ADC_INT.o .\CortexM3\ARM_GCC_541\Debug\PSx_ACK_isr.o .\CortexM3\ARM_GCC_541\Debug\PSx_SPI.o .\CortexM3\ARM_GCC_541\Debug\PSx_SPI_PM.o .\CortexM3\ARM_GCC_541\Debug\PSx_SPI_INT.o .\CortexM3\ARM_GCC_541\Debug\PSx_ACK_1.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_Dm.o .\CortexM3\ARM_GCC_541\Debug\USBCOMP_Dp.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_INT.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_PM.o .\CortexM3\ARM_GCC_541\Debug\ADC_IntClock.o .\CortexM3\ARM_GCC_541\Debug\ADC_TempBuf_dma.o .\CortexM3\ARM_GCC_541\Debug\ADC_FinalBuf_dma.o .\CortexM3\ARM_GCC_541\Debug\ADC_IRQ.o .\CortexM3\ARM_GCC_541\Debug\PSx_SPI_IntClock.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\Composite-HID.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o D:\SyncThing\Aglets\FOSS-Stuff\PSOC-Console\PSOC-Creator\Composite-HID.cydsn\CortexM3\ARM_GCC_541\Debug\Composite-HID.elf .\CortexM3\ARM_GCC_541\Debug\croutine.o .\CortexM3\ARM_GCC_541\Debug\event_groups.o .\CortexM3\ARM_GCC_541\Debug\FreeRTOS_CLI.o .\CortexM3\ARM_GCC_541\Debug\heap_4.o .\CortexM3\ARM_GCC_541\Debug\list.o .\CortexM3\ARM_GCC_541\Debug\port.o .\CortexM3\ARM_GCC_541\Debug\queue.o .\CortexM3\ARM_GCC_541\Debug\stream_buffer.o .\CortexM3\ARM_GCC_541\Debug\tasks.o .\CortexM3\ARM_GCC_541\Debug\timers.o .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\virtual_uart.o .\CortexM3\ARM_GCC_541\Debug\FRSupport.o .\CortexM3\ARM_GCC_541\Debug\FRCLILibrary.o .\CortexM3\ARM_GCC_541\Debug\AnalogJoystick.o .\CortexM3\ARM_GCC_541\Debug\PSxHost.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\Composite-HID.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/Composite-HID.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C D:\SyncThing\Aglets\FOSS-Stuff\PSOC-Console\PSOC-Creator\Composite-HID.cydsn\CortexM3\ARM_GCC_541\Debug\Composite-HID.elf --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
+No ELF section .cychecksum found, creating one
+Application checksum calculated and stored in ELF section .cychecksum
+Checksum calculated and stored in ELF section .cymeta
+cyelftool.exe -S D:\SyncThing\Aglets\FOSS-Stuff\PSOC-Console\PSOC-Creator\Composite-HID.cydsn\CortexM3\ARM_GCC_541\Debug\Composite-HID.elf
+Flash used: 16974 of 262144 bytes (6.5%).
+SRAM used: 13649 of 65536 bytes (20.8%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 10/03/2018 16:23:40 ---------------

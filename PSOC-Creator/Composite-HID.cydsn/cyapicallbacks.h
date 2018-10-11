@@ -23,13 +23,29 @@
  *
  * ========================================
 */
+/**
+ * @file   cyapicallbacks.h
+ * @author Mike McCormack (nbxmike)
+ * @date   8/OCT/2018
+ * @brief  Cypress PSOC 5LP hooks for interrupt code snippets.
+ */
+
 #ifndef CYAPICALLBACKS_H
 #define CYAPICALLBACKS_H
-    
 
-    /*Define your macro callbacks here */
-    /*For more information, refer to the Writing Code topic in the PSoC Creator Help.*/
+  #define USBCOMP_EP_3_ISR_EXIT_CALLBACK
+  void    USBCOMP_EP_3_ISR_ExitCallback(void);
+  
+  #define PSx_ACK_isr_INTERRUPT_INTERRUPT_CALLBACK
+  void    PSx_ACK_isr_Interrupt_InterruptCallback(void);
+  
+  #define PSx_SPI_RX_ISR_EXIT_CALLBACK
+  void    PSx_SPI_RX_ISR_ExitCallback(void);
+  
+  #define Delay_10uS_isr_INTERRUPT_INTERRUPT_CALLBACK
+  void Delay_10uS_isr_Interrupt_InterruptCallback(void);
 
-    
-#endif /* CYAPICALLBACKS_H */   
-/* [] */
+  #define ADC_IRQ_INTERRUPT_INTERRUPT_CALLBACK
+  void ADC_IRQ_Interrupt_InterruptCallback(void);
+
+#endif   

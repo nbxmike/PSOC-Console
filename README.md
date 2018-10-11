@@ -13,7 +13,7 @@ terms and hence the new firmware being released under the same license.)  The
 firmware is not a port, it is new code which has at best been inspired by the
 Cypress code meantioned above
 
-The hardware is at the moment (15/JUN/2018) the same as was previously released
+The hardware is at the moment (11/OCT/2018) the same as was previously released
 hardware.  A new revision of the hardware has been designed to incorporate a
 3.3V regulator to make interfacing to PS/2, GameCube and other game console 
 devices much easier.  It is entirely possible to interface the existing board

@@ -22,6 +22,16 @@
  *
  * ========================================
  */
+/** @file FRCLILibrary.c
+ *  @author Mike McCormack (nbxmike)
+ *  @date   8/OCT/2018
+ *  @brief Support library and port of CLI task to Cypress PSOC 5LP
+ *
+ *  Support library for the FreeRTOS command line interpreter and port of their
+ *  CLI task to Cypress PSOC 5LP.  All the CH_xxx deal with the CLI Human 
+ *  interface device.  This will typically be a real or virtual UART device;
+ *  here it is a USB virtual UART.
+ */
 
 #include "project.h"
 #include "FRSupport.h"
@@ -30,130 +40,253 @@
 #include "FreeRTOS.h"
 #include "FreeRTOS_CLI.h"
 #include "timers.h"
+#include "semphr.h"
+#include "FRCLILibrary.h"
+
+SemaphoreHandle_t xCH_Semaphore = NULL;
+
+/** @brief CH_Init starts the user's comm port
+ *
+ * CH_Init will start the interface and clear and data that was present
+ * before it begins.  Typically there will be nothing as this should
+ * start at power up, but just in case . . . 
+ */
+void CH_Init(void) 
+{
+  if (USBCOMP_IsConfigurationChanged())
+  {
+    if (USBCOMP_GetConfiguration())
+    {
+      USBCOMP_CDC_Init();
+      while(USBCOMP_DataIsReady())
+      {
+        USBCOMP_GetChar();
+      }
+    }
+  }
+
+}
+
+/** @brief CH_DataIsReady checks for console input
+ *
+ * CH_DataIsReady looks to see if there is user input in the device buffer.
+ * In this implementation, it also checks if the USB has be reset by the host
+ * and if so will run the init routine.
+ */
+uint8  CH_DataIsReady(void)
+{
+  if (USBCOMP_IsConfigurationChanged())
+  {
+    CH_Init();
+  }
+  return USBCOMP_DataIsReady();
+}
+
+/** @brief CH_GetChar returns the next user input byte
+ *
+ * CH_GetChar will return the next byte form the user input in the device 
+ * buffer.  This routine does not check if there is data to be obtained, it
+ * should only be called if the CH_DataIsReady function indicates there is
+ * data to be had.  In this implementation, it also checks if the USB has 
+ * been reset by the host and if so will run the init routine; in this case
+ * the CH_GetChar routine returns a newline to terminate any input that was
+ * in process when the USB was reset/restarted.
+ */
+uint8  CH_GetChar(void)
+{
+  if (USBCOMP_IsConfigurationChanged())
+  {
+    CH_Init();
+    return '\n';   // Only reasonable thing to do is end any pending command.
+  }
+  return USBCOMP_GetChar();
+}
 
 
-#define MAX_INPUT_LENGTH		50
-//#define MAX_OUTPUT_LENGTH   configCOMMAND_INT_MAX_OUTPUT_SIZE
-#define MAX_OUTPUT_LENGTH		128
+/** @brief CH_GetCharWait return the next user byte and will wait if it is not avialible
+ *
+ * CH_GetCharWait will return the next byte form the user input in the device 
+ * buffer.  This routine checks if data is avialable and if not will wait; the
+ * wait is for 10mS or until data is sent by the host, which ever comes first.
+ * If 10ms has expired and there is still no data the fnction waits another 
+ * 10ms. In this implementation, it also checks if the USB has been reset by 
+ * the host and if so will run the init routine; in this case the 
+ * CH_GetCharWait routine returns a newline to terminate any input that was
+ * in process when the USB was reset/restarted.
+ */
+uint8  CH_GetCharWait(void)
+{
+  while(1)
+  {
+    if (USBCOMP_IsConfigurationChanged())
+    {
+      CH_Init();
+      return '\n';   // Only reasonable thing to do is end any pending command.
+    }
+    if(CH_DataIsReady() != 0 )
+    {
+      return USBCOMP_GetChar();
+    }
+    xSemaphoreTake( xCH_Semaphore, ( TickType_t ) 10 );
+  }
+}
 
 
+/** @brief CH_PutData puts arbitrary data in the send buffer
+ *
+ * CH_PutData will put any bytes in the output buffer of the user interface
+ * device.  The number of bytes to send must be specified.  For null terminated
+ * strings CH_PutString is a more friendly call.  In this implementation, it 
+ * also checks if the USB has been reset by the host and if so will run the 
+ * USB init routine.
+ */
+void CH_PutData(const uint8* pData, uint16 length)
+{
+  if (USBCOMP_IsConfigurationChanged())
+  {
+    CH_Init();
+  }
+  USBCOMP_PutData(pData, length) ;
+}
 
-/*****************************************************************************\
-*
-\*****************************************************************************/
+/** @brief CH_PutString puts a character string in the send buffer
+ *
+ * CH_PutString will put a null terminated string into the output buffer of 
+ * the user interface device.  For arbitrary byte which may include zeros, 
+ * CH_PutData is the proper interface call.  In this implementation, it 
+ * also checks if the USB has been reset by the host and if so will run the 
+ * USB init routine.
+ */
+void CH_PutString(const char8 *string)
+{
+  if (USBCOMP_IsConfigurationChanged())
+  {
+    CH_Init();
+  }
+  USBCOMP_PutString(string);
+}
+
+/** @brief CH_PutChar puts a single character in the send buffer
+ *
+ * CH_PutChar will put a single character into the output buffer of the user
+ * interface device.  Since this will copy any value, it is suitable for
+ * arbitrary byte which may include zeros or printable characters equally well.
+ * In this implementation, it also checks if the USB has been reset by the host
+ * and if so will run the USB init routine.
+ */
+void CH_PutChar(char8 txDataByte)
+{
+  if (USBCOMP_IsConfigurationChanged())
+  {
+    CH_Init();
+  }
+  USBCOMP_PutChar(txDataByte);
+}
+
+
+/** @brief echoCommand process an echo command at the CLI
+ *
+ * echoCommand is called by the FreeRTOS CLI tool when the user input starts
+ * with echo.  This is a demonstration command to provide a platform
+ * independant command that can always be present.  Delete from your port of
+ * the FreeRTOS CLI if you need the space.
+ */
 BaseType_t echoCommand(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString) {
   (void)xWriteBufferLen;
   strcpy(pcCommandString, pcWriteBuffer);
   return (pdFALSE);
 }
 
+/** @brief USBFS_EP_3_ISR_EntryCallback ISR hook to tell foeground data may be ready.
+ *
+ * USBFS_EP_3_ISR_EntryCallback is called by the USB IRQ handler when there is
+ * a data transfer from the host.  It is unclear if this is called when the 
+ * data field is zero lenght or if the tranfer was found to be corrupt so the
+ * foreground must still check if data is available.
+ * This hook can change even for the PSOC parts if the USB endpoints for the 
+ * virtual UART change.  That means it may be necessary to port this when the
+ * configuration changes, not just when the processor does.
+ */
+void USBCOMP_EP_3_ISR_ExitCallback(void)
+{
+  static BaseType_t xHigherPriorityTaskWoken;
+  xHigherPriorityTaskWoken = pdFALSE;
+  if( xCH_Semaphore != NULL )
+  {
+    xSemaphoreGiveFromISR( xCH_Semaphore, &xHigherPriorityTaskWoken );
+    if (xHigherPriorityTaskWoken == pdTRUE)
+    {
+      portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+    }
+  }
+}
 
 static const CLI_Command_Definition_t echoCommandStruct =
 {
   "echo",
   "echo: Prints the command line as entered, no processing\n",
   echoCommand,
-  0   // No arguments
+  0
 };
 
-/*****************************************************************************\
-* Function:    cliTask
-* Input:       void *arg  ... unused
-* Returns:     void
-* Description:
-*     This function is the inifite loop for the command line intepreter.. it
-*     reads characters using the FreeRTOS_read function then sends them to the
-*     cli when there is a \r
-\*****************************************************************************/
+/** @brief cliTask task which invokes the FreeRTOS CLI engine
+ *
+ * cliTask process the user input on the command line.  At present it only
+ * support character input and backspace editing; there is no support for
+ * cursor movement or anything else.  To make things as platform independant
+ * as possible this accepts DEL or BS as backspace, accepts CR, LF, or CR-LF
+ * as input termination.
+ */
 void cliTask(void *arg) {
   (void)arg;
 
-  char pcOutputString[MAX_OUTPUT_LENGTH], pcInputString[MAX_INPUT_LENGTH];
-  int8_t cRxedChar, cInputIndex = 0;
-  BaseType_t xMoreDataToFollow;
+  char OutBuffer[CLI_MAX_OUTPUT], InBuffer[CLI_MAX_INPUT];
+  uint8_t cli_c, cli_lastc;
+  int cli_index;
+  BaseType_t cli_more;
 
-  FreeRTOS_open((const int8_t *)"/uart", 0);
-#define INTRO_STRING    "Command Line & RTC Demo\n"
-  FreeRTOS_write(0, INTRO_STRING, strlen(INTRO_STRING));
-
-  RTC_Start();
+  xCH_Semaphore = xSemaphoreCreateBinary(); //TODO: do error checking someday
+  
+  cli_c = cli_lastc = 0;
+  cli_index = 0;
+  
+  CH_Init();
+  CH_PutString(START_MESSAGE);
 
   FreeRTOS_CLIRegisterCommand(&echoCommandStruct);
+
   while (1)
   {
-    FreeRTOS_read(0, &cRxedChar, sizeof(cRxedChar));
-    if (cRxedChar == '\r') {
-      /* A newline character was received, so the input command string is
-       * complete and can be processed.  Transmit a line separator, just to
-       * make the output easier to read. */
+    cli_lastc = cli_c;
+    
+    cli_c = CH_GetCharWait();
+    CH_PutData( &cli_c, 1);
 
-      FreeRTOS_write(0, &cRxedChar, 1);
-
-      /* The command interpreter is called repeatedly until it returns
-       * pdFALSE.  See the "Implementing a command" documentation for an
-       * exaplanation of why this is. */
+    if ((cli_c == '\x0A' &&  cli_lastc == '\x0D') || (cli_c == '\x0D' &&  cli_lastc == '\x0A'))
+    {
+      continue;
+    }
+      
+    if( cli_c == '\x0A' || cli_c == '\x0D' )  // CR and LF treated the same
+    {
+      InBuffer[cli_index] = '\0';
       do
       {
-        /* Send the command string to the command interpreter.  Any
-         * output generated by the command interpreter will be placed in the
-         * pcOutputString buffer. */
-
-        xMoreDataToFollow = FreeRTOS_CLIProcessCommand
-            (
-          pcInputString,                            /* The command string.*/
-          pcOutputString,                           /* The output buffer. */
-          MAX_OUTPUT_LENGTH                         /* The size of the output buffer. */
-            );
-
-        /* Write the output generated by the command interpreter to the
-         * console. */
-
-        FreeRTOS_write(0, pcOutputString, strlen(pcOutputString));
-      } while (xMoreDataToFollow != pdFALSE);
-
-      /* All the strings generated by the input command have been sent.
-       * Processing of the command is complete.  Clear the input string ready
-       * to receive the next command. */
-      cInputIndex = 0;
-      memset(pcInputString, 0x00, MAX_INPUT_LENGTH);
+        cli_more = FreeRTOS_CLIProcessCommand( InBuffer, OutBuffer, CLI_MAX_OUTPUT );
+        CH_PutString(OutBuffer);
+      } while (cli_more != pdFALSE);
+      cli_index = 0;
     }
-    else{
-      /* The if() clause performs the processing after a newline character
-       * is received.  This else clause performs the processing if any other
-       * character is received. */
-
-      if (cRxedChar == 127) {      // delete character
-        FreeRTOS_write(0, &cRxedChar, 1);
-
-        /* Backspace was pressed.  Erase the last character in the input
-         * buffer - if there are any. */
-        if (cInputIndex > 0) {
-          cInputIndex--;
-          pcInputString[cInputIndex] = '\0';
-        }
-      }
-      else{
-        /* A character was entered.  It was not a new line, backspace
-         * or carriage return, so it is accepted as part of the input and
-         * placed into the input buffer.  When a \n is entered the complete
-         * string will be passed to the command interpreter. */
-        if (cInputIndex < MAX_INPUT_LENGTH) {
-          FreeRTOS_write(0, &cRxedChar, 1);
-          pcInputString[cInputIndex] = cRxedChar;
-          cInputIndex++;
-        }
+    else if ( cli_c == '\x08' || cli_c == '\x7F' )  // BS and DEL treated the same
+    {
+      if (cli_index > 0)
+      {
+        cli_index--;
       }
     }
-  }
-}
-
-
-// An example Task
-void ledTask(void *arg) {
-  (void)arg;
-  while (1)
-  {
-    Indicators_Write(0x02^Indicators_Read());
-    vTaskDelay(500);
-  }
+    else
+    {
+      InBuffer[cli_index++] = cli_c;
+    }
+  }    
 }

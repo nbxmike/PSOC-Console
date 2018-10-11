@@ -1,6 +1,6 @@
 /* ========================================
  *
- * Copyright Michael McCormack, 2018
+ * Copyright 2018 Michael McCormack
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -22,21 +22,33 @@
  *
  * ========================================
  */
-/** @file   virtual_uart.c
+/** @file   LocalPeripherals.h
  *  @author Mike McCormack (nbxmike)
  *  @date   8/OCT/2018
- *  @brief  Configuration of the UART used by the CLI.
+ *  @brief  Constants and prototypes for the local i/o devices.
  */
 
-#include "project.h"
+
+#include <project.h>
+
+#ifndef LOCALPERIPHERALS_H
+#define LOCALPERIPHERALS_H
+
+#define ANALOG_SIZE   8
+#define BUTTON_SIZE   2
+#define SAMPLE_PERIOD 5
+  
+extern int16 AnalogWorking[ANALOG_SIZE];      /* ADC measurements in process       */
+extern int16 AnalogScaled[ANALOG_SIZE];       /* Scaled, centered ADC measurements */
+
+void LocalAnalogStartUp(void);     /* Setup for the local analog and digital IO  */
+void LocalAnalogRead(void);        /* Read analog joysticks and sliders          */
+void LocalButtonsRead(void);       /* Read digital inputs                        */
+void LocalOutputsSet(void);        /* Put the PCs data in tha digital outputs    */
+int  LocalPeripheralsTask(void);   /* */
+void LocalAnalogCopy(void);        /* Create to force the compiler's hand        */
 
 
-void vuInit(void) {
-  while (0 == USBCOMP_GetConfiguration())
-  {
-  }
-  USBCOMP_CDC_Init();
-}
 
-
-/* [] END OF FILE */
+#endif
+/* End of File */

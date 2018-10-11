@@ -22,6 +22,12 @@
  *
  * ========================================
  */
+/** @file   USBJoystick.h
+ *  @author Mike McCormack (nbxmike)
+ *  @date   8/OCT/2018
+ *  @brief  Constants and prototypes for the local i/o devices.
+ */
+
 
 #include <project.h>
 #include <stdio.h>
@@ -37,14 +43,14 @@
 /* In USB vernacular, IN and OUT are always from the persepective of the host */
 /* controller and not the peripheral, unfortunately Cypress documentation     */
 /* looks at things from the point of view of thier parts . .                  */
-#define IN_EP		1           /* Endpoint 1 is IN (analog and buttons) */
-#define OUT_EP		2           /* Endpiont 2 is OUT (indicators) */
+#define JOY_IN_EP		  4           /* Endpoint 1 is IN (analog and buttons) */
+#define JOY_OUT_EP		5           /* Endpiont 2 is OUT (indicators) */
 
-void AnaJoyStartUp(void);       /* Setup for the local joystick and buttons   */
-void AnaJoyReadAnalog(void);    /* Read and pack up the joysticks and sliders */
-void AnaJoyReadButtons(void);   /* Read and pack up digital inputs            */
-void AnaJoySetOutputs(void);    /* Put the PCs data in tha digital outputs    */
-int AnaJoyTask(void);           /* */
+void UsbJoyStartUp(void);       /* Setup for the local joystick and buttons   */
+void UsbJoyReadAnalog(void);    /* Read and pack up the joysticks and sliders */
+void UsbJoyReadButtons(void);   /* Read and pack up digital inputs            */
+void UsbJoySetOutputs(void);    /* Put the PCs data in tha digital outputs    */
+int  UsbJoyTask(void);          /* */
 
 
 #endif

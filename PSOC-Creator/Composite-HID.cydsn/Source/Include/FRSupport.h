@@ -22,6 +22,13 @@
  *
  * ========================================
  */
+/**
+ * @file   FRSupport.h
+ * @author Mike McCormack (nbxmike)
+ * @date   8/OCT/2018
+ * @brief  Prototypes and constants for FreeRTOS support on a Cypress PSOC 5LP.
+ */
+
 #ifndef FRSUPPORT
 #define FRSUPPORT
 
