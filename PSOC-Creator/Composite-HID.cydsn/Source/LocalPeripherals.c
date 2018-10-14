@@ -47,6 +47,15 @@ uint8 ButtonBuffer[BUTTON_SIZE];
 uint8 IndicatorBuffer;
 SemaphoreHandle_t xAnalog_Semaphore = NULL;
 
+
+/**
+ * @brief Releases the foreground waiting on ADC to end.
+ *
+ * Hopefully, this is called when one complete ADC cycle, that is all 
+ * ADCs inputs are sampled, is completed.
+ * @param  None, IRQ
+ * @return Nothing, IRQ
+ */
 void ADC_IRQ_Interrupt_InterruptCallback(void)
 {
   static BaseType_t xHigherPriorityTaskWoken;
@@ -63,6 +72,15 @@ void ADC_IRQ_Interrupt_InterruptCallback(void)
   
 }
 
+/**
+ * @brief Initializes and starts the analog sampling.
+ *
+ * Will setup the ADC, though it is already set in the schematic, an then
+ * starts the converter on a continous loog of samples
+ *
+ * @param  None
+ * @return Nothing
+ */
 void LocalAnalogStartUp(void) {
   uint8 i;
 
@@ -72,6 +90,19 @@ void LocalAnalogStartUp(void) {
 }
 
 
+/**
+ * @brief Pulls samples from the ADC and puts them a buffer.
+ *
+ * This will pull data from the ADC, scales it and centers it about zero
+ * in an integer array.  To ensure that another task cannot get half converted
+ * data, the shared buffer is not updated here but in another procedure and
+ * and that is not called until the data is has been processed.   Yes, some
+ * other task could get data from two sample periods, but as we are talking
+ * with human interoperations, it really does not matter.
+ *
+ * @param  None
+ * @return Nothing
+ */
 void LocalAnalogRead(void) {
   int i;
 
@@ -89,6 +120,17 @@ void LocalAnalogRead(void) {
   LocalAnalogCopy();
 }
 
+
+/**
+ * @brief Copies data from the working to the shared array.
+ *
+ * This is a very specific copy routine moved from its previous function
+ * to a seperate function to force the compiler to not optimize it in a
+ * way that would be problematic.
+ *
+ * @param  None
+ * @return Nothing
+ */
 void LocalAnalogCopy(void) 
 {
   int i;
@@ -98,16 +140,46 @@ void LocalAnalogCopy(void)
   }
 }
 
+
+/**
+ * @brief Pulls from the digital input register.
+ *
+ * This will pull data from the the digital registers that are connected to 
+ * buttons and switches.  Yes, some other task could get data from two 
+ * sample periods, but as we are talking with human interoperations, it really
+ * does not matter.
+ *
+ * @param  None
+ * @return Nothing
+ */
 void LocalButtonsRead(void) {    // Move from I/O registers to memory
   ButtonBuffer[0] = ButtonReg1_Read();     /* First button byte is after the last analog value */
   ButtonBuffer[1] = ButtonReg2_Read();
 }
 
 
+
+/**
+ * @brief Programs the local indicators with USB host data.
+ *
+ * The USB host sends the data that will get copied to local indicators register.
+ *
+ * @param  None
+ * @return Nothing
+ */
 void LocalOutputsSet(void) {
   Indicators_Write(IndicatorBuffer);
 }
 
+
+/**
+ * @brief FreeRTOS task to handle peripherals on the PSOC.
+ *
+ * The standard FreeRTOS task, set things up then loop forever.
+ *
+ * @param  None
+ * @return Nothing
+ */
 int LocalPeripheralsTask() {
   uint16 outCount;
   TickType_t xPeripheralWakeTime;

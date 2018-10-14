@@ -132,6 +132,7 @@ void PSx_SPI_RX_ISR_ExitCallback(void)
     }
   }
 }
+
 /**
  * @brief Sends and receives a single byte to/from the PSx controller.
  *

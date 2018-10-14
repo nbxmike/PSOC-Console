@@ -1,6 +1,6 @@
 /* ========================================
  *
- * Copyright Michael McCormack, 2018
+ * Copyright 2018 Michael McCormack
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -22,22 +22,20 @@
  *
  * ========================================
  */
-/** @file   virtual_uart.c
- *  @author Mike McCormack (nbxmike)
- *  @date   8/OCT/2018
- *  @brief  Configuration of the UART used by the CLI.
+/**
+ * @file   PSxHost.h
+ * @author Mike McCormack (nbxmike)
+ * @date   8/OCT/2018
+ * @brief  The host interface to PlayStation 1/2 controllers prototypes and constants.
  */
 
-#include "project.h"
-#include "virtual_uart.h"
+#ifndef PSX_GLOBALS_H
+#define PSX_GLOBALS_H
+
+  extern volatile int USBConfigurationCDC;
+  extern volatile int USBConfigurationHID;
+  extern volatile int USBConfigurationHost;
 
 
-void vuInit(void) {
-  while (0 == USBCOMP_GetConfiguration())
-  {
-  }
-  USBCOMP_CDC_Init();
-}
-
-
-/* [] END OF FILE */
+#endif
+/* End of File */

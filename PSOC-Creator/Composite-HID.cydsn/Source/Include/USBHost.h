@@ -1,6 +1,6 @@
 /* ========================================
  *
- * Copyright Michael McCormack, 2018
+ * Copyright 2018 Michael McCormack
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -22,22 +22,20 @@
  *
  * ========================================
  */
-/** @file   virtual_uart.c
+/** @file   FRCLILibrary.h
  *  @author Mike McCormack (nbxmike)
  *  @date   8/OCT/2018
- *  @brief  Configuration of the UART used by the CLI.
+ *  @brief  Constants and protorype related to the FreeRTOS CLI
  */
 
-#include "project.h"
-#include "virtual_uart.h"
+#ifndef FRCLILIBRARY
+#define FRCLILIBRARY
 
+#define CLI_MAX_INPUT	  50
+#define CLI_MAX_OUTPUT	128
+#define START_MESSAGE   "Doctor Livingstone, I presume?\n"
+  
+void cliTask(void *arg);
 
-void vuInit(void) {
-  while (0 == USBCOMP_GetConfiguration())
-  {
-  }
-  USBCOMP_CDC_Init();
-}
-
-
+#endif
 /* [] END OF FILE */
