@@ -32,9 +32,13 @@
 #ifndef PSX_GLOBALS_H
 #define PSX_GLOBALS_H
 
-  extern volatile int USBConfigurationCDC;
-  extern volatile int USBConfigurationHID;
-  extern volatile int USBConfigurationHost;
+/* Flags to indicate the state of USB host and sub functions */
+#define USB_UNSET        0
+#define USB_INITIALIZED  1
+#define USB_RECONFIGURED 2
+extern volatile int USBConfigurationCDC;
+extern volatile int USBConfigurationHID;
+extern volatile int USBConfigurationHost;
 
 
 #endif

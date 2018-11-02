@@ -34,18 +34,18 @@
 
 
 #include <project.h>
+#include "FreeRTOS.h"
 #include <stdio.h>
 #include "LocalPeripherals.h"
-#include "FreeRTOS.h"
 #include "timers.h"
 #include "semphr.h"
+#include "FRSupport.h"
 
 
 int16 AnalogWorking[ANALOG_SIZE];                /* ADC measurements in process       */
-int16 AnalogScaled[ANALOG_SIZE];                 /* Scaled, centered ADC measurements */
-uint8 ButtonBuffer[BUTTON_SIZE];
-uint8 IndicatorBuffer;
-SemaphoreHandle_t xAnalog_Semaphore = NULL;
+volatile int16 AnalogScaled[ANALOG_SIZE];        /* Scaled, centered ADC measurements */
+volatile uint8 ButtonBuffer[BUTTON_SIZE];
+volatile uint8 IndicatorBuffer;
 
 
 /**
@@ -71,24 +71,6 @@ void ADC_IRQ_Interrupt_InterruptCallback(void)
   }  
   
 }
-
-/**
- * @brief Initializes and starts the analog sampling.
- *
- * Will setup the ADC, though it is already set in the schematic, an then
- * starts the converter on a continous loog of samples
- *
- * @param  None
- * @return Nothing
- */
-void LocalAnalogStartUp(void) {
-  uint8 i;
-
-  ADC_Start();                                      /* Initialize ADC */
-  ADC_StartConvert();                               /* End ADC conversion */
-
-}
-
 
 /**
  * @brief Pulls samples from the ADC and puts them a buffer.
@@ -171,6 +153,46 @@ void LocalOutputsSet(void) {
   Indicators_Write(IndicatorBuffer);
 }
 
+/**
+ * @brief Initializes and starts the analog sampling.
+ *
+ * Will setup the ADC, though it is already set in the schematic, an then
+ * starts the converter on a continous loog of samples
+ *
+ * @param  None
+ * @return Nothing
+ */
+void LocalAnalogStartUp(void) {
+  
+  ADC_Start();                                      /* Initialize ADC */
+  ADC_StartConvert();                               /* End ADC conversion */
+
+}
+
+/**
+ * @brief Intialization of the local inputs/outputs - one time only.
+ *
+ * Sets up the software mainly, the hardware is largely configured in the
+ * PSOC TopDesign.cysch file.  This is intended to only be called one time
+ * and repeat calls could be problematic.
+ * @param None
+ * @return None
+ */
+void LocalAnalogInit(void) 
+{
+
+  LocalAnalogStartUp();
+  
+  xTaskCreate(                  /* Create Playstation Interface task              */
+    LocalPeripheralsTask,       /* Function implementing the task loop            */
+    "LocalPeripherals",         /* String to locate the task in debugger          */
+    configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
+    0,                          /* Number of parameters to pass to task  (none)   */
+    3,                          /* Task's priority (medium)                       */
+    0);                         /* Task handle (not used)                         */
+}
+
+
 
 /**
  * @brief FreeRTOS task to handle peripherals on the PSOC.
@@ -180,15 +202,10 @@ void LocalOutputsSet(void) {
  * @param  None
  * @return Nothing
  */
-int LocalPeripheralsTask() {
-  uint16 outCount;
+void LocalPeripheralsTask(void *arg) {
+  (void)arg;
   TickType_t xPeripheralWakeTime;
   
-  LocalAnalogStartUp();    /* Calls the proper start API for all the components */
-  xAnalog_Semaphore = xSemaphoreCreateBinary();
-  xSemaphoreGive(xAnalog_Semaphore);             // Not sure this is necessary, doc say yes
-  xSemaphoreTake(xAnalog_Semaphore, 1 );
-
   xPeripheralWakeTime = xTaskGetTickCount();
   while (1)
   {

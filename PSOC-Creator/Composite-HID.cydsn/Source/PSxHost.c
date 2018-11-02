@@ -30,10 +30,11 @@
  */
 
 #include <project.h>
-#include "PSxHost.h"
 #include "FreeRTOS.h"
+#include "PSxHost.h"
 #include "timers.h"
 #include "semphr.h"
+#include "FRSupport.h"
 
 
 uint8 PSxOutBuffer[PSx_MAX_MESSAGE];
@@ -41,9 +42,6 @@ uint8 PSxInBuffer[PSx_MAX_MESSAGE];
 uint8 PSxXfrBuffer[PSx_MAX_MESSAGE];
 int   Feedback0, Feedback1;
 
-SemaphoreHandle_t xPSx_ACK_Semaphore = NULL;
-SemaphoreHandle_t xPSx_SPI_Semaphore = NULL;
-SemaphoreHandle_t xPSx_XFR_Semaphore = NULL;
 static uint8 ACK_Reg_Save;
 static ControllerInstance PSxControllerType;
 static TickType_t xLastTransactionTime;
@@ -506,7 +504,7 @@ int PSxGetCtlrType(void)
  * @param None
  * @return None
  */
-void PSxInit(void) 
+void PSxSetup(void) 
 {
   int rx_stat;
   
@@ -522,30 +520,39 @@ void PSxInit(void)
     rx_stat = PSx_SPI_GetRxBufferSize();
     PSx_SPI_ReadRxData();
   }
+}
+
+/**
+ * @brief Intialization of the PSx game controller - one time only.
+ *
+ * Sets up the software mainly, the hardware is largely configured in the
+ * PSOC TopDesign.cysch file.  This is intended to only be called one time
+ * and repeat calls could be problematic.
+ * @param None
+ * @return None
+ */
+void PSxInit(void) 
+{
+
+  PSxSetup();
   
-  PSxReset(0);
-  PSxGetModel();
+  xTaskCreate(                  /* Create Playstation Interface task              */
+    PSx_Host_Task,              /* Function implementing the task loop            */
+    "PSx_Host",                 /* String to locate the task in debugger          */
+    configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
+    0,                          /* Number of parameters to pass to task  (none)   */
+    3,                          /* Task's priority (medium)                       */
+    0);                         /* Task handle (not used)                         */
 }
 
 /* PlayStation controller task, getting bigger . . . */
 void PSx_Host_Task(void *arg) {
   (void)arg;  // Just to get rid of compiler warning . . .
 
-  xPSx_ACK_Semaphore = xSemaphoreCreateBinary();
-  xSemaphoreGive(xPSx_ACK_Semaphore);             // Not sure this is necessary, doc say yes
-  xSemaphoreTake( xPSx_ACK_Semaphore, 1 );
-  
-  xPSx_SPI_Semaphore = xSemaphoreCreateBinary();
-  xSemaphoreGive(xPSx_SPI_Semaphore);
-  xSemaphoreTake( xPSx_SPI_Semaphore, 1 );
-
-  xPSx_XFR_Semaphore = xSemaphoreCreateBinary();
-  xSemaphoreGive(xPSx_XFR_Semaphore);
-
   xLastTransactionTime = xTaskGetTickCount();
-
   
-  PSxInit();
+  PSxReset(0);
+  PSxGetModel();
   while (1)
   {
     Indicators_Write(0x01 ^ Indicators_Read());   // So we can check we're running

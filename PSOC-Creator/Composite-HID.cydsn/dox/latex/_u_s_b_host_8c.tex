@@ -1,0 +1,71 @@
+\hypertarget{_u_s_b_host_8c}{}\section{Source/\+U\+S\+B\+Host.c File Reference}
+\label{_u_s_b_host_8c}\index{Source/\+U\+S\+B\+Host.\+c@{Source/\+U\+S\+B\+Host.\+c}}
+
+
+Support library and port of C\+LI task to Cypress P\+S\+OC 5\+LP.  
+
+
+{\ttfamily \#include \char`\"{}project.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}semphr.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}F\+R\+Support.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S\+\_\+\+C\+L\+I.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+S\+B\+Host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}globals.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_u_s_b_host_8c_a2fbf0229ac98821661e0c453bc540b78}{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+0\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}} (void)
+\begin{DoxyCompactList}\small\item\em I\+SR callback for all E\+P0 activities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_b_host_8c_aa01ef3a54ac0063a5f7f0dbb39c3a7a5}{U\+S\+B\+Host\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+Host\+\_\+\+Init sets up U\+SB interface used by the H\+ID and Serial port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_b_host_8c_a83e31187d4c7c03ef2cdacf695390ed3}{U\+S\+B\+Host\+Task}} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em cli\+Task task which invokes the Free\+R\+T\+OS C\+LI engine \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Support library and port of C\+LI task to Cypress P\+S\+OC 5\+LP. 
+
+\begin{DoxyAuthor}{Author}
+Mike Mc\+Cormack (nbxmike) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8/\+O\+C\+T/2018 Support library for the Free\+R\+T\+OS command line interpreter and port of their C\+LI task to Cypress P\+S\+OC 5\+LP. All the C\+H\+\_\+xxx deal with the C\+LI Human interface device. This will typically be a real or virtual U\+A\+RT device; here it is a U\+SB virtual U\+A\+RT. 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_u_s_b_host_8c_a2fbf0229ac98821661e0c453bc540b78}\label{_u_s_b_host_8c_a2fbf0229ac98821661e0c453bc540b78}} 
+\index{U\+S\+B\+Host.\+c@{U\+S\+B\+Host.\+c}!U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+0\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback@{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+0\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}}
+\index{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+0\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback@{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+0\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}!U\+S\+B\+Host.\+c@{U\+S\+B\+Host.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+0\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback()}{USBCOMP\_EP\_0\_ISR\_ExitCallback()}}
+{\footnotesize\ttfamily void U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+0\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+I\+SR callback for all E\+P0 activities. 
+
+E\+P0 is used when the other side of the U\+SB needs to setup or reset stuff on the whole device. This callback will free the foreground more often than it needs to so the foreground needs to check why it was released. \mbox{\Hypertarget{_u_s_b_host_8c_aa01ef3a54ac0063a5f7f0dbb39c3a7a5}\label{_u_s_b_host_8c_aa01ef3a54ac0063a5f7f0dbb39c3a7a5}} 
+\index{U\+S\+B\+Host.\+c@{U\+S\+B\+Host.\+c}!U\+S\+B\+Host\+Init@{U\+S\+B\+Host\+Init}}
+\index{U\+S\+B\+Host\+Init@{U\+S\+B\+Host\+Init}!U\+S\+B\+Host.\+c@{U\+S\+B\+Host.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+Host\+Init()}{USBHostInit()}}
+{\footnotesize\ttfamily void U\+S\+B\+Host\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+Host\+\_\+\+Init sets up U\+SB interface used by the H\+ID and Serial port. 
+
+Actually, very little done here other than starting the hardware and creating the Free\+R\+T\+OS task. \mbox{\Hypertarget{_u_s_b_host_8c_a83e31187d4c7c03ef2cdacf695390ed3}\label{_u_s_b_host_8c_a83e31187d4c7c03ef2cdacf695390ed3}} 
+\index{U\+S\+B\+Host.\+c@{U\+S\+B\+Host.\+c}!U\+S\+B\+Host\+Task@{U\+S\+B\+Host\+Task}}
+\index{U\+S\+B\+Host\+Task@{U\+S\+B\+Host\+Task}!U\+S\+B\+Host.\+c@{U\+S\+B\+Host.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+Host\+Task()}{USBHostTask()}}
+{\footnotesize\ttfamily void U\+S\+B\+Host\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+cli\+Task task which invokes the Free\+R\+T\+OS C\+LI engine 
+
+U\+S\+B\+Host\+Task jsut checks to see if the interface has been configured and/or if the host has reconfigured the interface. 

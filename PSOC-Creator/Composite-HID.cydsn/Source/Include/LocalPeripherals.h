@@ -28,25 +28,24 @@
  *  @brief  Constants and prototypes for the local i/o devices.
  */
 
-
-#include <project.h>
-
 #ifndef LOCALPERIPHERALS_H
 #define LOCALPERIPHERALS_H
 
-#define ANALOG_SIZE   8
-#define BUTTON_SIZE   2
+#include <project.h>
+#include "USBJoystick.h"
+  
 #define SAMPLE_PERIOD 5
   
-extern int16 AnalogWorking[ANALOG_SIZE];      /* ADC measurements in process       */
-extern int16 AnalogScaled[ANALOG_SIZE];       /* Scaled, centered ADC measurements */
+extern int16 AnalogWorking[ANALOG_SIZE];         /* ADC measurements in process       */
+volatile extern int16 AnalogScaled[ANALOG_SIZE]; /* Scaled, centered ADC measurements */
 
-void LocalAnalogStartUp(void);     /* Setup for the local analog and digital IO  */
-void LocalAnalogRead(void);        /* Read analog joysticks and sliders          */
-void LocalButtonsRead(void);       /* Read digital inputs                        */
-void LocalOutputsSet(void);        /* Put the PCs data in tha digital outputs    */
-int  LocalPeripheralsTask(void);   /* */
-void LocalAnalogCopy(void);        /* Create to force the compiler's hand        */
+extern void LocalAnalogStartUp(void);     /* Setup for the local analog and digital IO  */
+extern void LocalAnalogInit(void);        /* Setup and task creation - one time only    */
+extern void LocalAnalogRead(void);        /* Read analog joysticks and sliders          */
+extern void LocalAnalogCopy(void);        /* Create to force the compiler's hand        */
+extern void LocalButtonsRead(void);       /* Read digital inputs                        */
+extern void LocalOutputsSet(void);        /* Put the PCs data in tha digital outputs    */
+extern void LocalPeripheralsTask(void*);  /* */
 
 
 

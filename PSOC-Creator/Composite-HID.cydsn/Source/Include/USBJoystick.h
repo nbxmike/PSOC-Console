@@ -32,8 +32,8 @@
 #include <project.h>
 #include <stdio.h>
 
-#ifndef ANALOGJOYSTICK_H
-#define ANALOGJOYSTICK_H
+#ifndef USBJOYSTICK_H
+#define USBJOYSTICK_H
 
 /* USB buffer sizes */
 #define ANALOG_SIZE		8
@@ -46,12 +46,11 @@
 #define JOY_IN_EP		  4           /* Endpoint 1 is IN (analog and buttons) */
 #define JOY_OUT_EP		5           /* Endpiont 2 is OUT (indicators) */
 
-void UsbJoyStartUp(void);       /* Setup for the local joystick and buttons   */
-void UsbJoyReadAnalog(void);    /* Read and pack up the joysticks and sliders */
-void UsbJoyReadButtons(void);   /* Read and pack up digital inputs            */
-void UsbJoySetOutputs(void);    /* Put the PCs data in tha digital outputs    */
-int  UsbJoyTask(void);          /* */
-
+extern void USBJoyInit(void);
+extern void USBJoyClearBuffers(void);
+extern int  UsbJoyCheck(void);
+extern void UsbJoySetOutputs(void);
+extern void UsbJoyTask(void*);
 
 #endif
 /* End of File */

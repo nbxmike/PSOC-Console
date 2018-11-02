@@ -137,16 +137,18 @@ typedef struct dualanalog
     uint8 LeftY;
   } DualAnalog;
   
-void PSxInit(void);
-int  PSxEnPressure(int);
-int  PSxMotorPoll(int, int);
-int  PSxConfigPoll(int);
-int  PSxGetModel(void);
-void PSxReset(int);
-int  PSxGetCtlrType(void);
-int  PSxTrasnferString(uint8* , uint8* , int, int );
-int  PSxTrasnferByte(uint8, uint8*, int);
-void PSx_Host_Task( void* );
+extern void PSxInit(void);
+extern int  PSxEnPressure(int);
+extern int  PSxMotorPoll(int, int);
+extern int  PSxConfigPoll(int);
+extern int  PSxGetModel(void);
+extern void PSxReset(int);
+extern int  PSxGetCtlrType(void);
+extern int  PSxTrasnferString(uint8* , uint8* , int, int );
+extern int  PSxTrasnferByte(uint8, uint8*, int);
+extern void PSxSetup(void);
+extern void PSxInit(void);
+extern void PSx_Host_Task( void* );
 
 
 #endif

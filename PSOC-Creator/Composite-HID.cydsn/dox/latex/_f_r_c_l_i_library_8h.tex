@@ -1,0 +1,91 @@
+\hypertarget{_f_r_c_l_i_library_8h}{}\section{Source/\+Include/\+F\+R\+C\+L\+I\+Library.h File Reference}
+\label{_f_r_c_l_i_library_8h}\index{Source/\+Include/\+F\+R\+C\+L\+I\+Library.\+h@{Source/\+Include/\+F\+R\+C\+L\+I\+Library.\+h}}
+
+
+Constants and protorype related to the Free\+R\+T\+OS C\+LI.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_f_r_c_l_i_library_8h_a02f2c726f7d8fffdcf06009acae51456}{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+I\+N\+P\+UT}}~50
+\item 
+\#define \mbox{\hyperlink{_f_r_c_l_i_library_8h_a8320c68d06b03e002f56b75ec2d52584}{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+O\+U\+T\+P\+UT}}~128
+\item 
+\#define \mbox{\hyperlink{_f_r_c_l_i_library_8h_a9c88990c406e6b9fd1107831042e35d8}{S\+T\+A\+R\+T\+\_\+\+M\+E\+S\+S\+A\+GE}}~\char`\"{}Doctor Livingstone, I presume?\textbackslash{}n\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_f_r_c_l_i_library_8h_adc2bcd4282e5f7d7ecc83417ad4535b0}{C\+H\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Init starts the user\textquotesingle{}s comm port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_f_r_c_l_i_library_8h_a25f3094784cfcf26d741f00c1fa59fb6}{C\+H\+\_\+\+Start\+Up}} (void)
+\begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Start\+Up cleans up the U\+SB if it is configured/recofigured. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_f_r_c_l_i_library_8h_a2e8138fdff57d98ef8802a40a59d98b4}{cli\+Task}} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em cli\+Task task which invokes the Free\+R\+T\+OS C\+LI engine \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Constants and protorype related to the Free\+R\+T\+OS C\+LI. 
+
+\begin{DoxyAuthor}{Author}
+Mike Mc\+Cormack (nbxmike) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8/\+O\+C\+T/2018 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_f_r_c_l_i_library_8h_a02f2c726f7d8fffdcf06009acae51456}\label{_f_r_c_l_i_library_8h_a02f2c726f7d8fffdcf06009acae51456}} 
+\index{F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}!C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+I\+N\+P\+UT@{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+I\+N\+P\+UT}}
+\index{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+I\+N\+P\+UT@{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+I\+N\+P\+UT}!F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}}
+\subsubsection{\texorpdfstring{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+I\+N\+P\+UT}{CLI\_MAX\_INPUT}}
+{\footnotesize\ttfamily \#define C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+I\+N\+P\+UT~50}
+
+\mbox{\Hypertarget{_f_r_c_l_i_library_8h_a8320c68d06b03e002f56b75ec2d52584}\label{_f_r_c_l_i_library_8h_a8320c68d06b03e002f56b75ec2d52584}} 
+\index{F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}!C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+O\+U\+T\+P\+UT@{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+O\+U\+T\+P\+UT}}
+\index{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+O\+U\+T\+P\+UT@{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+O\+U\+T\+P\+UT}!F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}}
+\subsubsection{\texorpdfstring{C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+O\+U\+T\+P\+UT}{CLI\_MAX\_OUTPUT}}
+{\footnotesize\ttfamily \#define C\+L\+I\+\_\+\+M\+A\+X\+\_\+\+O\+U\+T\+P\+UT~128}
+
+\mbox{\Hypertarget{_f_r_c_l_i_library_8h_a9c88990c406e6b9fd1107831042e35d8}\label{_f_r_c_l_i_library_8h_a9c88990c406e6b9fd1107831042e35d8}} 
+\index{F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}!S\+T\+A\+R\+T\+\_\+\+M\+E\+S\+S\+A\+GE@{S\+T\+A\+R\+T\+\_\+\+M\+E\+S\+S\+A\+GE}}
+\index{S\+T\+A\+R\+T\+\_\+\+M\+E\+S\+S\+A\+GE@{S\+T\+A\+R\+T\+\_\+\+M\+E\+S\+S\+A\+GE}!F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}}
+\subsubsection{\texorpdfstring{S\+T\+A\+R\+T\+\_\+\+M\+E\+S\+S\+A\+GE}{START\_MESSAGE}}
+{\footnotesize\ttfamily \#define S\+T\+A\+R\+T\+\_\+\+M\+E\+S\+S\+A\+GE~\char`\"{}Doctor Livingstone, I presume?\textbackslash{}n\char`\"{}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_f_r_c_l_i_library_8h_adc2bcd4282e5f7d7ecc83417ad4535b0}\label{_f_r_c_l_i_library_8h_adc2bcd4282e5f7d7ecc83417ad4535b0}} 
+\index{F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}!C\+H\+\_\+\+Init@{C\+H\+\_\+\+Init}}
+\index{C\+H\+\_\+\+Init@{C\+H\+\_\+\+Init}!F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}}
+\subsubsection{\texorpdfstring{C\+H\+\_\+\+Init()}{CH\_Init()}}
+{\footnotesize\ttfamily void C\+H\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+C\+H\+\_\+\+Init starts the user\textquotesingle{}s comm port. 
+
+C\+H\+\_\+\+Init will start the interface and clear and data that was present before it begins. Typically there will be nothing as this should start at power up, but just in case . . . \mbox{\Hypertarget{_f_r_c_l_i_library_8h_a25f3094784cfcf26d741f00c1fa59fb6}\label{_f_r_c_l_i_library_8h_a25f3094784cfcf26d741f00c1fa59fb6}} 
+\index{F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}!C\+H\+\_\+\+Start\+Up@{C\+H\+\_\+\+Start\+Up}}
+\index{C\+H\+\_\+\+Start\+Up@{C\+H\+\_\+\+Start\+Up}!F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}}
+\subsubsection{\texorpdfstring{C\+H\+\_\+\+Start\+Up()}{CH\_StartUp()}}
+{\footnotesize\ttfamily int C\+H\+\_\+\+Start\+Up (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+C\+H\+\_\+\+Start\+Up cleans up the U\+SB if it is configured/recofigured. 
+
+C\+H\+\_\+\+Start\+Up will see to it that data in the buffer is cleared if the U\+SB changes configuration either intially or after the systems has started. \mbox{\Hypertarget{_f_r_c_l_i_library_8h_a2e8138fdff57d98ef8802a40a59d98b4}\label{_f_r_c_l_i_library_8h_a2e8138fdff57d98ef8802a40a59d98b4}} 
+\index{F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}!cli\+Task@{cli\+Task}}
+\index{cli\+Task@{cli\+Task}!F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}}
+\subsubsection{\texorpdfstring{cli\+Task()}{cliTask()}}
+{\footnotesize\ttfamily void cli\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+cli\+Task task which invokes the Free\+R\+T\+OS C\+LI engine 
+
+cli\+Task process the user input on the command line. At present it only support character input and backspace editing; there is no support for cursor movement or anything else. To make things as platform independant as possible this accepts D\+EL or BS as backspace, accepts CR, LF, or C\+R-\/\+LF as input termination. 

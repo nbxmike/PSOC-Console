@@ -33,8 +33,18 @@
 #ifndef CYAPICALLBACKS_H
 #define CYAPICALLBACKS_H
 
+  #define USBCOMP_EP_0_ISR_EXIT_CALLBACK
+  void    USBCOMP_EP_0_ISR_ExitCallback(void);
+  
   #define USBCOMP_EP_3_ISR_EXIT_CALLBACK
   void    USBCOMP_EP_3_ISR_ExitCallback(void);
+  
+  #define USBCOMP_EP_4_ISR_EXIT_CALLBACK
+  void    USBCOMP_EP_4_ISR_ExitCallback(void);
+
+  #define USBCOMP_EP_5_ISR_EXIT_CALLBACK
+  void    USBCOMP_EP_5_ISR_ExitCallback(void);
+
   
   #define PSx_ACK_isr_INTERRUPT_INTERRUPT_CALLBACK
   void    PSx_ACK_isr_Interrupt_InterruptCallback(void);

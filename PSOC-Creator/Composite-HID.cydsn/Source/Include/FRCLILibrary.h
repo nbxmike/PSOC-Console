@@ -34,8 +34,10 @@
 #define CLI_MAX_INPUT	  50
 #define CLI_MAX_OUTPUT	128
 #define START_MESSAGE   "Doctor Livingstone, I presume?\n"
-  
-void cliTask(void *arg);
+
+extern void CH_Init(void);
+extern int  CH_StartUp(void);
+extern void cliTask(void *arg);
 
 #endif
 /* [] END OF FILE */

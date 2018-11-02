@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['blinkywaketime',['BlinkyWakeTime',['../_f_r_support_8c.html#a8b9e7a0dfa50dfd57749349b1a964013',1,'FRSupport.c']]],
+  ['buttonbuffer',['ButtonBuffer',['../_local_peripherals_8c.html#a3de95bb094b2e552e901ae8feeab92b1',1,'LocalPeripherals.c']]],
+  ['buttons0',['Buttons0',['../structmousedata.html#a0d9f38dcaa6d84c7fc78d434b839f259',1,'mousedata::Buttons0()'],['../structnegcon.html#a0d9f38dcaa6d84c7fc78d434b839f259',1,'negcon::Buttons0()'],['../structgunk.html#a0d9f38dcaa6d84c7fc78d434b839f259',1,'gunk::Buttons0()'],['../structdigital16.html#a0d9f38dcaa6d84c7fc78d434b839f259',1,'digital16::Buttons0()'],['../structanalogjoy.html#a0d9f38dcaa6d84c7fc78d434b839f259',1,'analogjoy::Buttons0()'],['../structgunn.html#a0d9f38dcaa6d84c7fc78d434b839f259',1,'gunn::Buttons0()'],['../structdualanalog.html#a0d9f38dcaa6d84c7fc78d434b839f259',1,'dualanalog::Buttons0()']]],
+  ['buttons1',['Buttons1',['../structmousedata.html#a17ebb8fd1844de7d6545c9f96194d300',1,'mousedata::Buttons1()'],['../structnegcon.html#a17ebb8fd1844de7d6545c9f96194d300',1,'negcon::Buttons1()'],['../structgunk.html#a17ebb8fd1844de7d6545c9f96194d300',1,'gunk::Buttons1()'],['../structdigital16.html#a17ebb8fd1844de7d6545c9f96194d300',1,'digital16::Buttons1()'],['../structanalogjoy.html#a17ebb8fd1844de7d6545c9f96194d300',1,'analogjoy::Buttons1()'],['../structgunn.html#a17ebb8fd1844de7d6545c9f96194d300',1,'gunn::Buttons1()'],['../structdualanalog.html#a17ebb8fd1844de7d6545c9f96194d300',1,'dualanalog::Buttons1()']]]
+];

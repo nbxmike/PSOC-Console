@@ -1,0 +1,530 @@
+\hypertarget{_p_sx_host_8h}{}\section{Source/\+Include/\+P\+Sx\+Host.h File Reference}
+\label{_p_sx_host_8h}\index{Source/\+Include/\+P\+Sx\+Host.\+h@{Source/\+Include/\+P\+Sx\+Host.\+h}}
+
+
+The host interface to Play\+Station 1/2 controllers prototypes and constants.  
+
+
+{\ttfamily \#include $<$project.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcontrollerinstance}{controllerinstance}}
+\item 
+struct \mbox{\hyperlink{structmousedata}{mousedata}}
+\item 
+struct \mbox{\hyperlink{structnegcon}{negcon}}
+\item 
+struct \mbox{\hyperlink{structgunk}{gunk}}
+\item 
+struct \mbox{\hyperlink{structdigital16}{digital16}}
+\item 
+struct \mbox{\hyperlink{structanalogjoy}{analogjoy}}
+\item 
+struct \mbox{\hyperlink{structgunn}{gunn}}
+\item 
+struct \mbox{\hyperlink{structdualanalog}{dualanalog}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a6893e51b9fa04e47eae2355bc7fa8a26}{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}}~37
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_ac948b4f8c3cd23979956e445bb5ddd3c}{N\+O\+W\+A\+IT}}~0
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a6c0bf18b4c9d19240283e8279f61b70a}{Y\+E\+S\+W\+A\+IT}}~1
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a5384ea2b9bbe65f4e72b98345b4cf84b}{A\+C\+K\+\_\+\+D\+E\+L\+AY}}~16
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a3d7ee216affd973bf850b54bcd08a497}{E\+N\+T\+E\+R\+C\+O\+N\+F\+IG}}~1
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a9f067001c5118229b3505dff8120f72e}{E\+X\+I\+T\+C\+O\+N\+F\+IG}}~0
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a0f5f2d92fa7a728815b8b26688ac9ead}{L\+O\+N\+G\+R\+E\+S\+ET}}~1
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a507d56ce9651bbb326add75be382d853}{S\+H\+O\+R\+T\+R\+E\+S\+ET}}~0
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_aaa3fb4c8885375814000bd333e70c688}{P\+Sx\+\_\+\+X\+F\+R\+\_\+\+P\+A\+U\+SE}}~16
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a8b8576eff2d09c0376d7671f47ef918b}{N\+O\+T\+P\+R\+E\+S\+E\+NT}}~0
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a92f64529d33380c266036f563aa1882b}{M\+O\+U\+SE}}~1
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a42304162e0b94baab779b298147c6125}{N\+E\+G\+C\+ON}}~2
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a85f5b0d15ec81d080cf811bfab01e7d2}{G\+U\+NK}}~3
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a0695a6925e08bc02dbbea203df8730b3}{D\+I\+G\+I\+T\+A\+L16}}~4
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a12135ec924a07a9f8bb3bac8fc02e69a}{A\+N\+A\+L\+O\+G\+J\+OY}}~5
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_adc3fcc11f4393c1b90602a0b934c8133}{G\+U\+NN}}~6
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_af5fcd54b7a9950dff541d5479d1f5a4a}{D\+U\+A\+L\+A\+N\+A\+L\+OG}}~7
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_a4ced329552681f4015872fa6a431136e}{M\+U\+L\+T\+I\+T\+A\+P0}}~8
+\item 
+\#define \mbox{\hyperlink{_p_sx_host_8h_ab9ec68af9b12a7e918a4669097429ecb}{D\+U\+A\+L\+S\+H\+O\+C\+K2}}~0x17
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structcontrollerinstance}{controllerinstance}} \mbox{\hyperlink{_p_sx_host_8h_aa7d1de2728351a08bb9798d7b053e6e5}{Controller\+Instance}}
+\item 
+typedef struct \mbox{\hyperlink{structmousedata}{mousedata}} \mbox{\hyperlink{_p_sx_host_8h_ac0da68aae066288835e60d39fb273cfe}{Mouse\+Data}}
+\item 
+typedef struct \mbox{\hyperlink{structnegcon}{negcon}} \mbox{\hyperlink{_p_sx_host_8h_a9e4c459883b9493f2301de0430e29df6}{Neg\+Con}}
+\item 
+typedef struct \mbox{\hyperlink{structgunk}{gunk}} \mbox{\hyperlink{_p_sx_host_8h_af72c1ead68abc5d1f939f81e9b026348}{GunK}}
+\item 
+typedef struct \mbox{\hyperlink{structdigital16}{digital16}} \mbox{\hyperlink{_p_sx_host_8h_ab93d09327d19544b7137febd7da5e17c}{Digital16}}
+\item 
+typedef struct \mbox{\hyperlink{structanalogjoy}{analogjoy}} \mbox{\hyperlink{_p_sx_host_8h_a1468d4782b8243484694dc090fb7cc76}{Analog\+Joy}}
+\item 
+typedef struct \mbox{\hyperlink{structgunn}{gunn}} \mbox{\hyperlink{_p_sx_host_8h_a071fca6c0e997a8962082fcecb0c1a4e}{GunN}}
+\item 
+typedef struct \mbox{\hyperlink{structdualanalog}{dualanalog}} \mbox{\hyperlink{_p_sx_host_8h_a73f5eb389f8035e32cda98f631779b8b}{Dual\+Analog}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_p_sx_host_8h_ae953a5bc72904a320c27845f9fb55588}{P\+Sx\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Intialization of the P\+Sx game controller -\/ one time only. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8h_a6fb4e2390680b752854ac67f14ca5bdf}{P\+Sx\+En\+Pressure}} (int)
+\begin{DoxyCompactList}\small\item\em Sends a packet to enable pressure reporting for a button. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8h_a03ac5b22e0c81755d6209f652d3711ed}{P\+Sx\+Motor\+Poll}} (int, int)
+\begin{DoxyCompactList}\small\item\em Gets the analog and button data and sends the vibration motor levels. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8h_ae01dde100e00b89d1f7072900ddc07ce}{P\+Sx\+Config\+Poll}} (int)
+\begin{DoxyCompactList}\small\item\em Gets the analog and button data and enter or exits configuration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8h_af1c2d6d4df27d8b03633f987391d74b7}{P\+Sx\+Get\+Model}} (void)
+\begin{DoxyCompactList}\small\item\em Reads the controller type and actuator data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_p_sx_host_8h_a8e6f345b86b5cbeed5a8398f772ef1d7}{P\+Sx\+Reset}} (int)
+\begin{DoxyCompactList}\small\item\em Sends a messages to the game controller to reset it. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8h_a5844362104633cb285941ff436499626}{P\+Sx\+Get\+Ctlr\+Type}} (void)
+\begin{DoxyCompactList}\small\item\em P\+Sx\+Get\+Ctlr\+Type determine what type of controller is present, if any. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8h_ae2ca06346545bc7a911446731678ec46}{P\+Sx\+Trasnfer\+String}} (uint8 $\ast$, uint8 $\ast$, int, int)
+\begin{DoxyCompactList}\small\item\em Sends and receives a string of bytes to/from the P\+Sx controller. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8h_a32874853fcee92f828bd00fced46961f}{P\+Sx\+Trasnfer\+Byte}} (uint8, uint8 $\ast$, int)
+\begin{DoxyCompactList}\small\item\em Sends and receives a single byte to/from the P\+Sx controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_p_sx_host_8h_a30a38e0d0429c608c26989f08bce3ed8}{P\+Sx\+Setup}} (void)
+\begin{DoxyCompactList}\small\item\em Sets up the system to talk to the P\+Sx game controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_p_sx_host_8h_a4fe654600571d446521c8c82763706a8}{P\+Sx\+\_\+\+Host\+\_\+\+Task}} (void $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_p_sx_host_8h_a4e868d7b04d036a0a50a20293612edc5}{Feedback0}}
+\item 
+int \mbox{\hyperlink{_p_sx_host_8h_adea34c570c26750610b966e142539cd7}{Feedback1}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The host interface to Play\+Station 1/2 controllers prototypes and constants. 
+
+\begin{DoxyAuthor}{Author}
+Mike Mc\+Cormack (nbxmike) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8/\+O\+C\+T/2018 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_p_sx_host_8h_a5384ea2b9bbe65f4e72b98345b4cf84b}\label{_p_sx_host_8h_a5384ea2b9bbe65f4e72b98345b4cf84b}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!A\+C\+K\+\_\+\+D\+E\+L\+AY@{A\+C\+K\+\_\+\+D\+E\+L\+AY}}
+\index{A\+C\+K\+\_\+\+D\+E\+L\+AY@{A\+C\+K\+\_\+\+D\+E\+L\+AY}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{A\+C\+K\+\_\+\+D\+E\+L\+AY}{ACK\_DELAY}}
+{\footnotesize\ttfamily \#define A\+C\+K\+\_\+\+D\+E\+L\+AY~16}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a12135ec924a07a9f8bb3bac8fc02e69a}\label{_p_sx_host_8h_a12135ec924a07a9f8bb3bac8fc02e69a}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!A\+N\+A\+L\+O\+G\+J\+OY@{A\+N\+A\+L\+O\+G\+J\+OY}}
+\index{A\+N\+A\+L\+O\+G\+J\+OY@{A\+N\+A\+L\+O\+G\+J\+OY}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{A\+N\+A\+L\+O\+G\+J\+OY}{ANALOGJOY}}
+{\footnotesize\ttfamily \#define A\+N\+A\+L\+O\+G\+J\+OY~5}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a0695a6925e08bc02dbbea203df8730b3}\label{_p_sx_host_8h_a0695a6925e08bc02dbbea203df8730b3}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!D\+I\+G\+I\+T\+A\+L16@{D\+I\+G\+I\+T\+A\+L16}}
+\index{D\+I\+G\+I\+T\+A\+L16@{D\+I\+G\+I\+T\+A\+L16}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{D\+I\+G\+I\+T\+A\+L16}{DIGITAL16}}
+{\footnotesize\ttfamily \#define D\+I\+G\+I\+T\+A\+L16~4}
+
+\mbox{\Hypertarget{_p_sx_host_8h_af5fcd54b7a9950dff541d5479d1f5a4a}\label{_p_sx_host_8h_af5fcd54b7a9950dff541d5479d1f5a4a}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!D\+U\+A\+L\+A\+N\+A\+L\+OG@{D\+U\+A\+L\+A\+N\+A\+L\+OG}}
+\index{D\+U\+A\+L\+A\+N\+A\+L\+OG@{D\+U\+A\+L\+A\+N\+A\+L\+OG}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{D\+U\+A\+L\+A\+N\+A\+L\+OG}{DUALANALOG}}
+{\footnotesize\ttfamily \#define D\+U\+A\+L\+A\+N\+A\+L\+OG~7}
+
+\mbox{\Hypertarget{_p_sx_host_8h_ab9ec68af9b12a7e918a4669097429ecb}\label{_p_sx_host_8h_ab9ec68af9b12a7e918a4669097429ecb}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!D\+U\+A\+L\+S\+H\+O\+C\+K2@{D\+U\+A\+L\+S\+H\+O\+C\+K2}}
+\index{D\+U\+A\+L\+S\+H\+O\+C\+K2@{D\+U\+A\+L\+S\+H\+O\+C\+K2}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{D\+U\+A\+L\+S\+H\+O\+C\+K2}{DUALSHOCK2}}
+{\footnotesize\ttfamily \#define D\+U\+A\+L\+S\+H\+O\+C\+K2~0x17}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a3d7ee216affd973bf850b54bcd08a497}\label{_p_sx_host_8h_a3d7ee216affd973bf850b54bcd08a497}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!E\+N\+T\+E\+R\+C\+O\+N\+F\+IG@{E\+N\+T\+E\+R\+C\+O\+N\+F\+IG}}
+\index{E\+N\+T\+E\+R\+C\+O\+N\+F\+IG@{E\+N\+T\+E\+R\+C\+O\+N\+F\+IG}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+T\+E\+R\+C\+O\+N\+F\+IG}{ENTERCONFIG}}
+{\footnotesize\ttfamily \#define E\+N\+T\+E\+R\+C\+O\+N\+F\+IG~1}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a9f067001c5118229b3505dff8120f72e}\label{_p_sx_host_8h_a9f067001c5118229b3505dff8120f72e}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!E\+X\+I\+T\+C\+O\+N\+F\+IG@{E\+X\+I\+T\+C\+O\+N\+F\+IG}}
+\index{E\+X\+I\+T\+C\+O\+N\+F\+IG@{E\+X\+I\+T\+C\+O\+N\+F\+IG}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{E\+X\+I\+T\+C\+O\+N\+F\+IG}{EXITCONFIG}}
+{\footnotesize\ttfamily \#define E\+X\+I\+T\+C\+O\+N\+F\+IG~0}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a85f5b0d15ec81d080cf811bfab01e7d2}\label{_p_sx_host_8h_a85f5b0d15ec81d080cf811bfab01e7d2}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!G\+U\+NK@{G\+U\+NK}}
+\index{G\+U\+NK@{G\+U\+NK}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{G\+U\+NK}{GUNK}}
+{\footnotesize\ttfamily \#define G\+U\+NK~3}
+
+\mbox{\Hypertarget{_p_sx_host_8h_adc3fcc11f4393c1b90602a0b934c8133}\label{_p_sx_host_8h_adc3fcc11f4393c1b90602a0b934c8133}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!G\+U\+NN@{G\+U\+NN}}
+\index{G\+U\+NN@{G\+U\+NN}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{G\+U\+NN}{GUNN}}
+{\footnotesize\ttfamily \#define G\+U\+NN~6}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a0f5f2d92fa7a728815b8b26688ac9ead}\label{_p_sx_host_8h_a0f5f2d92fa7a728815b8b26688ac9ead}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!L\+O\+N\+G\+R\+E\+S\+ET@{L\+O\+N\+G\+R\+E\+S\+ET}}
+\index{L\+O\+N\+G\+R\+E\+S\+ET@{L\+O\+N\+G\+R\+E\+S\+ET}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{L\+O\+N\+G\+R\+E\+S\+ET}{LONGRESET}}
+{\footnotesize\ttfamily \#define L\+O\+N\+G\+R\+E\+S\+ET~1}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a92f64529d33380c266036f563aa1882b}\label{_p_sx_host_8h_a92f64529d33380c266036f563aa1882b}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!M\+O\+U\+SE@{M\+O\+U\+SE}}
+\index{M\+O\+U\+SE@{M\+O\+U\+SE}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{M\+O\+U\+SE}{MOUSE}}
+{\footnotesize\ttfamily \#define M\+O\+U\+SE~1}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a4ced329552681f4015872fa6a431136e}\label{_p_sx_host_8h_a4ced329552681f4015872fa6a431136e}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!M\+U\+L\+T\+I\+T\+A\+P0@{M\+U\+L\+T\+I\+T\+A\+P0}}
+\index{M\+U\+L\+T\+I\+T\+A\+P0@{M\+U\+L\+T\+I\+T\+A\+P0}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{M\+U\+L\+T\+I\+T\+A\+P0}{MULTITAP0}}
+{\footnotesize\ttfamily \#define M\+U\+L\+T\+I\+T\+A\+P0~8}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a42304162e0b94baab779b298147c6125}\label{_p_sx_host_8h_a42304162e0b94baab779b298147c6125}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!N\+E\+G\+C\+ON@{N\+E\+G\+C\+ON}}
+\index{N\+E\+G\+C\+ON@{N\+E\+G\+C\+ON}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{N\+E\+G\+C\+ON}{NEGCON}}
+{\footnotesize\ttfamily \#define N\+E\+G\+C\+ON~2}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a8b8576eff2d09c0376d7671f47ef918b}\label{_p_sx_host_8h_a8b8576eff2d09c0376d7671f47ef918b}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!N\+O\+T\+P\+R\+E\+S\+E\+NT@{N\+O\+T\+P\+R\+E\+S\+E\+NT}}
+\index{N\+O\+T\+P\+R\+E\+S\+E\+NT@{N\+O\+T\+P\+R\+E\+S\+E\+NT}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{N\+O\+T\+P\+R\+E\+S\+E\+NT}{NOTPRESENT}}
+{\footnotesize\ttfamily \#define N\+O\+T\+P\+R\+E\+S\+E\+NT~0}
+
+\mbox{\Hypertarget{_p_sx_host_8h_ac948b4f8c3cd23979956e445bb5ddd3c}\label{_p_sx_host_8h_ac948b4f8c3cd23979956e445bb5ddd3c}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!N\+O\+W\+A\+IT@{N\+O\+W\+A\+IT}}
+\index{N\+O\+W\+A\+IT@{N\+O\+W\+A\+IT}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{N\+O\+W\+A\+IT}{NOWAIT}}
+{\footnotesize\ttfamily \#define N\+O\+W\+A\+IT~0}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a6893e51b9fa04e47eae2355bc7fa8a26}\label{_p_sx_host_8h_a6893e51b9fa04e47eae2355bc7fa8a26}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE@{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}}
+\index{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE@{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}{PSx\_MAX\_MESSAGE}}
+{\footnotesize\ttfamily \#define P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE~37}
+
+\mbox{\Hypertarget{_p_sx_host_8h_aaa3fb4c8885375814000bd333e70c688}\label{_p_sx_host_8h_aaa3fb4c8885375814000bd333e70c688}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+\_\+\+X\+F\+R\+\_\+\+P\+A\+U\+SE@{P\+Sx\+\_\+\+X\+F\+R\+\_\+\+P\+A\+U\+SE}}
+\index{P\+Sx\+\_\+\+X\+F\+R\+\_\+\+P\+A\+U\+SE@{P\+Sx\+\_\+\+X\+F\+R\+\_\+\+P\+A\+U\+SE}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+\_\+\+X\+F\+R\+\_\+\+P\+A\+U\+SE}{PSx\_XFR\_PAUSE}}
+{\footnotesize\ttfamily \#define P\+Sx\+\_\+\+X\+F\+R\+\_\+\+P\+A\+U\+SE~16}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a507d56ce9651bbb326add75be382d853}\label{_p_sx_host_8h_a507d56ce9651bbb326add75be382d853}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!S\+H\+O\+R\+T\+R\+E\+S\+ET@{S\+H\+O\+R\+T\+R\+E\+S\+ET}}
+\index{S\+H\+O\+R\+T\+R\+E\+S\+ET@{S\+H\+O\+R\+T\+R\+E\+S\+ET}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{S\+H\+O\+R\+T\+R\+E\+S\+ET}{SHORTRESET}}
+{\footnotesize\ttfamily \#define S\+H\+O\+R\+T\+R\+E\+S\+ET~0}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a6c0bf18b4c9d19240283e8279f61b70a}\label{_p_sx_host_8h_a6c0bf18b4c9d19240283e8279f61b70a}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!Y\+E\+S\+W\+A\+IT@{Y\+E\+S\+W\+A\+IT}}
+\index{Y\+E\+S\+W\+A\+IT@{Y\+E\+S\+W\+A\+IT}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{Y\+E\+S\+W\+A\+IT}{YESWAIT}}
+{\footnotesize\ttfamily \#define Y\+E\+S\+W\+A\+IT~1}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{_p_sx_host_8h_a1468d4782b8243484694dc090fb7cc76}\label{_p_sx_host_8h_a1468d4782b8243484694dc090fb7cc76}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!Analog\+Joy@{Analog\+Joy}}
+\index{Analog\+Joy@{Analog\+Joy}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{Analog\+Joy}{AnalogJoy}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structanalogjoy}{analogjoy}}  \mbox{\hyperlink{_p_sx_host_8h_a1468d4782b8243484694dc090fb7cc76}{Analog\+Joy}}}
+
+\mbox{\Hypertarget{_p_sx_host_8h_aa7d1de2728351a08bb9798d7b053e6e5}\label{_p_sx_host_8h_aa7d1de2728351a08bb9798d7b053e6e5}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!Controller\+Instance@{Controller\+Instance}}
+\index{Controller\+Instance@{Controller\+Instance}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{Controller\+Instance}{ControllerInstance}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcontrollerinstance}{controllerinstance}}  \mbox{\hyperlink{_p_sx_host_8h_aa7d1de2728351a08bb9798d7b053e6e5}{Controller\+Instance}}}
+
+\mbox{\Hypertarget{_p_sx_host_8h_ab93d09327d19544b7137febd7da5e17c}\label{_p_sx_host_8h_ab93d09327d19544b7137febd7da5e17c}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!Digital16@{Digital16}}
+\index{Digital16@{Digital16}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{Digital16}{Digital16}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structdigital16}{digital16}}  \mbox{\hyperlink{_p_sx_host_8h_ab93d09327d19544b7137febd7da5e17c}{Digital16}}}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a73f5eb389f8035e32cda98f631779b8b}\label{_p_sx_host_8h_a73f5eb389f8035e32cda98f631779b8b}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!Dual\+Analog@{Dual\+Analog}}
+\index{Dual\+Analog@{Dual\+Analog}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{Dual\+Analog}{DualAnalog}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structdualanalog}{dualanalog}}  \mbox{\hyperlink{_p_sx_host_8h_a73f5eb389f8035e32cda98f631779b8b}{Dual\+Analog}}}
+
+\mbox{\Hypertarget{_p_sx_host_8h_af72c1ead68abc5d1f939f81e9b026348}\label{_p_sx_host_8h_af72c1ead68abc5d1f939f81e9b026348}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!GunK@{GunK}}
+\index{GunK@{GunK}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{GunK}{GunK}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structgunk}{gunk}}  \mbox{\hyperlink{_p_sx_host_8h_af72c1ead68abc5d1f939f81e9b026348}{GunK}}}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a071fca6c0e997a8962082fcecb0c1a4e}\label{_p_sx_host_8h_a071fca6c0e997a8962082fcecb0c1a4e}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!GunN@{GunN}}
+\index{GunN@{GunN}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{GunN}{GunN}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structgunn}{gunn}}  \mbox{\hyperlink{_p_sx_host_8h_a071fca6c0e997a8962082fcecb0c1a4e}{GunN}}}
+
+\mbox{\Hypertarget{_p_sx_host_8h_ac0da68aae066288835e60d39fb273cfe}\label{_p_sx_host_8h_ac0da68aae066288835e60d39fb273cfe}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!Mouse\+Data@{Mouse\+Data}}
+\index{Mouse\+Data@{Mouse\+Data}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{Mouse\+Data}{MouseData}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structmousedata}{mousedata}}  \mbox{\hyperlink{_p_sx_host_8h_ac0da68aae066288835e60d39fb273cfe}{Mouse\+Data}}}
+
+\mbox{\Hypertarget{_p_sx_host_8h_a9e4c459883b9493f2301de0430e29df6}\label{_p_sx_host_8h_a9e4c459883b9493f2301de0430e29df6}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!Neg\+Con@{Neg\+Con}}
+\index{Neg\+Con@{Neg\+Con}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{Neg\+Con}{NegCon}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structnegcon}{negcon}}  \mbox{\hyperlink{_p_sx_host_8h_a9e4c459883b9493f2301de0430e29df6}{Neg\+Con}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_p_sx_host_8h_a4fe654600571d446521c8c82763706a8}\label{_p_sx_host_8h_a4fe654600571d446521c8c82763706a8}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+\_\+\+Host\+\_\+\+Task@{P\+Sx\+\_\+\+Host\+\_\+\+Task}}
+\index{P\+Sx\+\_\+\+Host\+\_\+\+Task@{P\+Sx\+\_\+\+Host\+\_\+\+Task}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+\_\+\+Host\+\_\+\+Task()}{PSx\_Host\_Task()}}
+{\footnotesize\ttfamily void P\+Sx\+\_\+\+Host\+\_\+\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_p_sx_host_8h_ae01dde100e00b89d1f7072900ddc07ce}\label{_p_sx_host_8h_ae01dde100e00b89d1f7072900ddc07ce}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+Config\+Poll@{P\+Sx\+Config\+Poll}}
+\index{P\+Sx\+Config\+Poll@{P\+Sx\+Config\+Poll}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+Config\+Poll()}{PSxConfigPoll()}}
+{\footnotesize\ttfamily int P\+Sx\+Config\+Poll (\begin{DoxyParamCaption}\item[{int}]{Cfg\+Byte }\end{DoxyParamCaption})}
+
+
+
+Gets the analog and button data and enter or exits configuration. 
+
+This sends the configuration/poll command to the game controller if one is attached. Not all controllers support this message so the A\+C\+Ks from a controller may stop at the second byte of the transfer. Calling routines must check that sufficent bytes were transfered to have entered config mode. Recommend using E\+N\+T\+E\+R\+C\+O\+N\+F\+I\+G/\+E\+X\+I\+T\+C\+O\+N\+F\+IG as the parameter value 
+\begin{DoxyParams}{Parameters}
+{\em Cfg\+Byte} & if zero exits configuration, otherwise enters config. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes A\+C\+Ked is returned. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8h_a6fb4e2390680b752854ac67f14ca5bdf}\label{_p_sx_host_8h_a6fb4e2390680b752854ac67f14ca5bdf}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+En\+Pressure@{P\+Sx\+En\+Pressure}}
+\index{P\+Sx\+En\+Pressure@{P\+Sx\+En\+Pressure}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+En\+Pressure()}{PSxEnPressure()}}
+{\footnotesize\ttfamily int P\+Sx\+En\+Pressure (\begin{DoxyParamCaption}\item[{int}]{button }\end{DoxyParamCaption})}
+
+
+
+Sends a packet to enable pressure reporting for a button. 
+
+Some buttons on some P\+Sx controllers can report a value proportional to the amount of pressure that is used to depress the button. This command creates the necessary packet for the button number provided and sends it to the P\+Sx game controller 
+\begin{DoxyParams}{Parameters}
+{\em button} & The button number to enable pressure sensing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Non-\/zero if the complete packet was A\+C\+Ked, zero if not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8h_a5844362104633cb285941ff436499626}\label{_p_sx_host_8h_a5844362104633cb285941ff436499626}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+Get\+Ctlr\+Type@{P\+Sx\+Get\+Ctlr\+Type}}
+\index{P\+Sx\+Get\+Ctlr\+Type@{P\+Sx\+Get\+Ctlr\+Type}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+Get\+Ctlr\+Type()}{PSxGetCtlrType()}}
+{\footnotesize\ttfamily int P\+Sx\+Get\+Ctlr\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+P\+Sx\+Get\+Ctlr\+Type determine what type of controller is present, if any. 
+
+First, we just poll the controller and use the reply type to set an inital value for the controller type. Then we try to enter config mode, and if that works we try to read the model number. If the game controller answered the initial poll but not the config, we leave the inital guess as the final answer. If we never completed any message, we return N\+O\+T\+P\+R\+E\+S\+E\+NT as the answer. 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Controller type 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Presently this also set the global P\+Sx\+Controller\+Type elements 
+\end{DoxyNote}
+\mbox{\Hypertarget{_p_sx_host_8h_af1c2d6d4df27d8b03633f987391d74b7}\label{_p_sx_host_8h_af1c2d6d4df27d8b03633f987391d74b7}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+Get\+Model@{P\+Sx\+Get\+Model}}
+\index{P\+Sx\+Get\+Model@{P\+Sx\+Get\+Model}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+Get\+Model()}{PSxGetModel()}}
+{\footnotesize\ttfamily int P\+Sx\+Get\+Model (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Reads the controller type and actuator data. 
+
+This sends a get model message and if it is successfully received it will fill in elements of the P\+Sx\+Controller\+Type data structure according to what is received. 
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes A\+C\+Ked is returned. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Presently this also set the global P\+Sx\+Controller\+Type elements 
+\end{DoxyNote}
+\mbox{\Hypertarget{_p_sx_host_8h_ae953a5bc72904a320c27845f9fb55588}\label{_p_sx_host_8h_ae953a5bc72904a320c27845f9fb55588}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+Init@{P\+Sx\+Init}}
+\index{P\+Sx\+Init@{P\+Sx\+Init}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+Init()}{PSxInit()}}
+{\footnotesize\ttfamily void P\+Sx\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Intialization of the P\+Sx game controller -\/ one time only. 
+
+Sets up the software mainly, the hardware is largely configured in the P\+S\+OC Top\+Design.\+cysch file. This is intended to only be called one time and repeat calls could be problematic. 
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8h_a03ac5b22e0c81755d6209f652d3711ed}\label{_p_sx_host_8h_a03ac5b22e0c81755d6209f652d3711ed}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+Motor\+Poll@{P\+Sx\+Motor\+Poll}}
+\index{P\+Sx\+Motor\+Poll@{P\+Sx\+Motor\+Poll}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+Motor\+Poll()}{PSxMotorPoll()}}
+{\footnotesize\ttfamily int P\+Sx\+Motor\+Poll (\begin{DoxyParamCaption}\item[{int}]{Motor0,  }\item[{int}]{Motor1 }\end{DoxyParamCaption})}
+
+
+
+Gets the analog and button data and sends the vibration motor levels. 
+
+This sends the universally accepted poll command to the game controller if one is attached. For game controllers with \char`\"{}force feedback\char`\"{} the same message also sets the motor speed. At present only two motors are supported might need to expand that at some point. The physical motors are mapped to these logical control bytes by other commands. 
+\begin{DoxyParams}{Parameters}
+{\em Motor0} & Speed parameter for first logical motor. \\
+\hline
+{\em Motor1} & Speed parameter for second logical motor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes A\+C\+Ked by the controller (i.\+e. transfer -\/ 1). 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Not all motors support speed control, some are on/off only. 
+\end{DoxyNote}
+\mbox{\Hypertarget{_p_sx_host_8h_a8e6f345b86b5cbeed5a8398f772ef1d7}\label{_p_sx_host_8h_a8e6f345b86b5cbeed5a8398f772ef1d7}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+Reset@{P\+Sx\+Reset}}
+\index{P\+Sx\+Reset@{P\+Sx\+Reset}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+Reset()}{PSxReset()}}
+{\footnotesize\ttfamily void P\+Sx\+Reset (\begin{DoxyParamCaption}\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Sends a messages to the game controller to reset it. 
+
+This will send the 0x01 first byte only message that a real Play\+Station sends when it dislikes the game controller it is talking to such as at power up or when one is plugged in later. 
+\begin{DoxyParams}{Parameters}
+{\em lenght} & If length is zero, a 100mS reset is performed, otherwise 1S \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8h_a30a38e0d0429c608c26989f08bce3ed8}\label{_p_sx_host_8h_a30a38e0d0429c608c26989f08bce3ed8}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+Setup@{P\+Sx\+Setup}}
+\index{P\+Sx\+Setup@{P\+Sx\+Setup}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+Setup()}{PSxSetup()}}
+{\footnotesize\ttfamily void P\+Sx\+Setup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Sets up the system to talk to the P\+Sx game controller. 
+
+Sets up the software mainly, the hardware is largely configured in the P\+S\+OC Top\+Design.\+cysch file. This does nothing to create/setup the Free\+R\+T\+OS elements needed to sync physical events to software, it can be called after it has already been called once without problems. 
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8h_a32874853fcee92f828bd00fced46961f}\label{_p_sx_host_8h_a32874853fcee92f828bd00fced46961f}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+Trasnfer\+Byte@{P\+Sx\+Trasnfer\+Byte}}
+\index{P\+Sx\+Trasnfer\+Byte@{P\+Sx\+Trasnfer\+Byte}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+Trasnfer\+Byte()}{PSxTrasnferByte()}}
+{\footnotesize\ttfamily int P\+Sx\+Trasnfer\+Byte (\begin{DoxyParamCaption}\item[{uint8}]{Out,  }\item[{uint8 $\ast$}]{In,  }\item[{int}]{Wait }\end{DoxyParamCaption})}
+
+
+
+Sends and receives a single byte to/from the P\+Sx controller. 
+
+P\+Sx\+Trasnfer\+Byte will send a byte, and since the interface is forced to be full duplex, it will receive a byte. If told to wait for and A\+CK, it will return a non-\/zero value if an A\+CK was received, otherwise it will return zero. Generally speaking, this procedure could use better error handling especially when the dongle handles multiple interfaces errors on one will seriously impact others if nothing is done to clean up error handling. Recommend using the N\+O\+W\+A\+IT / Y\+E\+S\+W\+A\+IT defined values as the wait parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Out} & The byte to be sent to the P\+Sx game controller \\
+\hline
+{\em In} & Pointer to where received data from the P\+Sx game controller is stored \\
+\hline
+{\em Wait} & If non-\/zero, the function waits for an A\+CK \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If zero then no A\+CK or did not wait, nonzero only if A\+CK received 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8h_ae2ca06346545bc7a911446731678ec46}\label{_p_sx_host_8h_ae2ca06346545bc7a911446731678ec46}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!P\+Sx\+Trasnfer\+String@{P\+Sx\+Trasnfer\+String}}
+\index{P\+Sx\+Trasnfer\+String@{P\+Sx\+Trasnfer\+String}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{P\+Sx\+Trasnfer\+String()}{PSxTrasnferString()}}
+{\footnotesize\ttfamily int P\+Sx\+Trasnfer\+String (\begin{DoxyParamCaption}\item[{uint8 $\ast$}]{Out,  }\item[{uint8 $\ast$}]{In,  }\item[{int}]{count,  }\item[{int}]{Wait }\end{DoxyParamCaption})}
+
+
+
+Sends and receives a string of bytes to/from the P\+Sx controller. 
+
+P\+Sx\+Trasnfer\+String will send a packet of binary data to the P\+Sx game controller. Since the interface is forced to be full duplex, it will the same number of bytes. If the wait parameter is non-\/zero, the function will wait until there is an A\+KC for every byte sent. If the wait parameter is zero, the function will not wait for the final A\+CK though it will wait for intrabyte A\+CK. Should A\+C\+Ks stop at some point, the procedure stops sending. Recommend using Y\+E\+S\+W\+A\+IT and N\+O\+W\+A\+IT as the wait parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Out} & The byte to be sent to the P\+Sx game controller \\
+\hline
+{\em In} & Pointer to where received data from the P\+Sx game controller is stored \\
+\hline
+{\em Wait} & If zero, the function does not wait for the final A\+CK \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of A\+C\+Ks received 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If wait is requested, the SS line remains asserted after return 
+
+If wait is not requested the packed is ended (i.\+e. SS is deasserted) 
+\end{DoxyNote}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_p_sx_host_8h_a4e868d7b04d036a0a50a20293612edc5}\label{_p_sx_host_8h_a4e868d7b04d036a0a50a20293612edc5}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!Feedback0@{Feedback0}}
+\index{Feedback0@{Feedback0}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{Feedback0}{Feedback0}}
+{\footnotesize\ttfamily int Feedback0}
+
+\mbox{\Hypertarget{_p_sx_host_8h_adea34c570c26750610b966e142539cd7}\label{_p_sx_host_8h_adea34c570c26750610b966e142539cd7}} 
+\index{P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}!Feedback1@{Feedback1}}
+\index{Feedback1@{Feedback1}!P\+Sx\+Host.\+h@{P\+Sx\+Host.\+h}}
+\subsubsection{\texorpdfstring{Feedback1}{Feedback1}}
+{\footnotesize\ttfamily int Feedback1}
+

@@ -34,26 +34,28 @@
 #include "FRSupport.h"
 #include "FRCLILibrary.h"
 #include "globals.h"
+#include "USBHost.h"
+#include "LocalPeripherals.h"
+#include "PSxHost.h"
 
-volatile int USBConfigurationHost = 0;
-volatile int USBConfigurationCDC  = 0;
-volatile int USBConfigurationHID  = 0;
+/* Flags to indicate the state of USB host and sub functions */
+volatile int USBConfigurationHost = USB_UNSET;
+volatile int USBConfigurationCDC  = USB_UNSET;
+volatile int USBConfigurationHID  = USB_UNSET;
+
 
 /**
- * @brief Sets up things that are not specific to just one library.
+ * @brief Sets up things by calling all init functions.
  *
- * This is intended to set up thing that must be configured early and which
- * are note associated with any one function.  Examples are the USB interface
- * which must be started before the USB HID and USB UART which are set up 
- * elsewhere (as they are specific to one function / library).
+ * This just provides one place for all of the initialization routines
+ * to be placed for easy long term care.  
  * @param None
  * @return None
  * @note - we might want to make this return even if USB doesn't quite start
  */
 void Setup_System(void)
 {
-  USBCOMP_Start(0u, USBCOMP_5V_OPERATION);
-  USBConfigurationHost = 1;
+  Indicators_Write(0xff);    // Turn off all LEDs
 }
 
 
@@ -67,14 +69,17 @@ void Setup_System(void)
 int main(void) {
   CyGlobalIntEnable;   /* Enable global interrupts. */
 
-  USBConfigurationHost = 0;
-  USBConfigurationCDC  = 0;
-  USBConfigurationHID  = 0;
-
   Setup_System();
-  FRsetup();
+  FRInit();
+  
+  USBHostInit();
+  CH_Init();
+  PSxInit();
+  USBJoyInit();
+  LocalAnalogInit();
 
-  xTaskCreate(cliTask, "CLI Task", configMINIMAL_STACK_SIZE*3, 0, 1, 0);
+
+
   vTaskStartScheduler();    // Had best never return
 
   while (1)

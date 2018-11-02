@@ -33,29 +33,73 @@
 #include "FreeRTOS.h"
 #include "FRSupport.h"
 #include "timers.h"
+#include "semphr.h"
+
+volatile SemaphoreHandle_t xPSx_ACK_Semaphore = NULL;
+volatile SemaphoreHandle_t xPSx_SPI_Semaphore = NULL;
+volatile SemaphoreHandle_t xPSx_XFR_Semaphore = NULL;
+volatile SemaphoreHandle_t xCH_Semaphore = NULL;
+volatile SemaphoreHandle_t xAnalog_Semaphore = NULL;
+volatile SemaphoreHandle_t xUSBHost_Semaphore = NULL;
+volatile SemaphoreHandle_t xUSBConfig_Semaphore = NULL;
+volatile SemaphoreHandle_t xUSBJoystick_Semaphore = NULL;
+
 
 TickType_t BlinkyWakeTime;
 
-/** @brief FRsetup initializes stuff needed for FreeRTOS
+/** @brief FRInit initializes stuff needed for FreeRTOS
  *
- * FRsetup initializes the interrupt hooks needed by FreeRTOS and also
+ * FRInit initializes the interrupt hooks needed by FreeRTOS and also
  * creates the LED heartbeat task just so there is always some task
  * for FreeRTOS.  The heartbeat can be deleted, I just like to see
  * something happen when I start a project.
  */
-void FRsetup() {
+void FRInit() {
   /* Handler for Cortex calls - part of Cortex-M3 port */
   CyIntSetSysVector(CORTEX_INTERRUPT_BASE + SVCall_IRQn, (cyisraddress)vPortSVCHandler);
   CyIntSetSysVector(CORTEX_INTERRUPT_BASE + PendSV_IRQn, (cyisraddress)xPortPendSVHandler);
   CyIntSetSysVector(CORTEX_INTERRUPT_BASE + SysTick_IRQn, (cyisraddress)xPortSysTickHandler);
 
+  /* Create all semaphores used in the application, initialize them to taken */
+  xPSx_ACK_Semaphore = xSemaphoreCreateBinary();
+  xSemaphoreGive(xPSx_ACK_Semaphore);             // Not sure this is necessary, doc 
+  xSemaphoreTake( xPSx_ACK_Semaphore, 1 );        //   implies it is, or at least clouded
+  
+  xPSx_SPI_Semaphore = xSemaphoreCreateBinary();
+  xSemaphoreGive(xPSx_SPI_Semaphore);
+  xSemaphoreTake( xPSx_SPI_Semaphore, 1 );
+
+  xPSx_XFR_Semaphore = xSemaphoreCreateBinary();
+  xSemaphoreGive(xPSx_XFR_Semaphore);
+  xSemaphoreTake( xPSx_XFR_Semaphore, 1 );
+  
+  xCH_Semaphore = xSemaphoreCreateBinary();
+  xSemaphoreGive(xCH_Semaphore);
+  xSemaphoreTake( xCH_Semaphore, 1 );
+  
+  xAnalog_Semaphore = xSemaphoreCreateBinary();
+  xSemaphoreGive(xAnalog_Semaphore);
+  xSemaphoreTake( xAnalog_Semaphore, 1 );
+
+  xUSBHost_Semaphore = xSemaphoreCreateBinary();
+  xSemaphoreGive(xUSBHost_Semaphore);
+  xSemaphoreTake( xUSBHost_Semaphore, 1 );
+
+  xUSBConfig_Semaphore = xSemaphoreCreateBinary();
+  xSemaphoreGive(xUSBConfig_Semaphore);
+
+  xUSBJoystick_Semaphore = xSemaphoreCreateBinary();
+  xSemaphoreGive(xUSBJoystick_Semaphore);
+  xSemaphoreTake( xUSBJoystick_Semaphore, 1 );
+
+/* Create a default task so something always is there */ 
   xTaskCreate(                  /* Create LED task, which will blink the '059 LED */
-    Blinky_Task,                /* Task function */
-    "LED Blink",                /* Task name (string) */
-    configMINIMAL_STACK_SIZE,   /* Task stack, allocated from heap */
-    0,                          /* No param passed to task function */
-    1,                          /* Low priority */
-    0);                         /* Not using the task handle */
+    Blinky_Task,                /* Function implementing the task loop            */
+    "LED Blink",                /* String to locate the task in debugger          */
+    configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
+    0,                          /* Number of parameters to pass to task  (none)   */
+    1,                          /* Task's priority (low)                          */
+    0);                         /* Task handle (not used)                         */
 }
 
 

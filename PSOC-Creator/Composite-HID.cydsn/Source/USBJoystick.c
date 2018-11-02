@@ -27,26 +27,79 @@
  *  @date   8/OCT/2018
  *  @brief  Local inputs added to or outputs derived from the USB HID information.
  *
- *  Support for peripherals that are not part of a PlayStation controller that 
- *  are attached to the PSOC.  Examples could be configuration switches as inputs
- *  or LEDs as outputs.
+ *  Creates the data transfered to the USB or extracts data from the USB host
+ *  side.  It will replace the PSx controller input into HID data.  Also 
+ *  supports peripherals that are not part of a PlayStation controller that 
+ *  are attached to the PSOC.  Examples could be configuration switches as 
+ *  inputs or LEDs as outputs.
  */
 
 
 #include <project.h>
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
 #include <stdio.h>
+#include "globals.h"
 #include "USBJoystick.h"
 #include "PSxHost.h"
+#include "FRSupport.h"
+#include "USBHost.h"
+#include "LocalPeripherals.h"
 
 
-static uint16 AnalogRaw[ANALOG_SIZE];                   /* Raw ADC measurements */
-static int16 AnalogData[ANALOG_SIZE];                   /* Scaled ADC measurements */
+
 static int8 USB_Input_Data[ANALOG_SIZE + BUTTON_SIZE];  /* USB data to send to the PC */
 static uint8 USB_Output_Data[OUTPUT_SIZE];              /* USB data received from the PC */
+static int sJoy_Startup = USB_UNSET;
 
 
+/** @brief USBFS_EP_4_ISR_EntryCallback ISR hook for Joystick.
+ *
+ * USBFS_EP_4_ISR_EntryCallback and USBFS_EP_5_ISR_EntryCallback are the
+ * joystick endpoint ISRs for this implementation.  Whenever either are
+ * called the foreground task is freed to run, it must decide if the right
+ * stuff occured or not.  If the endpoints are remapped, this routine will
+ * need to be ported even if the processor remains a PSOC-5LP.
+ */
+void USBCOMP_EP_4_ISR_ExitCallback(void)
+{
+  static BaseType_t xHigherPriorityTaskWoken;
+  xHigherPriorityTaskWoken = pdFALSE;
+  if( xUSBJoystick_Semaphore != NULL )
+  {
+    xSemaphoreGiveFromISR( xUSBJoystick_Semaphore, &xHigherPriorityTaskWoken );
+    if (xHigherPriorityTaskWoken == pdTRUE)
+    {
+      portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+    }
+  }
+}
+void USBCOMP_EP_5_ISR_ExitCallback(void)
+{
+  static BaseType_t xHigherPriorityTaskWoken;
+  xHigherPriorityTaskWoken = pdFALSE;
+  if( xUSBJoystick_Semaphore != NULL )
+  {
+    xSemaphoreGiveFromISR( xUSBJoystick_Semaphore, &xHigherPriorityTaskWoken );
+    if (xHigherPriorityTaskWoken == pdTRUE)
+    {
+      portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+    }
+  }
+}
 
-void UsbJoyStartUp(void) {
+/**
+ * @brief Initializes USB HID buffers and create FreeRTOS task.
+ *
+ * Clears any garbage in buffers and will check to see that we've been
+ * configured.  It also creates the FreeRTOS task which runs to implement
+ * the USB HID function.
+ *
+ * @param  None
+ * @return Nothing
+ */
+void USBJoyClearBuffers(void) {
   uint8 i;
 
   /* Intialize USB Input EP data array */
@@ -54,40 +107,78 @@ void UsbJoyStartUp(void) {
     USB_Input_Data[i] = 0;
   }
 
-  USBCOMP_Start(0, USBCOMP_DWR_VDDD_OPERATION);     /* Start USBFS operation/device 0 and with 5V operation */
-  while (!USBCOMP_bGetConfiguration())
-  {
-    /* Wait for Device to enumerate */
+  /* Intialize USB Output EP data array */
+  for (i = 0; i < sizeof(USB_Output_Data); i++) {
+    USB_Output_Data[i] = 0xff;
   }
 
-  USBCOMP_LoadInEP(JOY_IN_EP, (uint8 *)USB_Input_Data, sizeof(USB_Input_Data)); /* Loads an inital value into EP1 and sends it out to the PC */
-  USBCOMP_EnableOutEP(JOY_OUT_EP);                                              /* Enable the output endpoint */
 }
 
-
-void UsbJoyReadAnalog(void) {
+/**
+ * @brief Initializes USB HID buffers and create FreeRTOS task.
+ *
+ * Clears any garbage in buffers and will check to see that we've been
+ * configured.  It also creates the FreeRTOS task which runs to implement
+ * the USB HID function.
+ *
+ * @param  None
+ * @return Nothing
+ */
+void USBJoyInit(void) {
   uint8 i;
 
-  for (i = 0; i < ANALOG_SIZE; i++) {
-    AnalogRaw[i] = ADC_GetResult16(i) >> 4;         /* Get ADC reading and keep just the 8 upper bits */
-    AnalogData[i] = AnalogRaw[i] - 127;             /* Adjust axis to center the reading */
-    if (AnalogData[i] > 127) {
-      AnalogData[i] = 127;
-    }
-    if (AnalogData[i] < -127) {
-      AnalogData[i] = -127;
-    }
+  sJoy_Startup = USB_UNSET;
 
-    /* Move analog data to USB array to prepare for sending */
-    USB_Input_Data[i] = AnalogData[i];
-  }
+  USBJoyClearBuffers();
+  UsbJoyCheck();
+  
+  xTaskCreate(                  /* Create Playstation Interface task              */
+    UsbJoyTask,              /* Function implementing the task loop            */
+    "PSx_Host",                 /* String to locate the task in debugger          */
+    configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
+    0,                          /* Number of parameters to pass to task  (none)   */
+    2,                          /* Task's priority (medium)                       */
+    0);                         /* Task handle (not used)                         */
 }
 
+/**
+ * @brief Initializes USB HID buffers and interface.
+ *
+ * Clears any garbage in buffers and will check to see that we've been
+ * configured.
+ *
+ * @param  None
+ * @return Nothing
+ */
+int UsbJoyCheck(void) {
 
-void UsbJoyReadButtons(void) {
-  /* Read button values from status registers into USB array to prepare for sending */
-  USB_Input_Data[ANALOG_SIZE] = ButtonReg1_Read();     /* First button byte is after the last analog value */
-  USB_Input_Data[ANALOG_SIZE+1] = ButtonReg2_Read();
+  if (USBConfigurationHID & USB_INITIALIZED)
+  {
+    if(sJoy_Startup == USB_UNSET)
+    {
+      sJoy_Startup = USB_INITIALIZED + USB_RECONFIGURED;
+    }
+    if(USBConfigurationHID & USB_RECONFIGURED)
+    {
+      sJoy_Startup = USB_INITIALIZED + USB_RECONFIGURED;
+      xSemaphoreTake( xUSBConfig_Semaphore, USBHOST_CONFIG_WAIT );
+      USBConfigurationHID = USB_INITIALIZED;
+      xSemaphoreGive(xUSBConfig_Semaphore);
+    }
+  }
+  else
+  {
+    sJoy_Startup = USB_UNSET;
+  }
+
+  if(sJoy_Startup & USB_RECONFIGURED)
+  {
+    USBJoyClearBuffers();
+    USBCOMP_LoadInEP(JOY_IN_EP, (uint8 *)USB_Input_Data, sizeof(USB_Input_Data)); /* Loads an inital value into EP1 and sends it out to the PC */
+    USBCOMP_EnableOutEP(JOY_OUT_EP);                                              /* Enable the output endpoint */
+    sJoy_Startup = USB_INITIALIZED;
+  }
+  return sJoy_Startup;
 }
 
 
@@ -95,18 +186,16 @@ void UsbJoySetOutputs(void) {
   Indicators_Write(USB_Output_Data[0]);
 }
 
-int UsbJoyTask() {
+void UsbJoyTask(void *arg) {
+  (void)arg;  // Just to get rid of compiler warning . . .
   uint16 outCount;
 
-  UsbJoyStartUp();    /* Calls the proper start API for all the components */
-
   for ( ; ;) {
-    while (!USBCOMP_bGetEPAckState(JOY_IN_EP))      /* Wait for ACK before loading data */
-
+    while (!USBCOMP_GetEPAckState(JOY_IN_EP))      /* Wait for ACK before loading data */
     {
     }
-    UsbJoyReadAnalog();       /* Calls function to read analog inputs */
-    UsbJoyReadButtons();      /* Calls function to monitor button presses */
+    LocalAnalogRead();       /* Calls function to read analog inputs */
+    LocalButtonsRead();      /* Calls function to monitor button presses */
 
     /*Check to see if the IN Endpoint is empty. If so, load it with Input data to be tranfered */
     if (USBCOMP_GetEPState(JOY_IN_EP) == USBCOMP_IN_BUFFER_EMPTY) {

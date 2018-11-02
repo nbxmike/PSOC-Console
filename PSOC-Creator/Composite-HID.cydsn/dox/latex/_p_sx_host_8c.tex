@@ -1,0 +1,372 @@
+\hypertarget{_p_sx_host_8c}{}\section{Source/\+P\+Sx\+Host.c File Reference}
+\label{_p_sx_host_8c}\index{Source/\+P\+Sx\+Host.\+c@{Source/\+P\+Sx\+Host.\+c}}
+
+
+The host side interface of a Play\+Station 1/2 controller.  
+
+
+{\ttfamily \#include $<$project.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+Sx\+Host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}semphr.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}F\+R\+Support.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_p_sx_host_8c_a6d92f04ca991ad6b0e0978edd04ea5bf}{P\+Sx\+\_\+\+A\+C\+K\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback}} (void)
+\begin{DoxyCompactList}\small\item\em The I\+SR handler for the A\+CK signal from the P\+Sx game controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_p_sx_host_8c_a5792d317db575ac0e27d34405daa42ea}{Delay\+\_\+10u\+S\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback}} (void)
+\begin{DoxyCompactList}\small\item\em The I\+SR handler for the timeout of the A\+CK signal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_p_sx_host_8c_abcc4b6f1b780c52740062e56bc2f039b}{P\+Sx\+\_\+\+S\+P\+I\+\_\+\+R\+X\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}} (void)
+\begin{DoxyCompactList}\small\item\em The I\+SR handler for the receive from the P\+Sx game controller. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8c_a4a65472f5ec3894fd79442f217aef95b}{P\+Sx\+Trasnfer\+Byte}} (uint8 Out, uint8 $\ast$In, int Wait)
+\begin{DoxyCompactList}\small\item\em Sends and receives a single byte to/from the P\+Sx controller. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8c_ac4eaf2ecdfbb23b74dba1058d24efde5}{P\+Sx\+Trasnfer\+String}} (uint8 $\ast$Out, uint8 $\ast$In, int count, int Wait)
+\begin{DoxyCompactList}\small\item\em Sends and receives a string of bytes to/from the P\+Sx controller. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8c_a5150dd488a9c2210669dfa4545011fb1}{P\+Sx\+En\+Pressure}} (int button)
+\begin{DoxyCompactList}\small\item\em Sends a packet to enable pressure reporting for a button. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8c_a085786ee1b84a8f7d5370d26e97f0935}{P\+Sx\+Motor\+Poll}} (int Motor0, int Motor1)
+\begin{DoxyCompactList}\small\item\em Gets the analog and button data and sends the vibration motor levels. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8c_ade3c2149682e09f56ba8fcbb66a4723a}{P\+Sx\+Config\+Poll}} (int Cfg\+Byte)
+\begin{DoxyCompactList}\small\item\em Gets the analog and button data and enter or exits configuration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8c_af1c2d6d4df27d8b03633f987391d74b7}{P\+Sx\+Get\+Model}} (void)
+\begin{DoxyCompactList}\small\item\em Reads the controller type and actuator data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_p_sx_host_8c_ad4d712b74166d80578d8710194a36992}{P\+Sx\+Reset}} (int length)
+\begin{DoxyCompactList}\small\item\em Sends a messages to the game controller to reset it. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_p_sx_host_8c_a5844362104633cb285941ff436499626}{P\+Sx\+Get\+Ctlr\+Type}} (void)
+\begin{DoxyCompactList}\small\item\em P\+Sx\+Get\+Ctlr\+Type determine what type of controller is present, if any. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_p_sx_host_8c_a30a38e0d0429c608c26989f08bce3ed8}{P\+Sx\+Setup}} (void)
+\begin{DoxyCompactList}\small\item\em Sets up the system to talk to the P\+Sx game controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_p_sx_host_8c_ae953a5bc72904a320c27845f9fb55588}{P\+Sx\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Intialization of the P\+Sx game controller -\/ one time only. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_p_sx_host_8c_a0f5ac0a07c3ae5b59854200357ede1cd}{P\+Sx\+\_\+\+Host\+\_\+\+Task}} (void $\ast$arg)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8 \mbox{\hyperlink{_p_sx_host_8c_a1f64fd9d266da8325ade590c3a2ca8a7}{P\+Sx\+Out\+Buffer}} \mbox{[}\mbox{\hyperlink{_p_sx_host_8h_a6893e51b9fa04e47eae2355bc7fa8a26}{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}}\mbox{]}
+\item 
+uint8 \mbox{\hyperlink{_p_sx_host_8c_af88db31a59e4b525c9c8f4d1d407d997}{P\+Sx\+In\+Buffer}} \mbox{[}\mbox{\hyperlink{_p_sx_host_8h_a6893e51b9fa04e47eae2355bc7fa8a26}{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}}\mbox{]}
+\item 
+uint8 \mbox{\hyperlink{_p_sx_host_8c_a80db7bca742e1886e73e06edd1bf5426}{P\+Sx\+Xfr\+Buffer}} \mbox{[}\mbox{\hyperlink{_p_sx_host_8h_a6893e51b9fa04e47eae2355bc7fa8a26}{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}}\mbox{]}
+\item 
+int \mbox{\hyperlink{_p_sx_host_8c_a4e868d7b04d036a0a50a20293612edc5}{Feedback0}}
+\item 
+int \mbox{\hyperlink{_p_sx_host_8c_adea34c570c26750610b966e142539cd7}{Feedback1}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The host side interface of a Play\+Station 1/2 controller. 
+
+\begin{DoxyAuthor}{Author}
+Mike Mc\+Cormack (nbxmike) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8/\+O\+C\+T/2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_p_sx_host_8c_a5792d317db575ac0e27d34405daa42ea}\label{_p_sx_host_8c_a5792d317db575ac0e27d34405daa42ea}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!Delay\+\_\+10u\+S\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback@{Delay\+\_\+10u\+S\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback}}
+\index{Delay\+\_\+10u\+S\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback@{Delay\+\_\+10u\+S\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{Delay\+\_\+10u\+S\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback()}{Delay\_10uS\_isr\_Interrupt\_InterruptCallback()}}
+{\footnotesize\ttfamily void Delay\+\_\+10u\+S\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The I\+SR handler for the timeout of the A\+CK signal. 
+
+Will give the semaphore to the foreground related to waiting for an A\+CK from the P\+Sx game controller if the timeout period has expired. The foreground must check what caused the A\+CK wait to release, this timeout or an actual A\+CK. Checks to ensure the semaphore has been created but really should not be called until the semaphore does exist. 
+\begin{DoxyParams}{Parameters}
+{\em None,I\+SR} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None, I\+SR. It does release the foreground semaphore. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8c_a6d92f04ca991ad6b0e0978edd04ea5bf}\label{_p_sx_host_8c_a6d92f04ca991ad6b0e0978edd04ea5bf}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+\_\+\+A\+C\+K\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback@{P\+Sx\+\_\+\+A\+C\+K\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback}}
+\index{P\+Sx\+\_\+\+A\+C\+K\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback@{P\+Sx\+\_\+\+A\+C\+K\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+\_\+\+A\+C\+K\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback()}{PSx\_ACK\_isr\_Interrupt\_InterruptCallback()}}
+{\footnotesize\ttfamily void P\+Sx\+\_\+\+A\+C\+K\+\_\+isr\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The I\+SR handler for the A\+CK signal from the P\+Sx game controller. 
+
+Will give the semaphore to the foreground related to waiting for an A\+CK from the P\+Sx game controller. Since the A\+CK timeout function releases the same semaphore, the foreground must check that A\+CK was actaully sent to the host by the game controller. This checks to ensure the semaphore has been created but really should not be called until the semaphore does exist. 
+\begin{DoxyParams}{Parameters}
+{\em None,I\+SR} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None, I\+SR. It does release the foreground semaphore. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8c_a0f5ac0a07c3ae5b59854200357ede1cd}\label{_p_sx_host_8c_a0f5ac0a07c3ae5b59854200357ede1cd}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+\_\+\+Host\+\_\+\+Task@{P\+Sx\+\_\+\+Host\+\_\+\+Task}}
+\index{P\+Sx\+\_\+\+Host\+\_\+\+Task@{P\+Sx\+\_\+\+Host\+\_\+\+Task}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+\_\+\+Host\+\_\+\+Task()}{PSx\_Host\_Task()}}
+{\footnotesize\ttfamily void P\+Sx\+\_\+\+Host\+\_\+\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_p_sx_host_8c_abcc4b6f1b780c52740062e56bc2f039b}\label{_p_sx_host_8c_abcc4b6f1b780c52740062e56bc2f039b}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+\_\+\+S\+P\+I\+\_\+\+R\+X\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback@{P\+Sx\+\_\+\+S\+P\+I\+\_\+\+R\+X\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}}
+\index{P\+Sx\+\_\+\+S\+P\+I\+\_\+\+R\+X\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback@{P\+Sx\+\_\+\+S\+P\+I\+\_\+\+R\+X\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+\_\+\+S\+P\+I\+\_\+\+R\+X\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback()}{PSx\_SPI\_RX\_ISR\_ExitCallback()}}
+{\footnotesize\ttfamily void P\+Sx\+\_\+\+S\+P\+I\+\_\+\+R\+X\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The I\+SR handler for the receive from the P\+Sx game controller. 
+
+Will give the semaphore to the foreground related to waiting for an data from the P\+Sx game controller. Checks to ensure the semaphore has been created but really should not be called until the semaphore does exist. 
+\begin{DoxyParams}{Parameters}
+{\em None,I\+SR} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None, I\+SR. It does release the foreground semaphore. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8c_ade3c2149682e09f56ba8fcbb66a4723a}\label{_p_sx_host_8c_ade3c2149682e09f56ba8fcbb66a4723a}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Config\+Poll@{P\+Sx\+Config\+Poll}}
+\index{P\+Sx\+Config\+Poll@{P\+Sx\+Config\+Poll}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Config\+Poll()}{PSxConfigPoll()}}
+{\footnotesize\ttfamily int P\+Sx\+Config\+Poll (\begin{DoxyParamCaption}\item[{int}]{Cfg\+Byte }\end{DoxyParamCaption})}
+
+
+
+Gets the analog and button data and enter or exits configuration. 
+
+This sends the configuration/poll command to the game controller if one is attached. Not all controllers support this message so the A\+C\+Ks from a controller may stop at the second byte of the transfer. Calling routines must check that sufficent bytes were transfered to have entered config mode. Recommend using E\+N\+T\+E\+R\+C\+O\+N\+F\+I\+G/\+E\+X\+I\+T\+C\+O\+N\+F\+IG as the parameter value 
+\begin{DoxyParams}{Parameters}
+{\em Cfg\+Byte} & if zero exits configuration, otherwise enters config. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes A\+C\+Ked is returned. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8c_a5150dd488a9c2210669dfa4545011fb1}\label{_p_sx_host_8c_a5150dd488a9c2210669dfa4545011fb1}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+En\+Pressure@{P\+Sx\+En\+Pressure}}
+\index{P\+Sx\+En\+Pressure@{P\+Sx\+En\+Pressure}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+En\+Pressure()}{PSxEnPressure()}}
+{\footnotesize\ttfamily int P\+Sx\+En\+Pressure (\begin{DoxyParamCaption}\item[{int}]{button }\end{DoxyParamCaption})}
+
+
+
+Sends a packet to enable pressure reporting for a button. 
+
+Some buttons on some P\+Sx controllers can report a value proportional to the amount of pressure that is used to depress the button. This command creates the necessary packet for the button number provided and sends it to the P\+Sx game controller 
+\begin{DoxyParams}{Parameters}
+{\em button} & The button number to enable pressure sensing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Non-\/zero if the complete packet was A\+C\+Ked, zero if not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8c_a5844362104633cb285941ff436499626}\label{_p_sx_host_8c_a5844362104633cb285941ff436499626}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Get\+Ctlr\+Type@{P\+Sx\+Get\+Ctlr\+Type}}
+\index{P\+Sx\+Get\+Ctlr\+Type@{P\+Sx\+Get\+Ctlr\+Type}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Get\+Ctlr\+Type()}{PSxGetCtlrType()}}
+{\footnotesize\ttfamily int P\+Sx\+Get\+Ctlr\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+P\+Sx\+Get\+Ctlr\+Type determine what type of controller is present, if any. 
+
+First, we just poll the controller and use the reply type to set an inital value for the controller type. Then we try to enter config mode, and if that works we try to read the model number. If the game controller answered the initial poll but not the config, we leave the inital guess as the final answer. If we never completed any message, we return N\+O\+T\+P\+R\+E\+S\+E\+NT as the answer. 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Controller type 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Presently this also set the global P\+Sx\+Controller\+Type elements 
+\end{DoxyNote}
+\mbox{\Hypertarget{_p_sx_host_8c_af1c2d6d4df27d8b03633f987391d74b7}\label{_p_sx_host_8c_af1c2d6d4df27d8b03633f987391d74b7}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Get\+Model@{P\+Sx\+Get\+Model}}
+\index{P\+Sx\+Get\+Model@{P\+Sx\+Get\+Model}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Get\+Model()}{PSxGetModel()}}
+{\footnotesize\ttfamily int P\+Sx\+Get\+Model (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Reads the controller type and actuator data. 
+
+This sends a get model message and if it is successfully received it will fill in elements of the P\+Sx\+Controller\+Type data structure according to what is received. 
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes A\+C\+Ked is returned. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Presently this also set the global P\+Sx\+Controller\+Type elements 
+\end{DoxyNote}
+\mbox{\Hypertarget{_p_sx_host_8c_ae953a5bc72904a320c27845f9fb55588}\label{_p_sx_host_8c_ae953a5bc72904a320c27845f9fb55588}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Init@{P\+Sx\+Init}}
+\index{P\+Sx\+Init@{P\+Sx\+Init}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Init()}{PSxInit()}}
+{\footnotesize\ttfamily void P\+Sx\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Intialization of the P\+Sx game controller -\/ one time only. 
+
+Sets up the software mainly, the hardware is largely configured in the P\+S\+OC Top\+Design.\+cysch file. This is intended to only be called one time and repeat calls could be problematic. 
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8c_a085786ee1b84a8f7d5370d26e97f0935}\label{_p_sx_host_8c_a085786ee1b84a8f7d5370d26e97f0935}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Motor\+Poll@{P\+Sx\+Motor\+Poll}}
+\index{P\+Sx\+Motor\+Poll@{P\+Sx\+Motor\+Poll}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Motor\+Poll()}{PSxMotorPoll()}}
+{\footnotesize\ttfamily int P\+Sx\+Motor\+Poll (\begin{DoxyParamCaption}\item[{int}]{Motor0,  }\item[{int}]{Motor1 }\end{DoxyParamCaption})}
+
+
+
+Gets the analog and button data and sends the vibration motor levels. 
+
+This sends the universally accepted poll command to the game controller if one is attached. For game controllers with \char`\"{}force feedback\char`\"{} the same message also sets the motor speed. At present only two motors are supported might need to expand that at some point. The physical motors are mapped to these logical control bytes by other commands. 
+\begin{DoxyParams}{Parameters}
+{\em Motor0} & Speed parameter for first logical motor. \\
+\hline
+{\em Motor1} & Speed parameter for second logical motor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes A\+C\+Ked by the controller (i.\+e. transfer -\/ 1). 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Not all motors support speed control, some are on/off only. 
+\end{DoxyNote}
+\mbox{\Hypertarget{_p_sx_host_8c_ad4d712b74166d80578d8710194a36992}\label{_p_sx_host_8c_ad4d712b74166d80578d8710194a36992}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Reset@{P\+Sx\+Reset}}
+\index{P\+Sx\+Reset@{P\+Sx\+Reset}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Reset()}{PSxReset()}}
+{\footnotesize\ttfamily void P\+Sx\+Reset (\begin{DoxyParamCaption}\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Sends a messages to the game controller to reset it. 
+
+This will send the 0x01 first byte only message that a real Play\+Station sends when it dislikes the game controller it is talking to such as at power up or when one is plugged in later. 
+\begin{DoxyParams}{Parameters}
+{\em lenght} & If length is zero, a 100mS reset is performed, otherwise 1S \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8c_a30a38e0d0429c608c26989f08bce3ed8}\label{_p_sx_host_8c_a30a38e0d0429c608c26989f08bce3ed8}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Setup@{P\+Sx\+Setup}}
+\index{P\+Sx\+Setup@{P\+Sx\+Setup}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Setup()}{PSxSetup()}}
+{\footnotesize\ttfamily void P\+Sx\+Setup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Sets up the system to talk to the P\+Sx game controller. 
+
+Sets up the software mainly, the hardware is largely configured in the P\+S\+OC Top\+Design.\+cysch file. This does nothing to create/setup the Free\+R\+T\+OS elements needed to sync physical events to software, it can be called after it has already been called once without problems. 
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8c_a4a65472f5ec3894fd79442f217aef95b}\label{_p_sx_host_8c_a4a65472f5ec3894fd79442f217aef95b}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Trasnfer\+Byte@{P\+Sx\+Trasnfer\+Byte}}
+\index{P\+Sx\+Trasnfer\+Byte@{P\+Sx\+Trasnfer\+Byte}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Trasnfer\+Byte()}{PSxTrasnferByte()}}
+{\footnotesize\ttfamily int P\+Sx\+Trasnfer\+Byte (\begin{DoxyParamCaption}\item[{uint8}]{Out,  }\item[{uint8 $\ast$}]{In,  }\item[{int}]{Wait }\end{DoxyParamCaption})}
+
+
+
+Sends and receives a single byte to/from the P\+Sx controller. 
+
+P\+Sx\+Trasnfer\+Byte will send a byte, and since the interface is forced to be full duplex, it will receive a byte. If told to wait for and A\+CK, it will return a non-\/zero value if an A\+CK was received, otherwise it will return zero. Generally speaking, this procedure could use better error handling especially when the dongle handles multiple interfaces errors on one will seriously impact others if nothing is done to clean up error handling. Recommend using the N\+O\+W\+A\+IT / Y\+E\+S\+W\+A\+IT defined values as the wait parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Out} & The byte to be sent to the P\+Sx game controller \\
+\hline
+{\em In} & Pointer to where received data from the P\+Sx game controller is stored \\
+\hline
+{\em Wait} & If non-\/zero, the function waits for an A\+CK \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If zero then no A\+CK or did not wait, nonzero only if A\+CK received 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_p_sx_host_8c_ac4eaf2ecdfbb23b74dba1058d24efde5}\label{_p_sx_host_8c_ac4eaf2ecdfbb23b74dba1058d24efde5}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Trasnfer\+String@{P\+Sx\+Trasnfer\+String}}
+\index{P\+Sx\+Trasnfer\+String@{P\+Sx\+Trasnfer\+String}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Trasnfer\+String()}{PSxTrasnferString()}}
+{\footnotesize\ttfamily int P\+Sx\+Trasnfer\+String (\begin{DoxyParamCaption}\item[{uint8 $\ast$}]{Out,  }\item[{uint8 $\ast$}]{In,  }\item[{int}]{count,  }\item[{int}]{Wait }\end{DoxyParamCaption})}
+
+
+
+Sends and receives a string of bytes to/from the P\+Sx controller. 
+
+P\+Sx\+Trasnfer\+String will send a packet of binary data to the P\+Sx game controller. Since the interface is forced to be full duplex, it will the same number of bytes. If the wait parameter is non-\/zero, the function will wait until there is an A\+KC for every byte sent. If the wait parameter is zero, the function will not wait for the final A\+CK though it will wait for intrabyte A\+CK. Should A\+C\+Ks stop at some point, the procedure stops sending. Recommend using Y\+E\+S\+W\+A\+IT and N\+O\+W\+A\+IT as the wait parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Out} & The byte to be sent to the P\+Sx game controller \\
+\hline
+{\em In} & Pointer to where received data from the P\+Sx game controller is stored \\
+\hline
+{\em Wait} & If zero, the function does not wait for the final A\+CK \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of A\+C\+Ks received 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If wait is requested, the SS line remains asserted after return 
+
+If wait is not requested the packed is ended (i.\+e. SS is deasserted) 
+\end{DoxyNote}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_p_sx_host_8c_a4e868d7b04d036a0a50a20293612edc5}\label{_p_sx_host_8c_a4e868d7b04d036a0a50a20293612edc5}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!Feedback0@{Feedback0}}
+\index{Feedback0@{Feedback0}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{Feedback0}{Feedback0}}
+{\footnotesize\ttfamily int Feedback0}
+
+\mbox{\Hypertarget{_p_sx_host_8c_adea34c570c26750610b966e142539cd7}\label{_p_sx_host_8c_adea34c570c26750610b966e142539cd7}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!Feedback1@{Feedback1}}
+\index{Feedback1@{Feedback1}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{Feedback1}{Feedback1}}
+{\footnotesize\ttfamily int Feedback1}
+
+\mbox{\Hypertarget{_p_sx_host_8c_af88db31a59e4b525c9c8f4d1d407d997}\label{_p_sx_host_8c_af88db31a59e4b525c9c8f4d1d407d997}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+In\+Buffer@{P\+Sx\+In\+Buffer}}
+\index{P\+Sx\+In\+Buffer@{P\+Sx\+In\+Buffer}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+In\+Buffer}{PSxInBuffer}}
+{\footnotesize\ttfamily uint8 P\+Sx\+In\+Buffer\mbox{[}\mbox{\hyperlink{_p_sx_host_8h_a6893e51b9fa04e47eae2355bc7fa8a26}{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}}\mbox{]}}
+
+\mbox{\Hypertarget{_p_sx_host_8c_a1f64fd9d266da8325ade590c3a2ca8a7}\label{_p_sx_host_8c_a1f64fd9d266da8325ade590c3a2ca8a7}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Out\+Buffer@{P\+Sx\+Out\+Buffer}}
+\index{P\+Sx\+Out\+Buffer@{P\+Sx\+Out\+Buffer}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Out\+Buffer}{PSxOutBuffer}}
+{\footnotesize\ttfamily uint8 P\+Sx\+Out\+Buffer\mbox{[}\mbox{\hyperlink{_p_sx_host_8h_a6893e51b9fa04e47eae2355bc7fa8a26}{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}}\mbox{]}}
+
+\mbox{\Hypertarget{_p_sx_host_8c_a80db7bca742e1886e73e06edd1bf5426}\label{_p_sx_host_8c_a80db7bca742e1886e73e06edd1bf5426}} 
+\index{P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}!P\+Sx\+Xfr\+Buffer@{P\+Sx\+Xfr\+Buffer}}
+\index{P\+Sx\+Xfr\+Buffer@{P\+Sx\+Xfr\+Buffer}!P\+Sx\+Host.\+c@{P\+Sx\+Host.\+c}}
+\subsubsection{\texorpdfstring{P\+Sx\+Xfr\+Buffer}{PSxXfrBuffer}}
+{\footnotesize\ttfamily uint8 P\+Sx\+Xfr\+Buffer\mbox{[}\mbox{\hyperlink{_p_sx_host_8h_a6893e51b9fa04e47eae2355bc7fa8a26}{P\+Sx\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+GE}}\mbox{]}}
+

@@ -34,18 +34,16 @@
  */
 
 #include "project.h"
-#include "FRSupport.h"
+#include "FreeRTOS.h"
 #include <stdio.h>
 #include <string.h>
-#include "FreeRTOS.h"
-#include "FreeRTOS_CLI.h"
 #include "timers.h"
 #include "semphr.h"
+#include "FRSupport.h"
+#include "FreeRTOS_CLI.h"
 #include "USBHost.h"
 #include "globals.h"
 
-
-SemaphoreHandle_t xUSBHost_Semaphore = NULL;
 
 
 /** @brief ISR callback for all EP0 activities
@@ -68,47 +66,59 @@ void USBCOMP_EP_0_ISR_ExitCallback(void)
   }
 }
 
-/** @brief CH_Init starts the user's comm port
+/** @brief USBHost_Init sets up USB interface used by the HID and Serial port
  *
- * CH_Init will start the interface and clear and data that was present
- * before it begins.  Typically there will be nothing as this should
- * start at power up, but just in case . . . 
+ * Actually, very little done here other than starting the hardware and
+ * creating the FreeRTOS task.
  */
-void USBHost_Init(void) 
+void USBHostInit(void) 
 {
-  if (USBCOMP_IsConfigurationChanged())
-  {
-    if (USBCOMP_GetConfiguration())
-    {
-      USBCOMP_CDC_Init();
-      while(USBCOMP_DataIsReady())
-      {
-        USBCOMP_GetChar();
-      }
-    }
-  }
+  USBCOMP_Start(0u, USBCOMP_5V_OPERATION);
+  USBConfigurationHost = USB_UNSET;
+  USBConfigurationCDC  = USB_UNSET;
+  USBConfigurationHID  = USB_UNSET;
 
+  xTaskCreate(                  /* Create Playstation Interface task              */
+    USBHostTask,              /* Function implementing the task loop            */
+    "USB_Host",                 /* String to locate the task in debugger          */
+    configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
+    0,                          /* Number of parameters to pass to task  (none)   */
+    4,                          /* Task's priority (high)                       */
+    0);                         /* Task handle (not used)                         */
 }
 
 /** @brief cliTask task which invokes the FreeRTOS CLI engine
  *
- * cliTask process the user input on the command line.  At present it only
- * support character input and backspace editing; there is no support for
- * cursor movement or anything else.  To make things as platform independant
- * as possible this accepts DEL or BS as backspace, accepts CR, LF, or CR-LF
- * as input termination.
+ * USBHostTask jsut checks to see if the interface has been configured and/or if
+ * the host has reconfigured the interface.
  */
 void USBHostTask(void *arg) {
   (void)arg;
-
-  xUSBHost_Semaphore = xSemaphoreCreateBinary(); //TODO: do error checking someday
-  USBConfigurationCDC = 0;
-  USBConfigurationHID = 0;
-
   
-
   while (1)
   {
+    if (USBCOMP_GetConfiguration() != 0)
+    {  
+      xSemaphoreTake( xUSBConfig_Semaphore, USBHOST_CONFIG_WAIT );
+      USBConfigurationHost |= USB_INITIALIZED;
+      USBConfigurationCDC  |= USB_INITIALIZED;
+      USBConfigurationHID  |= USB_INITIALIZED;
+
+      if (USBCOMP_IsConfigurationChanged())
+      {
+        USBConfigurationCDC  |= USB_RECONFIGURED;
+        USBConfigurationHID  |= USB_RECONFIGURED;
+      }
+    }
+    else
+    {
+      xSemaphoreTake( xUSBConfig_Semaphore, USBHOST_CONFIG_WAIT );
+      USBConfigurationHost = USB_UNSET;
+      USBConfigurationCDC  = USB_UNSET;
+      USBConfigurationHID  = USB_UNSET;
+    }
+    xSemaphoreGive(xUSBConfig_Semaphore);
+    xSemaphoreTake(xUSBHost_Semaphore, USBHOST_TRANSACTION_WAIT );
     
   }
 }

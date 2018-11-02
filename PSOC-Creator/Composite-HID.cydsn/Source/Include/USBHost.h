@@ -28,14 +28,14 @@
  *  @brief  Constants and protorype related to the FreeRTOS CLI
  */
 
-#ifndef FRCLILIBRARY
-#define FRCLILIBRARY
+#ifndef USBHOST_H
+#define USBHOST_H
 
-#define CLI_MAX_INPUT	  50
-#define CLI_MAX_OUTPUT	128
-#define START_MESSAGE   "Doctor Livingstone, I presume?\n"
+#define USBHOST_TRANSACTION_WAIT  100   // Wait 100 for the next transaction
+#define USBHOST_CONFIG_WAIT       2     // No one holds the config data longer
   
-void cliTask(void *arg);
+void USBHostInit(void) ;
+void USBHostTask(void *);
 
 #endif
 /* [] END OF FILE */

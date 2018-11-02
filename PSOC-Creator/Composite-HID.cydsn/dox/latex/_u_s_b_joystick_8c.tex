@@ -1,0 +1,137 @@
+\hypertarget{_u_s_b_joystick_8c}{}\section{Source/\+U\+S\+B\+Joystick.c File Reference}
+\label{_u_s_b_joystick_8c}\index{Source/\+U\+S\+B\+Joystick.\+c@{Source/\+U\+S\+B\+Joystick.\+c}}
+
+
+Local inputs added to or outputs derived from the U\+SB H\+ID information.  
+
+
+{\ttfamily \#include $<$project.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}semphr.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}globals.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+S\+B\+Joystick.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+Sx\+Host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}F\+R\+Support.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+S\+B\+Host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Local\+Peripherals.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_u_s_b_joystick_8c_a1ece06d088ae80247c4b56f6e88e7595}{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}} (void)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+F\+S\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Entry\+Callback I\+SR hook for Joystick. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_b_joystick_8c_a4f17dbc784d7de1b5fd2b3ecd0ac1c05}{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+5\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}} (void)
+\item 
+void \mbox{\hyperlink{_u_s_b_joystick_8c_ad106cbebddf751373ac5880435b1dcd5}{U\+S\+B\+Joy\+Clear\+Buffers}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes U\+SB H\+ID buffers and create Free\+R\+T\+OS task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_b_joystick_8c_a3a24ff28204c405ea042a79964b8fa4e}{U\+S\+B\+Joy\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes U\+SB H\+ID buffers and create Free\+R\+T\+OS task. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_u_s_b_joystick_8c_ac5fe78facf2cbf49f7da99dc2ea8bfed}{Usb\+Joy\+Check}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes U\+SB H\+ID buffers and interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_b_joystick_8c_af54ffd7c83b82074578a15ee2c9e9c31}{Usb\+Joy\+Set\+Outputs}} (void)
+\item 
+void \mbox{\hyperlink{_u_s_b_joystick_8c_aa6bfb0eb1ff19828b6c306d455f90e09}{Usb\+Joy\+Task}} (void $\ast$arg)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Local inputs added to or outputs derived from the U\+SB H\+ID information. 
+
+\begin{DoxyAuthor}{Author}
+Mike Mc\+Cormack (nbxmike) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8/\+O\+C\+T/2018 Creates the data transfered to the U\+SB or extracts data from the U\+SB host side. It will replace the P\+Sx controller input into H\+ID data. Also supports peripherals that are not part of a Play\+Station controller that are attached to the P\+S\+OC. Examples could be configuration switches as inputs or L\+E\+Ds as outputs. 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_u_s_b_joystick_8c_a1ece06d088ae80247c4b56f6e88e7595}\label{_u_s_b_joystick_8c_a1ece06d088ae80247c4b56f6e88e7595}} 
+\index{U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}!U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback@{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}}
+\index{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback@{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}!U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback()}{USBCOMP\_EP\_4\_ISR\_ExitCallback()}}
+{\footnotesize\ttfamily void U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+F\+S\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Entry\+Callback I\+SR hook for Joystick. 
+
+U\+S\+B\+F\+S\+\_\+\+E\+P\+\_\+4\+\_\+\+I\+S\+R\+\_\+\+Entry\+Callback and U\+S\+B\+F\+S\+\_\+\+E\+P\+\_\+5\+\_\+\+I\+S\+R\+\_\+\+Entry\+Callback are the joystick endpoint I\+S\+Rs for this implementation. Whenever either are called the foreground task is freed to run, it must decide if the right stuff occured or not. If the endpoints are remapped, this routine will need to be ported even if the processor remains a P\+S\+O\+C-\/5\+LP. \mbox{\Hypertarget{_u_s_b_joystick_8c_a4f17dbc784d7de1b5fd2b3ecd0ac1c05}\label{_u_s_b_joystick_8c_a4f17dbc784d7de1b5fd2b3ecd0ac1c05}} 
+\index{U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}!U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+5\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback@{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+5\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}}
+\index{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+5\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback@{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+5\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback}!U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+5\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback()}{USBCOMP\_EP\_5\_ISR\_ExitCallback()}}
+{\footnotesize\ttfamily void U\+S\+B\+C\+O\+M\+P\+\_\+\+E\+P\+\_\+5\+\_\+\+I\+S\+R\+\_\+\+Exit\+Callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_u_s_b_joystick_8c_ac5fe78facf2cbf49f7da99dc2ea8bfed}\label{_u_s_b_joystick_8c_ac5fe78facf2cbf49f7da99dc2ea8bfed}} 
+\index{U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}!Usb\+Joy\+Check@{Usb\+Joy\+Check}}
+\index{Usb\+Joy\+Check@{Usb\+Joy\+Check}!U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}}
+\subsubsection{\texorpdfstring{Usb\+Joy\+Check()}{UsbJoyCheck()}}
+{\footnotesize\ttfamily int Usb\+Joy\+Check (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes U\+SB H\+ID buffers and interface. 
+
+Clears any garbage in buffers and will check to see that we\textquotesingle{}ve been configured.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_u_s_b_joystick_8c_ad106cbebddf751373ac5880435b1dcd5}\label{_u_s_b_joystick_8c_ad106cbebddf751373ac5880435b1dcd5}} 
+\index{U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}!U\+S\+B\+Joy\+Clear\+Buffers@{U\+S\+B\+Joy\+Clear\+Buffers}}
+\index{U\+S\+B\+Joy\+Clear\+Buffers@{U\+S\+B\+Joy\+Clear\+Buffers}!U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+Joy\+Clear\+Buffers()}{USBJoyClearBuffers()}}
+{\footnotesize\ttfamily void U\+S\+B\+Joy\+Clear\+Buffers (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes U\+SB H\+ID buffers and create Free\+R\+T\+OS task. 
+
+Clears any garbage in buffers and will check to see that we\textquotesingle{}ve been configured. It also creates the Free\+R\+T\+OS task which runs to implement the U\+SB H\+ID function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_u_s_b_joystick_8c_a3a24ff28204c405ea042a79964b8fa4e}\label{_u_s_b_joystick_8c_a3a24ff28204c405ea042a79964b8fa4e}} 
+\index{U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}!U\+S\+B\+Joy\+Init@{U\+S\+B\+Joy\+Init}}
+\index{U\+S\+B\+Joy\+Init@{U\+S\+B\+Joy\+Init}!U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+Joy\+Init()}{USBJoyInit()}}
+{\footnotesize\ttfamily void U\+S\+B\+Joy\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes U\+SB H\+ID buffers and create Free\+R\+T\+OS task. 
+
+Clears any garbage in buffers and will check to see that we\textquotesingle{}ve been configured. It also creates the Free\+R\+T\+OS task which runs to implement the U\+SB H\+ID function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_u_s_b_joystick_8c_af54ffd7c83b82074578a15ee2c9e9c31}\label{_u_s_b_joystick_8c_af54ffd7c83b82074578a15ee2c9e9c31}} 
+\index{U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}!Usb\+Joy\+Set\+Outputs@{Usb\+Joy\+Set\+Outputs}}
+\index{Usb\+Joy\+Set\+Outputs@{Usb\+Joy\+Set\+Outputs}!U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}}
+\subsubsection{\texorpdfstring{Usb\+Joy\+Set\+Outputs()}{UsbJoySetOutputs()}}
+{\footnotesize\ttfamily void Usb\+Joy\+Set\+Outputs (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_u_s_b_joystick_8c_aa6bfb0eb1ff19828b6c306d455f90e09}\label{_u_s_b_joystick_8c_aa6bfb0eb1ff19828b6c306d455f90e09}} 
+\index{U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}!Usb\+Joy\+Task@{Usb\+Joy\+Task}}
+\index{Usb\+Joy\+Task@{Usb\+Joy\+Task}!U\+S\+B\+Joystick.\+c@{U\+S\+B\+Joystick.\+c}}
+\subsubsection{\texorpdfstring{Usb\+Joy\+Task()}{UsbJoyTask()}}
+{\footnotesize\ttfamily void Usb\+Joy\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+

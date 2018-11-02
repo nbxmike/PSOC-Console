@@ -34,16 +34,19 @@
  */
 
 #include "project.h"
+#include "FreeRTOS.h"
 #include "FRSupport.h"
 #include <stdio.h>
 #include <string.h>
-#include "FreeRTOS.h"
 #include "FreeRTOS_CLI.h"
 #include "timers.h"
 #include "semphr.h"
 #include "FRCLILibrary.h"
+#include "USBHost.h"
+#include "globals.h"
 
-SemaphoreHandle_t xCH_Semaphore = NULL;
+static int sCH_Startup = USB_UNSET;
+
 
 /** @brief CH_Init starts the user's comm port
  *
@@ -53,18 +56,46 @@ SemaphoreHandle_t xCH_Semaphore = NULL;
  */
 void CH_Init(void) 
 {
-  if (USBCOMP_IsConfigurationChanged())
-  {
-    if (USBCOMP_GetConfiguration())
-    {
-      USBCOMP_CDC_Init();
-      while(USBCOMP_DataIsReady())
-      {
-        USBCOMP_GetChar();
-      }
-    }
-  }
+  sCH_Startup = USB_UNSET;
+  CH_StartUp();
+  xTaskCreate(cliTask, "CLI Task", configMINIMAL_STACK_SIZE*3, 0, 2, 0);
+}
 
+/** @brief CH_StartUp cleans up the USB if it is configured/recofigured 
+ *
+ * CH_StartUp will see to it that data in the buffer is cleared if the USB
+ * changes configuration either intially or after the systems has started.
+ */
+int CH_StartUp(void)
+{
+  xSemaphoreTake( xUSBConfig_Semaphore, USBHOST_CONFIG_WAIT );
+  if (USBConfigurationHost == USB_UNSET)
+  {
+    sCH_Startup = USB_UNSET;
+  }
+  else if ((sCH_Startup == USB_UNSET) && (USBConfigurationHost & USB_INITIALIZED))
+  {
+    sCH_Startup = USB_RECONFIGURED + USB_INITIALIZED;
+    USBConfigurationHost = USB_INITIALIZED;
+  }
+  else if ((sCH_Startup == USB_INITIALIZED) && (USBConfigurationHost & USB_RECONFIGURED))
+  {
+    sCH_Startup |= USB_RECONFIGURED;
+    USBConfigurationHost = USB_INITIALIZED;
+  }
+  xSemaphoreGive(xUSBConfig_Semaphore);
+  
+  if (sCH_Startup & USB_RECONFIGURED)
+  {
+    sCH_Startup = USB_INITIALIZED;    
+    
+    USBCOMP_CDC_Init();
+    while(USBCOMP_DataIsReady())
+    {
+      USBCOMP_GetChar();
+    }  
+  }
+  return sCH_Startup;
 }
 
 /** @brief CH_DataIsReady checks for console input
@@ -75,11 +106,16 @@ void CH_Init(void)
  */
 uint8  CH_DataIsReady(void)
 {
-  if (USBCOMP_IsConfigurationChanged())
+  if (USBConfigurationHost & USB_RECONFIGURED)
   {
-    CH_Init();
+    CH_StartUp();
   }
-  return USBCOMP_DataIsReady();
+
+  if (USBConfigurationHost & USB_INITIALIZED)
+  {
+    return USBCOMP_DataIsReady();
+  }
+  return 0;
 }
 
 /** @brief CH_GetChar returns the next user input byte
@@ -94,12 +130,17 @@ uint8  CH_DataIsReady(void)
  */
 uint8  CH_GetChar(void)
 {
-  if (USBCOMP_IsConfigurationChanged())
+  if (USBConfigurationHost & USB_RECONFIGURED)
   {
-    CH_Init();
+    CH_StartUp();
     return '\n';   // Only reasonable thing to do is end any pending command.
   }
-  return USBCOMP_GetChar();
+
+  if (USBConfigurationHost & USB_INITIALIZED)
+  {
+    return USBCOMP_GetChar();
+  }
+  return 0;
 }
 
 
@@ -118,14 +159,18 @@ uint8  CH_GetCharWait(void)
 {
   while(1)
   {
-    if (USBCOMP_IsConfigurationChanged())
+    if (USBConfigurationHost & USB_RECONFIGURED)
     {
-      CH_Init();
+      CH_StartUp();
       return '\n';   // Only reasonable thing to do is end any pending command.
     }
-    if(CH_DataIsReady() != 0 )
+
+    if (USBConfigurationHost & USB_INITIALIZED)
     {
-      return USBCOMP_GetChar();
+      if(CH_DataIsReady() != 0 )
+      {
+        return USBCOMP_GetChar();
+      }
     }
     xSemaphoreTake( xCH_Semaphore, ( TickType_t ) 10 );
   }
@@ -142,11 +187,15 @@ uint8  CH_GetCharWait(void)
  */
 void CH_PutData(const uint8* pData, uint16 length)
 {
-  if (USBCOMP_IsConfigurationChanged())
+  if (USBConfigurationHost & USB_RECONFIGURED)
   {
-    CH_Init();
+    CH_StartUp();
   }
-  USBCOMP_PutData(pData, length) ;
+
+  if (USBConfigurationHost & USB_INITIALIZED)
+  {
+    USBCOMP_PutData(pData, length) ;
+  }
 }
 
 /** @brief CH_PutString puts a character string in the send buffer
@@ -159,11 +208,15 @@ void CH_PutData(const uint8* pData, uint16 length)
  */
 void CH_PutString(const char8 *string)
 {
-  if (USBCOMP_IsConfigurationChanged())
+  if (USBConfigurationHost & USB_RECONFIGURED)
   {
-    CH_Init();
+    CH_StartUp();
   }
-  USBCOMP_PutString(string);
+
+  if (USBConfigurationHost & USB_INITIALIZED)
+  {
+    USBCOMP_PutString(string);
+  }
 }
 
 /** @brief CH_PutChar puts a single character in the send buffer
@@ -176,11 +229,15 @@ void CH_PutString(const char8 *string)
  */
 void CH_PutChar(char8 txDataByte)
 {
-  if (USBCOMP_IsConfigurationChanged())
+  if (USBConfigurationHost & USB_RECONFIGURED)
   {
-    CH_Init();
+    CH_StartUp();
   }
-  USBCOMP_PutChar(txDataByte);
+
+  if (USBConfigurationHost & USB_INITIALIZED)
+  {
+    USBCOMP_PutChar(txDataByte);
+  }
 }
 
 
@@ -245,15 +302,19 @@ void cliTask(void *arg) {
   int cli_index;
   BaseType_t cli_more;
 
-  xCH_Semaphore = xSemaphoreCreateBinary(); //TODO: do error checking someday
-  
   cli_c = cli_lastc = 0;
   cli_index = 0;
   
-  CH_Init();
-  CH_PutString(START_MESSAGE);
-
+  // Register commands with the CLI processor
   FreeRTOS_CLIRegisterCommand(&echoCommandStruct);
+  
+  // Wait for the UART to at least start
+  while( USB_INITIALIZED != (USBConfigurationHost & USB_INITIALIZED))
+  {
+    xSemaphoreTake( xCH_Semaphore, ( TickType_t ) 10 );
+  }  
+  CH_PutString(START_MESSAGE);  // Welcome message (probably unseen)
+
 
   while (1)
   {

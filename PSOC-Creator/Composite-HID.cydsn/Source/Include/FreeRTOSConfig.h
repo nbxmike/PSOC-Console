@@ -36,25 +36,25 @@
 #define FREERTOS_CONFIG_H
 #include <project.h>
 
-#define configUSE_PREEMPTION						1
+#define configUSE_PREEMPTION	  					1
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION		0
 #define configUSE_TICKLESS_IDLE						0
-#define configCPU_CLOCK_HZ							(( unsigned long )BCLK__BUS_CLK__HZ)
-#define configTICK_RATE_HZ							1000
-#define configMAX_PRIORITIES						5
+#define configCPU_CLOCK_HZ	  						(( unsigned long )BCLK__BUS_CLK__HZ)
+#define configTICK_RATE_HZ						  	1000
+#define configMAX_PRIORITIES				  		5
 #define configMINIMAL_STACK_SIZE					(( unsigned short )128)
 #define configMAX_TASK_NAME_LEN						16
 #define configUSE_16_BIT_TICKS						0
 #define configIDLE_SHOULD_YIELD						1
-#define configUSE_TASK_NOTIFICATIONS				1
-#define configUSE_MUTEXES							0
-#define configUSE_RECURSIVE_MUTEXES					0
-#define configUSE_COUNTING_SEMAPHORES				0
+#define configUSE_TASK_NOTIFICATIONS			1
+#define configUSE_MUTEXES							    0
+#define configUSE_RECURSIVE_MUTEXES				0
+#define configUSE_COUNTING_SEMAPHORES			0
 #define configUSE_ALTERNATIVE_API					0 /* Deprecated! */
 #define configQUEUE_REGISTRY_SIZE					10
-#define configUSE_QUEUE_SETS						0
-#define configUSE_TIME_SLICING						0
-#define configUSE_NEWLIB_REENTRANT					0
+#define configUSE_QUEUE_SETS					  	0
+#define configUSE_TIME_SLICING						1
+#define configUSE_NEWLIB_REENTRANT				0
 #define configENABLE_BACKWARD_COMPATIBILITY			0
 #define configNUM_THREAD_LOCAL_STORAGE_POINTERS		5
 

@@ -1,0 +1,107 @@
+\hypertarget{main_8c}{}\section{Source/main.c File Reference}
+\label{main_8c}\index{Source/main.\+c@{Source/main.\+c}}
+
+
+The startup of the P\+S\+OC.  
+
+
+{\ttfamily \#include \char`\"{}project.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}F\+R\+Support.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}F\+R\+C\+L\+I\+Library.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}globals.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+S\+B\+Host.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Local\+Peripherals.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+Sx\+Host.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_af7f3bb21276d9d05ee77ed52609d69b9}{Setup\+\_\+\+System}} (void)
+\begin{DoxyCompactList}\small\item\em Sets up things by calling all init functions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em Very little happens in main, . \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile int \mbox{\hyperlink{main_8c_af48c99f864ba8e7a88678854556d874c}{U\+S\+B\+Configuration\+Host}} = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}
+\item 
+volatile int \mbox{\hyperlink{main_8c_a62852698eb538cd574dd3c16273254be}{U\+S\+B\+Configuration\+C\+DC}} = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}
+\item 
+volatile int \mbox{\hyperlink{main_8c_a5925bf50acc955d850ef1eda9a5c49c6}{U\+S\+B\+Configuration\+H\+ID}} = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The startup of the P\+S\+OC. 
+
+\begin{DoxyAuthor}{Author}
+Mike Mc\+Cormack (nbxmike) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8/\+O\+C\+T/2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.\+c@{main.\+c}!main@{main}}
+\index{main@{main}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Very little happens in main, . 
+
+Call a few setups and start the task scheduler that runs the real show. 
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8c_af7f3bb21276d9d05ee77ed52609d69b9}\label{main_8c_af7f3bb21276d9d05ee77ed52609d69b9}} 
+\index{main.\+c@{main.\+c}!Setup\+\_\+\+System@{Setup\+\_\+\+System}}
+\index{Setup\+\_\+\+System@{Setup\+\_\+\+System}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{Setup\+\_\+\+System()}{Setup\_System()}}
+{\footnotesize\ttfamily void Setup\+\_\+\+System (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Sets up things by calling all init functions. 
+
+This just provides one place for all of the initialization routines to be placed for easy long term care. ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+-\/ we might want to make this return even if U\+SB doesn\textquotesingle{}t quite start 
+\end{DoxyNote}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_a62852698eb538cd574dd3c16273254be}\label{main_8c_a62852698eb538cd574dd3c16273254be}} 
+\index{main.\+c@{main.\+c}!U\+S\+B\+Configuration\+C\+DC@{U\+S\+B\+Configuration\+C\+DC}}
+\index{U\+S\+B\+Configuration\+C\+DC@{U\+S\+B\+Configuration\+C\+DC}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+Configuration\+C\+DC}{USBConfigurationCDC}}
+{\footnotesize\ttfamily volatile int U\+S\+B\+Configuration\+C\+DC = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}}
+
+\mbox{\Hypertarget{main_8c_a5925bf50acc955d850ef1eda9a5c49c6}\label{main_8c_a5925bf50acc955d850ef1eda9a5c49c6}} 
+\index{main.\+c@{main.\+c}!U\+S\+B\+Configuration\+H\+ID@{U\+S\+B\+Configuration\+H\+ID}}
+\index{U\+S\+B\+Configuration\+H\+ID@{U\+S\+B\+Configuration\+H\+ID}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+Configuration\+H\+ID}{USBConfigurationHID}}
+{\footnotesize\ttfamily volatile int U\+S\+B\+Configuration\+H\+ID = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}}
+
+\mbox{\Hypertarget{main_8c_af48c99f864ba8e7a88678854556d874c}\label{main_8c_af48c99f864ba8e7a88678854556d874c}} 
+\index{main.\+c@{main.\+c}!U\+S\+B\+Configuration\+Host@{U\+S\+B\+Configuration\+Host}}
+\index{U\+S\+B\+Configuration\+Host@{U\+S\+B\+Configuration\+Host}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+Configuration\+Host}{USBConfigurationHost}}
+{\footnotesize\ttfamily volatile int U\+S\+B\+Configuration\+Host = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}}
+

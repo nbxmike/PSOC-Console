@@ -1,0 +1,131 @@
+\hypertarget{_f_r_support_8c}{}\section{Source/\+F\+R\+Support.c File Reference}
+\label{_f_r_support_8c}\index{Source/\+F\+R\+Support.\+c@{Source/\+F\+R\+Support.\+c}}
+
+
+Attempt to prepackage Free\+R\+T\+OS support for Cypress P\+S\+OC 5\+LP usage.  
+
+
+{\ttfamily \#include \char`\"{}project.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}F\+R\+Support.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}semphr.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_f_r_support_8c_a440d85819b19ea2682833f81491699c3}{F\+R\+Init}} ()
+\begin{DoxyCompactList}\small\item\em F\+R\+Init initializes stuff needed for Free\+R\+T\+OS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_f_r_support_8c_a333fc78894b665db668d77c4817b9430}{Blinky\+\_\+\+Task}} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em Blinky\+\_\+\+Task blinks the local heartbeat L\+ED, defined here so there is always a starting task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a605426fd4d8ead54df17faabb5954e78}{x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore}} = N\+U\+LL
+\item 
+volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a7db0980df6cc217321f8d043d81e0b9f}{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore}} = N\+U\+LL
+\item 
+volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a0cde37f65efd375aa3a8851811dcc753}{x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore}} = N\+U\+LL
+\item 
+volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_ac4da3cdb73712f9034cb2d7863adb63b}{x\+C\+H\+\_\+\+Semaphore}} = N\+U\+LL
+\item 
+volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a7b6d2152769213d6658c118758e09172}{x\+Analog\+\_\+\+Semaphore}} = N\+U\+LL
+\item 
+volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_af01483c52e4a0b4c8b40395d3f30d86d}{x\+U\+S\+B\+Host\+\_\+\+Semaphore}} = N\+U\+LL
+\item 
+volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a1f09a8e52e14001b3d52a86f36ff2115}{x\+U\+S\+B\+Config\+\_\+\+Semaphore}} = N\+U\+LL
+\item 
+volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a57afb1b1cddf97e0eac2d2cfa36e09cf}{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore}} = N\+U\+LL
+\item 
+Tick\+Type\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a8b9e7a0dfa50dfd57749349b1a964013}{Blinky\+Wake\+Time}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Attempt to prepackage Free\+R\+T\+OS support for Cypress P\+S\+OC 5\+LP usage. 
+
+\begin{DoxyAuthor}{Author}
+Mike Mc\+Cormack (nbxmike) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8/\+O\+C\+T/2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_f_r_support_8c_a333fc78894b665db668d77c4817b9430}\label{_f_r_support_8c_a333fc78894b665db668d77c4817b9430}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!Blinky\+\_\+\+Task@{Blinky\+\_\+\+Task}}
+\index{Blinky\+\_\+\+Task@{Blinky\+\_\+\+Task}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{Blinky\+\_\+\+Task()}{Blinky\_Task()}}
+{\footnotesize\ttfamily void Blinky\+\_\+\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+Blinky\+\_\+\+Task blinks the local heartbeat L\+ED, defined here so there is always a starting task. 
+
+This task needs to be modified for each board that it is run on, for Cypress P\+S\+OC boards the following are the L\+ED locations (incomplete I am aware)\+: C\+Y8\+K\+I\+T-\/059 -\/ P2.\+1 C\+Y8\+K\+I\+T-\/029 -\/ P1.\+6 C\+Y8\+K\+I\+T-\/040 -\/ P3.\+1 and of course you need to map these pins to your Top\+Design.\+cysch register names. Blink rate is presently hard coded for 1\+Hz. \mbox{\Hypertarget{_f_r_support_8c_a440d85819b19ea2682833f81491699c3}\label{_f_r_support_8c_a440d85819b19ea2682833f81491699c3}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!F\+R\+Init@{F\+R\+Init}}
+\index{F\+R\+Init@{F\+R\+Init}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{F\+R\+Init()}{FRInit()}}
+{\footnotesize\ttfamily void F\+R\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+F\+R\+Init initializes stuff needed for Free\+R\+T\+OS. 
+
+F\+R\+Init initializes the interrupt hooks needed by Free\+R\+T\+OS and also creates the L\+ED heartbeat task just so there is always some task for Free\+R\+T\+OS. The heartbeat can be deleted, I just like to see something happen when I start a project. 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_f_r_support_8c_a8b9e7a0dfa50dfd57749349b1a964013}\label{_f_r_support_8c_a8b9e7a0dfa50dfd57749349b1a964013}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!Blinky\+Wake\+Time@{Blinky\+Wake\+Time}}
+\index{Blinky\+Wake\+Time@{Blinky\+Wake\+Time}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{Blinky\+Wake\+Time}{BlinkyWakeTime}}
+{\footnotesize\ttfamily Tick\+Type\+\_\+t Blinky\+Wake\+Time}
+
+\mbox{\Hypertarget{_f_r_support_8c_a7b6d2152769213d6658c118758e09172}\label{_f_r_support_8c_a7b6d2152769213d6658c118758e09172}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+Analog\+\_\+\+Semaphore@{x\+Analog\+\_\+\+Semaphore}}
+\index{x\+Analog\+\_\+\+Semaphore@{x\+Analog\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{x\+Analog\+\_\+\+Semaphore}{xAnalog\_Semaphore}}
+{\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+Analog\+\_\+\+Semaphore = N\+U\+LL}
+
+\mbox{\Hypertarget{_f_r_support_8c_ac4da3cdb73712f9034cb2d7863adb63b}\label{_f_r_support_8c_ac4da3cdb73712f9034cb2d7863adb63b}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+C\+H\+\_\+\+Semaphore@{x\+C\+H\+\_\+\+Semaphore}}
+\index{x\+C\+H\+\_\+\+Semaphore@{x\+C\+H\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{x\+C\+H\+\_\+\+Semaphore}{xCH\_Semaphore}}
+{\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+C\+H\+\_\+\+Semaphore = N\+U\+LL}
+
+\mbox{\Hypertarget{_f_r_support_8c_a605426fd4d8ead54df17faabb5954e78}\label{_f_r_support_8c_a605426fd4d8ead54df17faabb5954e78}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore}}
+\index{x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore}{xPSx\_ACK\_Semaphore}}
+{\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore = N\+U\+LL}
+
+\mbox{\Hypertarget{_f_r_support_8c_a7db0980df6cc217321f8d043d81e0b9f}\label{_f_r_support_8c_a7db0980df6cc217321f8d043d81e0b9f}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore}}
+\index{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore}{xPSx\_SPI\_Semaphore}}
+{\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore = N\+U\+LL}
+
+\mbox{\Hypertarget{_f_r_support_8c_a0cde37f65efd375aa3a8851811dcc753}\label{_f_r_support_8c_a0cde37f65efd375aa3a8851811dcc753}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore}}
+\index{x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore}{xPSx\_XFR\_Semaphore}}
+{\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore = N\+U\+LL}
+
+\mbox{\Hypertarget{_f_r_support_8c_a1f09a8e52e14001b3d52a86f36ff2115}\label{_f_r_support_8c_a1f09a8e52e14001b3d52a86f36ff2115}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+U\+S\+B\+Config\+\_\+\+Semaphore@{x\+U\+S\+B\+Config\+\_\+\+Semaphore}}
+\index{x\+U\+S\+B\+Config\+\_\+\+Semaphore@{x\+U\+S\+B\+Config\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{x\+U\+S\+B\+Config\+\_\+\+Semaphore}{xUSBConfig\_Semaphore}}
+{\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+U\+S\+B\+Config\+\_\+\+Semaphore = N\+U\+LL}
+
+\mbox{\Hypertarget{_f_r_support_8c_af01483c52e4a0b4c8b40395d3f30d86d}\label{_f_r_support_8c_af01483c52e4a0b4c8b40395d3f30d86d}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+U\+S\+B\+Host\+\_\+\+Semaphore@{x\+U\+S\+B\+Host\+\_\+\+Semaphore}}
+\index{x\+U\+S\+B\+Host\+\_\+\+Semaphore@{x\+U\+S\+B\+Host\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{x\+U\+S\+B\+Host\+\_\+\+Semaphore}{xUSBHost\_Semaphore}}
+{\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+U\+S\+B\+Host\+\_\+\+Semaphore = N\+U\+LL}
+
+\mbox{\Hypertarget{_f_r_support_8c_a57afb1b1cddf97e0eac2d2cfa36e09cf}\label{_f_r_support_8c_a57afb1b1cddf97e0eac2d2cfa36e09cf}} 
+\index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+U\+S\+B\+Joystick\+\_\+\+Semaphore@{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore}}
+\index{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore@{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
+\subsubsection{\texorpdfstring{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore}{xUSBJoystick\_Semaphore}}
+{\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+U\+S\+B\+Joystick\+\_\+\+Semaphore = N\+U\+LL}
+

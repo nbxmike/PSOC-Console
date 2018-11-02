@@ -1,0 +1,55 @@
+\hypertarget{_u_s_b_host_8h}{}\section{Source/\+Include/\+U\+S\+B\+Host.h File Reference}
+\label{_u_s_b_host_8h}\index{Source/\+Include/\+U\+S\+B\+Host.\+h@{Source/\+Include/\+U\+S\+B\+Host.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_u_s_b_host_8h_a0b1e5259c6c7c4925251ea880a55a718}{U\+S\+B\+H\+O\+S\+T\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+W\+A\+IT}}~100
+\item 
+\#define \mbox{\hyperlink{_u_s_b_host_8h_a8eedd845a72bd4d3ad92b3eda4f89693}{U\+S\+B\+H\+O\+S\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+W\+A\+IT}}~2
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_u_s_b_host_8h_aa01ef3a54ac0063a5f7f0dbb39c3a7a5}{U\+S\+B\+Host\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+Host\+\_\+\+Init sets up U\+SB interface used by the H\+ID and Serial port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_b_host_8h_a23ca23f8fcaa477d74a5c6bafa79fb31}{U\+S\+B\+Host\+Task}} (void $\ast$)
+\begin{DoxyCompactList}\small\item\em cli\+Task task which invokes the Free\+R\+T\+OS C\+LI engine \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_u_s_b_host_8h_a8eedd845a72bd4d3ad92b3eda4f89693}\label{_u_s_b_host_8h_a8eedd845a72bd4d3ad92b3eda4f89693}} 
+\index{U\+S\+B\+Host.\+h@{U\+S\+B\+Host.\+h}!U\+S\+B\+H\+O\+S\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+W\+A\+IT@{U\+S\+B\+H\+O\+S\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+W\+A\+IT}}
+\index{U\+S\+B\+H\+O\+S\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+W\+A\+IT@{U\+S\+B\+H\+O\+S\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+W\+A\+IT}!U\+S\+B\+Host.\+h@{U\+S\+B\+Host.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+B\+H\+O\+S\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+W\+A\+IT}{USBHOST\_CONFIG\_WAIT}}
+{\footnotesize\ttfamily \#define U\+S\+B\+H\+O\+S\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+W\+A\+IT~2}
+
+\mbox{\Hypertarget{_u_s_b_host_8h_a0b1e5259c6c7c4925251ea880a55a718}\label{_u_s_b_host_8h_a0b1e5259c6c7c4925251ea880a55a718}} 
+\index{U\+S\+B\+Host.\+h@{U\+S\+B\+Host.\+h}!U\+S\+B\+H\+O\+S\+T\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+W\+A\+IT@{U\+S\+B\+H\+O\+S\+T\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+W\+A\+IT}}
+\index{U\+S\+B\+H\+O\+S\+T\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+W\+A\+IT@{U\+S\+B\+H\+O\+S\+T\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+W\+A\+IT}!U\+S\+B\+Host.\+h@{U\+S\+B\+Host.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+B\+H\+O\+S\+T\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+W\+A\+IT}{USBHOST\_TRANSACTION\_WAIT}}
+{\footnotesize\ttfamily \#define U\+S\+B\+H\+O\+S\+T\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+W\+A\+IT~100}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_u_s_b_host_8h_aa01ef3a54ac0063a5f7f0dbb39c3a7a5}\label{_u_s_b_host_8h_aa01ef3a54ac0063a5f7f0dbb39c3a7a5}} 
+\index{U\+S\+B\+Host.\+h@{U\+S\+B\+Host.\+h}!U\+S\+B\+Host\+Init@{U\+S\+B\+Host\+Init}}
+\index{U\+S\+B\+Host\+Init@{U\+S\+B\+Host\+Init}!U\+S\+B\+Host.\+h@{U\+S\+B\+Host.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+B\+Host\+Init()}{USBHostInit()}}
+{\footnotesize\ttfamily void U\+S\+B\+Host\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+Host\+\_\+\+Init sets up U\+SB interface used by the H\+ID and Serial port. 
+
+Actually, very little done here other than starting the hardware and creating the Free\+R\+T\+OS task. \mbox{\Hypertarget{_u_s_b_host_8h_a23ca23f8fcaa477d74a5c6bafa79fb31}\label{_u_s_b_host_8h_a23ca23f8fcaa477d74a5c6bafa79fb31}} 
+\index{U\+S\+B\+Host.\+h@{U\+S\+B\+Host.\+h}!U\+S\+B\+Host\+Task@{U\+S\+B\+Host\+Task}}
+\index{U\+S\+B\+Host\+Task@{U\+S\+B\+Host\+Task}!U\+S\+B\+Host.\+h@{U\+S\+B\+Host.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+B\+Host\+Task()}{USBHostTask()}}
+{\footnotesize\ttfamily void U\+S\+B\+Host\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+cli\+Task task which invokes the Free\+R\+T\+OS C\+LI engine 
+
+U\+S\+B\+Host\+Task jsut checks to see if the interface has been configured and/or if the host has reconfigured the interface. 

@@ -1,0 +1,241 @@
+\hypertarget{_local_peripherals_8c}{}\section{Source/\+Local\+Peripherals.c File Reference}
+\label{_local_peripherals_8c}\index{Source/\+Local\+Peripherals.\+c@{Source/\+Local\+Peripherals.\+c}}
+
+
+Local inputs added to or outputs derived from the U\+SB H\+ID information.  
+
+
+{\ttfamily \#include $<$project.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Local\+Peripherals.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}semphr.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}F\+R\+Support.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_local_peripherals_8c_a96c40637547fec5624cd2dc3082ead45}{A\+D\+C\+\_\+\+I\+R\+Q\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback}} (void)
+\begin{DoxyCompactList}\small\item\em Releases the foreground waiting on A\+DC to end. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_local_peripherals_8c_a4059ac4f5aa4158e221f66980a693c9b}{Local\+Analog\+Read}} (void)
+\begin{DoxyCompactList}\small\item\em Pulls samples from the A\+DC and puts them a buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_local_peripherals_8c_a8260feb6f477581fda5d66534bf45a96}{Local\+Analog\+Copy}} (void)
+\begin{DoxyCompactList}\small\item\em Copies data from the working to the shared array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_local_peripherals_8c_a7bbad3b3b18f713eca074c7fe4dfcce8}{Local\+Buttons\+Read}} (void)
+\begin{DoxyCompactList}\small\item\em Pulls from the digital input register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_local_peripherals_8c_aea3e5f6a2d3eb7e7660f8d3304664184}{Local\+Outputs\+Set}} (void)
+\begin{DoxyCompactList}\small\item\em Programs the local indicators with U\+SB host data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_local_peripherals_8c_aa3dd945c7bf6c879d8c0a0cac61cdc40}{Local\+Analog\+Start\+Up}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes and starts the analog sampling. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_local_peripherals_8c_a974704496f19a3eeb19f860043380898}{Local\+Analog\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Intialization of the local inputs/outputs -\/ one time only. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_local_peripherals_8c_a788b5b3309fa550c192dea65716ef164}{Local\+Peripherals\+Task}} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em Free\+R\+T\+OS task to handle peripherals on the P\+S\+OC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int16 \mbox{\hyperlink{_local_peripherals_8c_a4eb09c353837052b3cc02482aa9545fc}{Analog\+Working}} \mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_a9c9958c78d8089e67e13e127325f1121}{A\+N\+A\+L\+O\+G\+\_\+\+S\+I\+ZE}}\mbox{]}
+\item 
+volatile int16 \mbox{\hyperlink{_local_peripherals_8c_a5c7e5f213cd967bc4e587dfc966d7d25}{Analog\+Scaled}} \mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_a9c9958c78d8089e67e13e127325f1121}{A\+N\+A\+L\+O\+G\+\_\+\+S\+I\+ZE}}\mbox{]}
+\item 
+volatile uint8 \mbox{\hyperlink{_local_peripherals_8c_a3de95bb094b2e552e901ae8feeab92b1}{Button\+Buffer}} \mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_af066dd01b4084623c107c8c327603831}{B\+U\+T\+T\+O\+N\+\_\+\+S\+I\+ZE}}\mbox{]}
+\item 
+volatile uint8 \mbox{\hyperlink{_local_peripherals_8c_a54069ac6791651d4bf2621719c691f59}{Indicator\+Buffer}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Local inputs added to or outputs derived from the U\+SB H\+ID information. 
+
+\begin{DoxyAuthor}{Author}
+Mike Mc\+Cormack (nbxmike) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8/\+O\+C\+T/2018 Support for peripherals that are not part of a Play\+Station controller that are attached to the P\+S\+OC. Examples could be configuration switches as inputs or L\+E\+Ds as outputs. 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_local_peripherals_8c_a96c40637547fec5624cd2dc3082ead45}\label{_local_peripherals_8c_a96c40637547fec5624cd2dc3082ead45}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!A\+D\+C\+\_\+\+I\+R\+Q\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback@{A\+D\+C\+\_\+\+I\+R\+Q\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback}}
+\index{A\+D\+C\+\_\+\+I\+R\+Q\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback@{A\+D\+C\+\_\+\+I\+R\+Q\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{A\+D\+C\+\_\+\+I\+R\+Q\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback()}{ADC\_IRQ\_Interrupt\_InterruptCallback()}}
+{\footnotesize\ttfamily void A\+D\+C\+\_\+\+I\+R\+Q\+\_\+\+Interrupt\+\_\+\+Interrupt\+Callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Releases the foreground waiting on A\+DC to end. 
+
+Hopefully, this is called when one complete A\+DC cycle, that is all A\+D\+Cs inputs are sampled, is completed. 
+\begin{DoxyParams}{Parameters}
+{\em None,I\+RQ} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing, I\+RQ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_local_peripherals_8c_a8260feb6f477581fda5d66534bf45a96}\label{_local_peripherals_8c_a8260feb6f477581fda5d66534bf45a96}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Local\+Analog\+Copy@{Local\+Analog\+Copy}}
+\index{Local\+Analog\+Copy@{Local\+Analog\+Copy}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Local\+Analog\+Copy()}{LocalAnalogCopy()}}
+{\footnotesize\ttfamily void Local\+Analog\+Copy (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Copies data from the working to the shared array. 
+
+This is a very specific copy routine moved from its previous function to a seperate function to force the compiler to not optimize it in a way that would be problematic.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_local_peripherals_8c_a974704496f19a3eeb19f860043380898}\label{_local_peripherals_8c_a974704496f19a3eeb19f860043380898}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Local\+Analog\+Init@{Local\+Analog\+Init}}
+\index{Local\+Analog\+Init@{Local\+Analog\+Init}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Local\+Analog\+Init()}{LocalAnalogInit()}}
+{\footnotesize\ttfamily void Local\+Analog\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Intialization of the local inputs/outputs -\/ one time only. 
+
+Sets up the software mainly, the hardware is largely configured in the P\+S\+OC Top\+Design.\+cysch file. This is intended to only be called one time and repeat calls could be problematic. 
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_local_peripherals_8c_a4059ac4f5aa4158e221f66980a693c9b}\label{_local_peripherals_8c_a4059ac4f5aa4158e221f66980a693c9b}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Local\+Analog\+Read@{Local\+Analog\+Read}}
+\index{Local\+Analog\+Read@{Local\+Analog\+Read}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Local\+Analog\+Read()}{LocalAnalogRead()}}
+{\footnotesize\ttfamily void Local\+Analog\+Read (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Pulls samples from the A\+DC and puts them a buffer. 
+
+This will pull data from the A\+DC, scales it and centers it about zero in an integer array. To ensure that another task cannot get half converted data, the shared buffer is not updated here but in another procedure and and that is not called until the data is has been processed. Yes, some other task could get data from two sample periods, but as we are talking with human interoperations, it really does not matter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_local_peripherals_8c_aa3dd945c7bf6c879d8c0a0cac61cdc40}\label{_local_peripherals_8c_aa3dd945c7bf6c879d8c0a0cac61cdc40}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Local\+Analog\+Start\+Up@{Local\+Analog\+Start\+Up}}
+\index{Local\+Analog\+Start\+Up@{Local\+Analog\+Start\+Up}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Local\+Analog\+Start\+Up()}{LocalAnalogStartUp()}}
+{\footnotesize\ttfamily void Local\+Analog\+Start\+Up (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes and starts the analog sampling. 
+
+Will setup the A\+DC, though it is already set in the schematic, an then starts the converter on a continous loog of samples
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_local_peripherals_8c_a7bbad3b3b18f713eca074c7fe4dfcce8}\label{_local_peripherals_8c_a7bbad3b3b18f713eca074c7fe4dfcce8}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Local\+Buttons\+Read@{Local\+Buttons\+Read}}
+\index{Local\+Buttons\+Read@{Local\+Buttons\+Read}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Local\+Buttons\+Read()}{LocalButtonsRead()}}
+{\footnotesize\ttfamily void Local\+Buttons\+Read (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Pulls from the digital input register. 
+
+This will pull data from the the digital registers that are connected to buttons and switches. Yes, some other task could get data from two sample periods, but as we are talking with human interoperations, it really does not matter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_local_peripherals_8c_aea3e5f6a2d3eb7e7660f8d3304664184}\label{_local_peripherals_8c_aea3e5f6a2d3eb7e7660f8d3304664184}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Local\+Outputs\+Set@{Local\+Outputs\+Set}}
+\index{Local\+Outputs\+Set@{Local\+Outputs\+Set}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Local\+Outputs\+Set()}{LocalOutputsSet()}}
+{\footnotesize\ttfamily void Local\+Outputs\+Set (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Programs the local indicators with U\+SB host data. 
+
+The U\+SB host sends the data that will get copied to local indicators register.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_local_peripherals_8c_a788b5b3309fa550c192dea65716ef164}\label{_local_peripherals_8c_a788b5b3309fa550c192dea65716ef164}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Local\+Peripherals\+Task@{Local\+Peripherals\+Task}}
+\index{Local\+Peripherals\+Task@{Local\+Peripherals\+Task}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Local\+Peripherals\+Task()}{LocalPeripheralsTask()}}
+{\footnotesize\ttfamily void Local\+Peripherals\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+Free\+R\+T\+OS task to handle peripherals on the P\+S\+OC. 
+
+The standard Free\+R\+T\+OS task, set things up then loop forever.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_local_peripherals_8c_a5c7e5f213cd967bc4e587dfc966d7d25}\label{_local_peripherals_8c_a5c7e5f213cd967bc4e587dfc966d7d25}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Analog\+Scaled@{Analog\+Scaled}}
+\index{Analog\+Scaled@{Analog\+Scaled}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Analog\+Scaled}{AnalogScaled}}
+{\footnotesize\ttfamily volatile int16 Analog\+Scaled\mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_a9c9958c78d8089e67e13e127325f1121}{A\+N\+A\+L\+O\+G\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+\mbox{\Hypertarget{_local_peripherals_8c_a4eb09c353837052b3cc02482aa9545fc}\label{_local_peripherals_8c_a4eb09c353837052b3cc02482aa9545fc}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Analog\+Working@{Analog\+Working}}
+\index{Analog\+Working@{Analog\+Working}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Analog\+Working}{AnalogWorking}}
+{\footnotesize\ttfamily int16 Analog\+Working\mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_a9c9958c78d8089e67e13e127325f1121}{A\+N\+A\+L\+O\+G\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+\mbox{\Hypertarget{_local_peripherals_8c_a3de95bb094b2e552e901ae8feeab92b1}\label{_local_peripherals_8c_a3de95bb094b2e552e901ae8feeab92b1}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Button\+Buffer@{Button\+Buffer}}
+\index{Button\+Buffer@{Button\+Buffer}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Button\+Buffer}{ButtonBuffer}}
+{\footnotesize\ttfamily volatile uint8 Button\+Buffer\mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_af066dd01b4084623c107c8c327603831}{B\+U\+T\+T\+O\+N\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+\mbox{\Hypertarget{_local_peripherals_8c_a54069ac6791651d4bf2621719c691f59}\label{_local_peripherals_8c_a54069ac6791651d4bf2621719c691f59}} 
+\index{Local\+Peripherals.\+c@{Local\+Peripherals.\+c}!Indicator\+Buffer@{Indicator\+Buffer}}
+\index{Indicator\+Buffer@{Indicator\+Buffer}!Local\+Peripherals.\+c@{Local\+Peripherals.\+c}}
+\subsubsection{\texorpdfstring{Indicator\+Buffer}{IndicatorBuffer}}
+{\footnotesize\ttfamily volatile uint8 Indicator\+Buffer}
+
