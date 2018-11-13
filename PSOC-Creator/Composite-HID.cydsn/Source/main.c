@@ -58,6 +58,18 @@ void Setup_System(void)
   Indicators_Write(0xff);    // Turn off all LEDs
 }
 
+/**
+ * @brief Error reporting stream.
+ *
+ * Used for error messages from various points in the code.  
+ * @param Message pointer to the character string used for the error report
+ * @return None
+ * @note - Presently sends a string to the same virtual UART as the CLI console
+ */
+void Err_Rpt( const char *Message ) 
+{
+  CH_PutString(Message);
+}
 
 /**
  * @brief Very little happens in main, .

@@ -23,6 +23,8 @@ void \mbox{\hyperlink{_f_r_c_l_i_library_8c_adc2bcd4282e5f7d7ecc83417ad4535b0}{C
 \begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Init starts the user\textquotesingle{}s comm port. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_f_r_c_l_i_library_8c_a25f3094784cfcf26d741f00c1fa59fb6}{C\+H\+\_\+\+Start\+Up}} (void)
 \begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Start\+Up cleans up the U\+SB if it is configured/recofigured. \end{DoxyCompactList}\item 
+uint8 \mbox{\hyperlink{_f_r_c_l_i_library_8c_a6e92fe33160f42b842178c512e2beee4}{C\+H\+\_\+\+Device\+Ready}} (void)
+\begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Device\+Ready checks for console input. \end{DoxyCompactList}\item 
 uint8 \mbox{\hyperlink{_f_r_c_l_i_library_8c_a35ca51ddad1bb883b0a78deaf11ed87c}{C\+H\+\_\+\+Data\+Is\+Ready}} (void)
 \begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Data\+Is\+Ready checks for console input. \end{DoxyCompactList}\item 
 uint8 \mbox{\hyperlink{_f_r_c_l_i_library_8c_a10ad974b34fd6e4619050e2e3561b00b}{C\+H\+\_\+\+Get\+Char}} (void)
@@ -31,9 +33,9 @@ uint8 \mbox{\hyperlink{_f_r_c_l_i_library_8c_acb2abc5dca193cd408a7524ca303e2a5}{
 \begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Get\+Char\+Wait return the next user byte and will wait if it is not avialible. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_f_r_c_l_i_library_8c_acae4647229860bf00d438b369bac79c3}{C\+H\+\_\+\+Put\+Data}} (const uint8 $\ast$p\+Data, uint16 length)
 \begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Put\+Data puts arbitrary data in the send buffer. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_f_r_c_l_i_library_8c_a0ebbaade0c1be79bc1d5fbbc67823430}{C\+H\+\_\+\+Put\+String}} (const char8 $\ast$string)
+void \mbox{\hyperlink{_f_r_c_l_i_library_8c_aa93a3d707cf3f0f26551aca2d1fcfd09}{C\+H\+\_\+\+Put\+String}} (const char $\ast$string)
 \begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Put\+String puts a character string in the send buffer. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_f_r_c_l_i_library_8c_a0d33ac2880a853dc82e16c8cc195a2dc}{C\+H\+\_\+\+Put\+Char}} (char8 tx\+Data\+Byte)
+void \mbox{\hyperlink{_f_r_c_l_i_library_8c_a1526bb6cce06bc264a9fcee14271bb7a}{C\+H\+\_\+\+Put\+Char}} (char tx\+Data\+Byte)
 \begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Put\+Char puts a single character in the send buffer. \end{DoxyCompactList}\item 
 Base\+Type\+\_\+t \mbox{\hyperlink{_f_r_c_l_i_library_8c_ab3b091b72ebf6e0ebd9b79dd262bebc5}{echo\+Command}} (char $\ast$pc\+Write\+Buffer, size\+\_\+t x\+Write\+Buffer\+Len, const char $\ast$pc\+Command\+String)
 \begin{DoxyCompactList}\small\item\em echo\+Command process an echo command at the C\+LI \end{DoxyCompactList}\item 
@@ -50,7 +52,7 @@ Support library and port of C\+LI task to Cypress P\+S\+OC 5\+LP.
 Mike Mc\+Cormack (nbxmike) 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
-8/\+O\+C\+T/2018 Support library for the Free\+R\+T\+OS command line interpreter and port of their C\+LI task to Cypress P\+S\+OC 5\+LP. All the C\+H\+\_\+xxx deal with the C\+LI Human interface device. This will typically be a real or virtual U\+A\+RT device; here it is a U\+SB virtual U\+A\+RT. 
+8/\+O\+C\+T/2018 Support library for the Free\+R\+T\+OS command line interpreter and port of their C\+LI task to Cypress P\+S\+OC 5\+LP. All the C\+H\+\_\+xxx deal with the C\+LI Human interface device. This will typically be a real or virtual U\+A\+RT device; for the present build it is a U\+SB virtual U\+A\+RT (C\+DC device). 
 \end{DoxyDate}
 
 
@@ -65,7 +67,17 @@ Mike Mc\+Cormack (nbxmike)
 
 C\+H\+\_\+\+Data\+Is\+Ready checks for console input. 
 
-C\+H\+\_\+\+Data\+Is\+Ready looks to see if there is user input in the device buffer. In this implementation, it also checks if the U\+SB has be reset by the host and if so will run the init routine. \mbox{\Hypertarget{_f_r_c_l_i_library_8c_a10ad974b34fd6e4619050e2e3561b00b}\label{_f_r_c_l_i_library_8c_a10ad974b34fd6e4619050e2e3561b00b}} 
+C\+H\+\_\+\+Data\+Is\+Ready looks to see if there is user input in the device buffer. In this implementation, it also checks if the U\+SB has be reset by the host and if so will run the init routine. \mbox{\Hypertarget{_f_r_c_l_i_library_8c_a6e92fe33160f42b842178c512e2beee4}\label{_f_r_c_l_i_library_8c_a6e92fe33160f42b842178c512e2beee4}} 
+\index{F\+R\+C\+L\+I\+Library.\+c@{F\+R\+C\+L\+I\+Library.\+c}!C\+H\+\_\+\+Device\+Ready@{C\+H\+\_\+\+Device\+Ready}}
+\index{C\+H\+\_\+\+Device\+Ready@{C\+H\+\_\+\+Device\+Ready}!F\+R\+C\+L\+I\+Library.\+c@{F\+R\+C\+L\+I\+Library.\+c}}
+\subsubsection{\texorpdfstring{C\+H\+\_\+\+Device\+Ready()}{CH\_DeviceReady()}}
+{\footnotesize\ttfamily uint8 C\+H\+\_\+\+Device\+Ready (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+C\+H\+\_\+\+Device\+Ready checks for console input. 
+
+C\+H\+\_\+\+Device\+Ready returns zero unless the system has completed initialization of the C\+LI Human interface device. This does not configure the device, it merely checks status. It is needed to ensure that virtual U\+A\+R\+Ts are started on the host side of a U\+SB C\+DC device, if a harware U\+A\+RT is used then this could be replaced with a macro which always returns 1 (unless there is some error checking or protocol handshake that needs to get done.) \mbox{\Hypertarget{_f_r_c_l_i_library_8c_a10ad974b34fd6e4619050e2e3561b00b}\label{_f_r_c_l_i_library_8c_a10ad974b34fd6e4619050e2e3561b00b}} 
 \index{F\+R\+C\+L\+I\+Library.\+c@{F\+R\+C\+L\+I\+Library.\+c}!C\+H\+\_\+\+Get\+Char@{C\+H\+\_\+\+Get\+Char}}
 \index{C\+H\+\_\+\+Get\+Char@{C\+H\+\_\+\+Get\+Char}!F\+R\+C\+L\+I\+Library.\+c@{F\+R\+C\+L\+I\+Library.\+c}}
 \subsubsection{\texorpdfstring{C\+H\+\_\+\+Get\+Char()}{CH\_GetChar()}}
@@ -95,11 +107,11 @@ C\+H\+\_\+\+Get\+Char\+Wait will return the next byte form the user input in the
 
 C\+H\+\_\+\+Init starts the user\textquotesingle{}s comm port. 
 
-C\+H\+\_\+\+Init will start the interface and clear and data that was present before it begins. Typically there will be nothing as this should start at power up, but just in case . . . \mbox{\Hypertarget{_f_r_c_l_i_library_8c_a0d33ac2880a853dc82e16c8cc195a2dc}\label{_f_r_c_l_i_library_8c_a0d33ac2880a853dc82e16c8cc195a2dc}} 
+C\+H\+\_\+\+Init will start the interface and clear and data that was present before it begins. Typically there will be nothing as this should start at power up, but just in case . . . \mbox{\Hypertarget{_f_r_c_l_i_library_8c_a1526bb6cce06bc264a9fcee14271bb7a}\label{_f_r_c_l_i_library_8c_a1526bb6cce06bc264a9fcee14271bb7a}} 
 \index{F\+R\+C\+L\+I\+Library.\+c@{F\+R\+C\+L\+I\+Library.\+c}!C\+H\+\_\+\+Put\+Char@{C\+H\+\_\+\+Put\+Char}}
 \index{C\+H\+\_\+\+Put\+Char@{C\+H\+\_\+\+Put\+Char}!F\+R\+C\+L\+I\+Library.\+c@{F\+R\+C\+L\+I\+Library.\+c}}
 \subsubsection{\texorpdfstring{C\+H\+\_\+\+Put\+Char()}{CH\_PutChar()}}
-{\footnotesize\ttfamily void C\+H\+\_\+\+Put\+Char (\begin{DoxyParamCaption}\item[{char8}]{tx\+Data\+Byte }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void C\+H\+\_\+\+Put\+Char (\begin{DoxyParamCaption}\item[{char}]{tx\+Data\+Byte }\end{DoxyParamCaption})}
 
 
 
@@ -115,11 +127,11 @@ C\+H\+\_\+\+Put\+Char will put a single character into the output buffer of the 
 
 C\+H\+\_\+\+Put\+Data puts arbitrary data in the send buffer. 
 
-C\+H\+\_\+\+Put\+Data will put any bytes in the output buffer of the user interface device. The number of bytes to send must be specified. For null terminated strings C\+H\+\_\+\+Put\+String is a more friendly call. In this implementation, it also checks if the U\+SB has been reset by the host and if so will run the U\+SB init routine. \mbox{\Hypertarget{_f_r_c_l_i_library_8c_a0ebbaade0c1be79bc1d5fbbc67823430}\label{_f_r_c_l_i_library_8c_a0ebbaade0c1be79bc1d5fbbc67823430}} 
+C\+H\+\_\+\+Put\+Data will put any bytes in the output buffer of the user interface device. The number of bytes to send must be specified. For null terminated strings C\+H\+\_\+\+Put\+String is a more friendly call. In this implementation, it also checks if the U\+SB has been reset by the host and if so will run the U\+SB init routine. \mbox{\Hypertarget{_f_r_c_l_i_library_8c_aa93a3d707cf3f0f26551aca2d1fcfd09}\label{_f_r_c_l_i_library_8c_aa93a3d707cf3f0f26551aca2d1fcfd09}} 
 \index{F\+R\+C\+L\+I\+Library.\+c@{F\+R\+C\+L\+I\+Library.\+c}!C\+H\+\_\+\+Put\+String@{C\+H\+\_\+\+Put\+String}}
 \index{C\+H\+\_\+\+Put\+String@{C\+H\+\_\+\+Put\+String}!F\+R\+C\+L\+I\+Library.\+c@{F\+R\+C\+L\+I\+Library.\+c}}
 \subsubsection{\texorpdfstring{C\+H\+\_\+\+Put\+String()}{CH\_PutString()}}
-{\footnotesize\ttfamily void C\+H\+\_\+\+Put\+String (\begin{DoxyParamCaption}\item[{const char8 $\ast$}]{string }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void C\+H\+\_\+\+Put\+String (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string }\end{DoxyParamCaption})}
 
 
 

@@ -87,33 +87,53 @@ $(document).ready(function(){initNavTree('globals_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">globals.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>Universally used prototypes and constants.  
+<a href="#details">More...</a></p>
+
 <p><a href="globals_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a75752e5a5fb654e32e183c194cc5b2f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a75752e5a5fb654e32e183c194cc5b2f2">USB_UNSET</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a75752e5a5fb654e32e183c194cc5b2f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">USB is starting or reset.  <a href="#a75752e5a5fb654e32e183c194cc5b2f2">More...</a><br /></td></tr>
 <tr class="separator:a75752e5a5fb654e32e183c194cc5b2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa334566ac4c3eb8eba51c575d65d2653"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#aa334566ac4c3eb8eba51c575d65d2653">USB_INITIALIZED</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:aa334566ac4c3eb8eba51c575d65d2653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Host has initialized the USB.  <a href="#aa334566ac4c3eb8eba51c575d65d2653">More...</a><br /></td></tr>
 <tr class="separator:aa334566ac4c3eb8eba51c575d65d2653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a952adebc6e2aa0120c30f05bbf7bbde0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a952adebc6e2aa0120c30f05bbf7bbde0">USB_RECONFIGURED</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a952adebc6e2aa0120c30f05bbf7bbde0"><td class="mdescLeft">&#160;</td><td class="mdescRight">There was an intial or re configuration.  <a href="#a952adebc6e2aa0120c30f05bbf7bbde0">More...</a><br /></td></tr>
 <tr class="separator:a952adebc6e2aa0120c30f05bbf7bbde0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a285a341d16a041a990d35495e6c58f09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a285a341d16a041a990d35495e6c58f09">Err_Rpt</a> (const char *)</td></tr>
+<tr class="memdesc:a285a341d16a041a990d35495e6c58f09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error reporting stream.  <a href="#a285a341d16a041a990d35495e6c58f09">More...</a><br /></td></tr>
+<tr class="separator:a285a341d16a041a990d35495e6c58f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a62852698eb538cd574dd3c16273254be"><td class="memItemLeft" align="right" valign="top">volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a62852698eb538cd574dd3c16273254be">USBConfigurationCDC</a></td></tr>
+<tr class="memdesc:a62852698eb538cd574dd3c16273254be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual UART USB configuration status.  <a href="#a62852698eb538cd574dd3c16273254be">More...</a><br /></td></tr>
 <tr class="separator:a62852698eb538cd574dd3c16273254be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5925bf50acc955d850ef1eda9a5c49c6"><td class="memItemLeft" align="right" valign="top">volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a5925bf50acc955d850ef1eda9a5c49c6">USBConfigurationHID</a></td></tr>
+<tr class="memdesc:a5925bf50acc955d850ef1eda9a5c49c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">USB game controller configuration status.  <a href="#a5925bf50acc955d850ef1eda9a5c49c6">More...</a><br /></td></tr>
 <tr class="separator:a5925bf50acc955d850ef1eda9a5c49c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af48c99f864ba8e7a88678854556d874c"><td class="memItemLeft" align="right" valign="top">volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#af48c99f864ba8e7a88678854556d874c">USBConfigurationHost</a></td></tr>
+<tr class="memdesc:af48c99f864ba8e7a88678854556d874c"><td class="mdescLeft">&#160;</td><td class="mdescRight">USB EP0 configuration status.  <a href="#af48c99f864ba8e7a88678854556d874c">More...</a><br /></td></tr>
 <tr class="separator:af48c99f864ba8e7a88678854556d874c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Universally used prototypes and constants. </p>
+<dl class="section author"><dt>Author</dt><dd>Mike McCormack (nbxmike) </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>8/OCT/2018 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aa334566ac4c3eb8eba51c575d65d2653"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa334566ac4c3eb8eba51c575d65d2653">&#9670;&nbsp;</a></span>USB_INITIALIZED</h2>
 
@@ -125,6 +145,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Host has initialized the USB. </p>
 
 </div>
 </div>
@@ -140,6 +162,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>There was an intial or re configuration. </p>
+
 </div>
 </div>
 <a id="a75752e5a5fb654e32e183c194cc5b2f2"></a>
@@ -153,6 +177,38 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>USB is starting or reset. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a285a341d16a041a990d35495e6c58f09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a285a341d16a041a990d35495e6c58f09">&#9670;&nbsp;</a></span>Err_Rpt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Err_Rpt </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>Message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Error reporting stream. </p>
+<p>Used for error messages from various points in the code. <br />
+</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Message</td><td>pointer to the character string used for the error report </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>- Presently sends a string to the same virtual UART as the CLI console </dd></dl>
 
 </div>
 </div>
@@ -169,6 +225,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Virtual UART USB configuration status. </p>
+
 </div>
 </div>
 <a id="a5925bf50acc955d850ef1eda9a5c49c6"></a>
@@ -183,6 +241,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>USB game controller configuration status. </p>
+
 </div>
 </div>
 <a id="af48c99f864ba8e7a88678854556d874c"></a>
@@ -196,6 +256,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>USB EP0 configuration status. </p>
 
 </div>
 </div>

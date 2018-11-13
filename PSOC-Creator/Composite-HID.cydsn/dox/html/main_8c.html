@@ -110,6 +110,9 @@ Functions</h2></td></tr>
 <tr class="memitem:af7f3bb21276d9d05ee77ed52609d69b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#af7f3bb21276d9d05ee77ed52609d69b9">Setup_System</a> (void)</td></tr>
 <tr class="memdesc:af7f3bb21276d9d05ee77ed52609d69b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up things by calling all init functions.  <a href="#af7f3bb21276d9d05ee77ed52609d69b9">More...</a><br /></td></tr>
 <tr class="separator:af7f3bb21276d9d05ee77ed52609d69b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a7434cea730c970e3c4d192616eb61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a57a7434cea730c970e3c4d192616eb61">Err_Rpt</a> (const char *Message)</td></tr>
+<tr class="memdesc:a57a7434cea730c970e3c4d192616eb61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error reporting stream.  <a href="#a57a7434cea730c970e3c4d192616eb61">More...</a><br /></td></tr>
+<tr class="separator:a57a7434cea730c970e3c4d192616eb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Very little happens in main, .  <a href="#a840291bc02cba5474a4cb46a9b9566fe">More...</a><br /></td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,10 +120,13 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:af48c99f864ba8e7a88678854556d874c"><td class="memItemLeft" align="right" valign="top">volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#af48c99f864ba8e7a88678854556d874c">USBConfigurationHost</a> = <a class="el" href="globals_8h.html#a75752e5a5fb654e32e183c194cc5b2f2">USB_UNSET</a></td></tr>
+<tr class="memdesc:af48c99f864ba8e7a88678854556d874c"><td class="mdescLeft">&#160;</td><td class="mdescRight">USB EP0 configuration status.  <a href="#af48c99f864ba8e7a88678854556d874c">More...</a><br /></td></tr>
 <tr class="separator:af48c99f864ba8e7a88678854556d874c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62852698eb538cd574dd3c16273254be"><td class="memItemLeft" align="right" valign="top">volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a62852698eb538cd574dd3c16273254be">USBConfigurationCDC</a> = <a class="el" href="globals_8h.html#a75752e5a5fb654e32e183c194cc5b2f2">USB_UNSET</a></td></tr>
+<tr class="memdesc:a62852698eb538cd574dd3c16273254be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual UART USB configuration status.  <a href="#a62852698eb538cd574dd3c16273254be">More...</a><br /></td></tr>
 <tr class="separator:a62852698eb538cd574dd3c16273254be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5925bf50acc955d850ef1eda9a5c49c6"><td class="memItemLeft" align="right" valign="top">volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a5925bf50acc955d850ef1eda9a5c49c6">USBConfigurationHID</a> = <a class="el" href="globals_8h.html#a75752e5a5fb654e32e183c194cc5b2f2">USB_UNSET</a></td></tr>
+<tr class="memdesc:a5925bf50acc955d850ef1eda9a5c49c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">USB game controller configuration status.  <a href="#a5925bf50acc955d850ef1eda9a5c49c6">More...</a><br /></td></tr>
 <tr class="separator:a5925bf50acc955d850ef1eda9a5c49c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -128,6 +134,35 @@ Variables</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Mike McCormack (nbxmike) </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>8/OCT/2018 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a57a7434cea730c970e3c4d192616eb61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57a7434cea730c970e3c4d192616eb61">&#9670;&nbsp;</a></span>Err_Rpt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Err_Rpt </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>Message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Error reporting stream. </p>
+<p>Used for error messages from various points in the code. <br />
+</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Message</td><td>pointer to the character string used for the error report </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>- Presently sends a string to the same virtual UART as the CLI console </dd></dl>
+
+</div>
+</div>
 <a id="a840291bc02cba5474a4cb46a9b9566fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -197,6 +232,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Virtual UART USB configuration status. </p>
+
 </div>
 </div>
 <a id="a5925bf50acc955d850ef1eda9a5c49c6"></a>
@@ -211,6 +248,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>USB game controller configuration status. </p>
+
 </div>
 </div>
 <a id="af48c99f864ba8e7a88678854556d874c"></a>
@@ -224,6 +263,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>USB EP0 configuration status. </p>
 
 </div>
 </div>

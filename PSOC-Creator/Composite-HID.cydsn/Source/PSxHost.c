@@ -35,16 +35,16 @@
 #include "timers.h"
 #include "semphr.h"
 #include "FRSupport.h"
-
+#include "globals.h"
 
 uint8 PSxOutBuffer[PSx_MAX_MESSAGE];
 uint8 PSxInBuffer[PSx_MAX_MESSAGE];
 uint8 PSxXfrBuffer[PSx_MAX_MESSAGE];
 int   Feedback0, Feedback1;
 
-static uint8 ACK_Reg_Save;
-static ControllerInstance PSxControllerType;
-static TickType_t xLastTransactionTime;
+static volatile uint8 ACK_Reg_Save;           //!< flag from ISR indicating ACK was received
+static ControllerInstance PSxControllerType;  //!< Keeps controller information after i is found
+static TickType_t xLastTransactionTime;       //!< Used to pace the PSx transacions
 
 
 /**
@@ -152,6 +152,14 @@ int PSxTrasnferByte(uint8 Out, uint8 *In, int Wait)
   int rx_stat;
   int wait_loops = 0;
 
+  rx_stat = PSx_SPI_GetRxBufferSize();
+  while (rx_stat == 0)
+  {
+    PSx_SPI_ReadRxData();
+    rx_stat = PSx_SPI_GetRxBufferSize();
+    Err_Rpt("PSx SPI input buffer contained data before transfer started\r\n");
+  }
+
   ACK_Reg_Save = 0;
   PSx_SPI_WriteTxData(Out);
   
@@ -165,7 +173,15 @@ int PSxTrasnferByte(uint8 Out, uint8 *In, int Wait)
       return 0;
     }
   }
-  *In = (uint8) PSx_SPI_ReadRxData();
+  if  (rx_stat != 0)
+  {
+    *In = PSx_SPI_ReadRxData();
+  }
+  else
+  {
+    *In = 0xff;
+    Err_Rpt("PSx SPI never completed\r\n");
+  }
 
   if ( Wait !=0 )
   {

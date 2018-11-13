@@ -19,17 +19,19 @@ The startup of the P\+S\+OC.
 \item 
 void \mbox{\hyperlink{main_8c_af7f3bb21276d9d05ee77ed52609d69b9}{Setup\+\_\+\+System}} (void)
 \begin{DoxyCompactList}\small\item\em Sets up things by calling all init functions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a57a7434cea730c970e3c4d192616eb61}{Err\+\_\+\+Rpt}} (const char $\ast$Message)
+\begin{DoxyCompactList}\small\item\em Error reporting stream. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
 \begin{DoxyCompactList}\small\item\em Very little happens in main, . \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 volatile int \mbox{\hyperlink{main_8c_af48c99f864ba8e7a88678854556d874c}{U\+S\+B\+Configuration\+Host}} = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}
-\item 
+\begin{DoxyCompactList}\small\item\em U\+SB E\+P0 configuration status. \end{DoxyCompactList}\item 
 volatile int \mbox{\hyperlink{main_8c_a62852698eb538cd574dd3c16273254be}{U\+S\+B\+Configuration\+C\+DC}} = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}
-\item 
+\begin{DoxyCompactList}\small\item\em Virtual U\+A\+RT U\+SB configuration status. \end{DoxyCompactList}\item 
 volatile int \mbox{\hyperlink{main_8c_a5925bf50acc955d850ef1eda9a5c49c6}{U\+S\+B\+Configuration\+H\+ID}} = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em U\+SB game controller configuration status. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -44,6 +46,28 @@ Mike Mc\+Cormack (nbxmike)
 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a57a7434cea730c970e3c4d192616eb61}\label{main_8c_a57a7434cea730c970e3c4d192616eb61}} 
+\index{main.\+c@{main.\+c}!Err\+\_\+\+Rpt@{Err\+\_\+\+Rpt}}
+\index{Err\+\_\+\+Rpt@{Err\+\_\+\+Rpt}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{Err\+\_\+\+Rpt()}{Err\_Rpt()}}
+{\footnotesize\ttfamily void Err\+\_\+\+Rpt (\begin{DoxyParamCaption}\item[{const char $\ast$}]{Message }\end{DoxyParamCaption})}
+
+
+
+Error reporting stream. 
+
+Used for error messages from various points in the code. ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em Message} & pointer to the character string used for the error report \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+-\/ Presently sends a string to the same virtual U\+A\+RT as the C\+LI console 
+\end{DoxyNote}
 \mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
 \index{main.\+c@{main.\+c}!main@{main}}
 \index{main@{main}!main.\+c@{main.\+c}}
@@ -93,15 +117,27 @@ None
 \subsubsection{\texorpdfstring{U\+S\+B\+Configuration\+C\+DC}{USBConfigurationCDC}}
 {\footnotesize\ttfamily volatile int U\+S\+B\+Configuration\+C\+DC = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}}
 
+
+
+Virtual U\+A\+RT U\+SB configuration status. 
+
 \mbox{\Hypertarget{main_8c_a5925bf50acc955d850ef1eda9a5c49c6}\label{main_8c_a5925bf50acc955d850ef1eda9a5c49c6}} 
 \index{main.\+c@{main.\+c}!U\+S\+B\+Configuration\+H\+ID@{U\+S\+B\+Configuration\+H\+ID}}
 \index{U\+S\+B\+Configuration\+H\+ID@{U\+S\+B\+Configuration\+H\+ID}!main.\+c@{main.\+c}}
 \subsubsection{\texorpdfstring{U\+S\+B\+Configuration\+H\+ID}{USBConfigurationHID}}
 {\footnotesize\ttfamily volatile int U\+S\+B\+Configuration\+H\+ID = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}}
 
+
+
+U\+SB game controller configuration status. 
+
 \mbox{\Hypertarget{main_8c_af48c99f864ba8e7a88678854556d874c}\label{main_8c_af48c99f864ba8e7a88678854556d874c}} 
 \index{main.\+c@{main.\+c}!U\+S\+B\+Configuration\+Host@{U\+S\+B\+Configuration\+Host}}
 \index{U\+S\+B\+Configuration\+Host@{U\+S\+B\+Configuration\+Host}!main.\+c@{main.\+c}}
 \subsubsection{\texorpdfstring{U\+S\+B\+Configuration\+Host}{USBConfigurationHost}}
 {\footnotesize\ttfamily volatile int U\+S\+B\+Configuration\+Host = \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}}
+
+
+
+U\+SB E\+P0 configuration status. 
 

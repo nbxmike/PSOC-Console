@@ -118,6 +118,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a2e8138fdff57d98ef8802a40a59d98b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_r_c_l_i_library_8h.html#a2e8138fdff57d98ef8802a40a59d98b4">cliTask</a> (void *arg)</td></tr>
 <tr class="memdesc:a2e8138fdff57d98ef8802a40a59d98b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cliTask task which invokes the FreeRTOS CLI engine  <a href="#a2e8138fdff57d98ef8802a40a59d98b4">More...</a><br /></td></tr>
 <tr class="separator:a2e8138fdff57d98ef8802a40a59d98b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa93a3d707cf3f0f26551aca2d1fcfd09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_r_c_l_i_library_8h.html#aa93a3d707cf3f0f26551aca2d1fcfd09">CH_PutString</a> (const char *string)</td></tr>
+<tr class="memdesc:aa93a3d707cf3f0f26551aca2d1fcfd09"><td class="mdescLeft">&#160;</td><td class="mdescRight">CH_PutString puts a character string in the send buffer.  <a href="#aa93a3d707cf3f0f26551aca2d1fcfd09">More...</a><br /></td></tr>
+<tr class="separator:aa93a3d707cf3f0f26551aca2d1fcfd09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Constants and protorype related to the FreeRTOS CLI. </p>
@@ -185,6 +188,27 @@ Functions</h2></td></tr>
 
 <p>CH_Init starts the user's comm port. </p>
 <p>CH_Init will start the interface and clear and data that was present before it begins. Typically there will be nothing as this should start at power up, but just in case . . . </p>
+
+</div>
+</div>
+<a id="aa93a3d707cf3f0f26551aca2d1fcfd09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa93a3d707cf3f0f26551aca2d1fcfd09">&#9670;&nbsp;</a></span>CH_PutString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CH_PutString </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>CH_PutString puts a character string in the send buffer. </p>
+<p>CH_PutString will put a null terminated string into the output buffer of the user interface device. For arbitrary byte which may include zeros, CH_PutData is the proper interface call. In this implementation, it also checks if the USB has been reset by the host and if so will run the USB init routine. </p>
 
 </div>
 </div>

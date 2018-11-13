@@ -34,10 +34,10 @@
 #include <project.h>
 #include "USBJoystick.h"
   
-#define SAMPLE_PERIOD 5
+#define SAMPLE_PERIOD 5    //!< Number of millaseconds to wait for samples to complete
   
-extern int16 AnalogWorking[ANALOG_SIZE];         /* ADC measurements in process       */
-volatile extern int16 AnalogScaled[ANALOG_SIZE]; /* Scaled, centered ADC measurements */
+extern int16 AnalogWorking[ANALOG_SIZE];         //!< ADC measurements in process
+volatile extern int16 AnalogScaled[ANALOG_SIZE]; //!< Scaled, centered ADC measurements
 
 extern void LocalAnalogStartUp(void);     /* Setup for the local analog and digital IO  */
 extern void LocalAnalogInit(void);        /* Setup and task creation - one time only    */

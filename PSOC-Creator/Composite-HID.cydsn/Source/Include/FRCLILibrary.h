@@ -30,7 +30,7 @@
 
 #ifndef FRCLILIBRARY
 #define FRCLILIBRARY
-
+  
 #define CLI_MAX_INPUT	  50
 #define CLI_MAX_OUTPUT	128
 #define START_MESSAGE   "Doctor Livingstone, I presume?\n"
@@ -38,6 +38,8 @@
 extern void CH_Init(void);
 extern int  CH_StartUp(void);
 extern void cliTask(void *arg);
+extern void CH_PutString(const char *string);
+
 
 #endif
 /* [] END OF FILE */

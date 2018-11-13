@@ -49,9 +49,9 @@
 
 
 
-static int8 USB_Input_Data[ANALOG_SIZE + BUTTON_SIZE];  /* USB data to send to the PC */
-static uint8 USB_Output_Data[OUTPUT_SIZE];              /* USB data received from the PC */
-static int sJoy_Startup = USB_UNSET;
+static int8  USB_Input_Data[ANALOG_SIZE + BUTTON_SIZE];  /* USB data to send to the PC */
+static uint8 USB_Output_Data[OUTPUT_SIZE];               /* USB data received from the PC */
+static int   sJoy_Startup = USB_UNSET;
 
 
 /** @brief USBFS_EP_4_ISR_EntryCallback ISR hook for Joystick.

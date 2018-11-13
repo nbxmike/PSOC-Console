@@ -21,21 +21,21 @@ void \mbox{\hyperlink{_f_r_support_8c_a333fc78894b665db668d77c4817b9430}{Blinky\
 \begin{DoxyCompactItemize}
 \item 
 volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a605426fd4d8ead54df17faabb5954e78}{x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore}} = N\+U\+LL
-\item 
+\begin{DoxyCompactList}\small\item\em Freed on controller A\+CK recived. \end{DoxyCompactList}\item 
 volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a7db0980df6cc217321f8d043d81e0b9f}{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore}} = N\+U\+LL
-\item 
+\begin{DoxyCompactList}\small\item\em Freed on S\+PI byte complete. \end{DoxyCompactList}\item 
 volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a0cde37f65efd375aa3a8851811dcc753}{x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore}} = N\+U\+LL
-\item 
+\begin{DoxyCompactList}\small\item\em Held the entire P\+Sx transaction. \end{DoxyCompactList}\item 
 volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_ac4da3cdb73712f9034cb2d7863adb63b}{x\+C\+H\+\_\+\+Semaphore}} = N\+U\+LL
-\item 
+\begin{DoxyCompactList}\small\item\em Freed when data is in the U\+A\+RT. \end{DoxyCompactList}\item 
 volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a7b6d2152769213d6658c118758e09172}{x\+Analog\+\_\+\+Semaphore}} = N\+U\+LL
-\item 
+\begin{DoxyCompactList}\small\item\em Freed when sampling completed. \end{DoxyCompactList}\item 
 volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_af01483c52e4a0b4c8b40395d3f30d86d}{x\+U\+S\+B\+Host\+\_\+\+Semaphore}} = N\+U\+LL
-\item 
+\begin{DoxyCompactList}\small\item\em Freed when something happens to U\+SB E\+P0. \end{DoxyCompactList}\item 
 volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a1f09a8e52e14001b3d52a86f36ff2115}{x\+U\+S\+B\+Config\+\_\+\+Semaphore}} = N\+U\+LL
-\item 
+\begin{DoxyCompactList}\small\item\em Held when changing the U\+SB status byte. \end{DoxyCompactList}\item 
 volatile Semaphore\+Handle\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a57afb1b1cddf97e0eac2d2cfa36e09cf}{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore}} = N\+U\+LL
-\item 
+\begin{DoxyCompactList}\small\item\em Freed when something happens to U\+SB H\+ID E\+Ps. \end{DoxyCompactList}\item 
 Tick\+Type\+\_\+t \mbox{\hyperlink{_f_r_support_8c_a8b9e7a0dfa50dfd57749349b1a964013}{Blinky\+Wake\+Time}}
 \end{DoxyCompactItemize}
 
@@ -87,11 +87,19 @@ F\+R\+Init initializes the interrupt hooks needed by Free\+R\+T\+OS and also cre
 \subsubsection{\texorpdfstring{x\+Analog\+\_\+\+Semaphore}{xAnalog\_Semaphore}}
 {\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+Analog\+\_\+\+Semaphore = N\+U\+LL}
 
+
+
+Freed when sampling completed. 
+
 \mbox{\Hypertarget{_f_r_support_8c_ac4da3cdb73712f9034cb2d7863adb63b}\label{_f_r_support_8c_ac4da3cdb73712f9034cb2d7863adb63b}} 
 \index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+C\+H\+\_\+\+Semaphore@{x\+C\+H\+\_\+\+Semaphore}}
 \index{x\+C\+H\+\_\+\+Semaphore@{x\+C\+H\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
 \subsubsection{\texorpdfstring{x\+C\+H\+\_\+\+Semaphore}{xCH\_Semaphore}}
 {\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+C\+H\+\_\+\+Semaphore = N\+U\+LL}
+
+
+
+Freed when data is in the U\+A\+RT. 
 
 \mbox{\Hypertarget{_f_r_support_8c_a605426fd4d8ead54df17faabb5954e78}\label{_f_r_support_8c_a605426fd4d8ead54df17faabb5954e78}} 
 \index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore}}
@@ -99,11 +107,19 @@ F\+R\+Init initializes the interrupt hooks needed by Free\+R\+T\+OS and also cre
 \subsubsection{\texorpdfstring{x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore}{xPSx\_ACK\_Semaphore}}
 {\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+P\+Sx\+\_\+\+A\+C\+K\+\_\+\+Semaphore = N\+U\+LL}
 
+
+
+Freed on controller A\+CK recived. 
+
 \mbox{\Hypertarget{_f_r_support_8c_a7db0980df6cc217321f8d043d81e0b9f}\label{_f_r_support_8c_a7db0980df6cc217321f8d043d81e0b9f}} 
 \index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore}}
 \index{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
 \subsubsection{\texorpdfstring{x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore}{xPSx\_SPI\_Semaphore}}
 {\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+P\+Sx\+\_\+\+S\+P\+I\+\_\+\+Semaphore = N\+U\+LL}
+
+
+
+Freed on S\+PI byte complete. 
 
 \mbox{\Hypertarget{_f_r_support_8c_a0cde37f65efd375aa3a8851811dcc753}\label{_f_r_support_8c_a0cde37f65efd375aa3a8851811dcc753}} 
 \index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore@{x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore}}
@@ -111,11 +127,19 @@ F\+R\+Init initializes the interrupt hooks needed by Free\+R\+T\+OS and also cre
 \subsubsection{\texorpdfstring{x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore}{xPSx\_XFR\_Semaphore}}
 {\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+P\+Sx\+\_\+\+X\+F\+R\+\_\+\+Semaphore = N\+U\+LL}
 
+
+
+Held the entire P\+Sx transaction. 
+
 \mbox{\Hypertarget{_f_r_support_8c_a1f09a8e52e14001b3d52a86f36ff2115}\label{_f_r_support_8c_a1f09a8e52e14001b3d52a86f36ff2115}} 
 \index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+U\+S\+B\+Config\+\_\+\+Semaphore@{x\+U\+S\+B\+Config\+\_\+\+Semaphore}}
 \index{x\+U\+S\+B\+Config\+\_\+\+Semaphore@{x\+U\+S\+B\+Config\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
 \subsubsection{\texorpdfstring{x\+U\+S\+B\+Config\+\_\+\+Semaphore}{xUSBConfig\_Semaphore}}
 {\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+U\+S\+B\+Config\+\_\+\+Semaphore = N\+U\+LL}
+
+
+
+Held when changing the U\+SB status byte. 
 
 \mbox{\Hypertarget{_f_r_support_8c_af01483c52e4a0b4c8b40395d3f30d86d}\label{_f_r_support_8c_af01483c52e4a0b4c8b40395d3f30d86d}} 
 \index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+U\+S\+B\+Host\+\_\+\+Semaphore@{x\+U\+S\+B\+Host\+\_\+\+Semaphore}}
@@ -123,9 +147,17 @@ F\+R\+Init initializes the interrupt hooks needed by Free\+R\+T\+OS and also cre
 \subsubsection{\texorpdfstring{x\+U\+S\+B\+Host\+\_\+\+Semaphore}{xUSBHost\_Semaphore}}
 {\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+U\+S\+B\+Host\+\_\+\+Semaphore = N\+U\+LL}
 
+
+
+Freed when something happens to U\+SB E\+P0. 
+
 \mbox{\Hypertarget{_f_r_support_8c_a57afb1b1cddf97e0eac2d2cfa36e09cf}\label{_f_r_support_8c_a57afb1b1cddf97e0eac2d2cfa36e09cf}} 
 \index{F\+R\+Support.\+c@{F\+R\+Support.\+c}!x\+U\+S\+B\+Joystick\+\_\+\+Semaphore@{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore}}
 \index{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore@{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore}!F\+R\+Support.\+c@{F\+R\+Support.\+c}}
 \subsubsection{\texorpdfstring{x\+U\+S\+B\+Joystick\+\_\+\+Semaphore}{xUSBJoystick\_Semaphore}}
 {\footnotesize\ttfamily volatile Semaphore\+Handle\+\_\+t x\+U\+S\+B\+Joystick\+\_\+\+Semaphore = N\+U\+LL}
+
+
+
+Freed when something happens to U\+SB H\+ID E\+Ps. 
 

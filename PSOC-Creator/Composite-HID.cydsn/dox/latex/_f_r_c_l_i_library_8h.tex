@@ -22,7 +22,9 @@ void \mbox{\hyperlink{_f_r_c_l_i_library_8h_adc2bcd4282e5f7d7ecc83417ad4535b0}{C
 int \mbox{\hyperlink{_f_r_c_l_i_library_8h_a25f3094784cfcf26d741f00c1fa59fb6}{C\+H\+\_\+\+Start\+Up}} (void)
 \begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Start\+Up cleans up the U\+SB if it is configured/recofigured. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_f_r_c_l_i_library_8h_a2e8138fdff57d98ef8802a40a59d98b4}{cli\+Task}} (void $\ast$arg)
-\begin{DoxyCompactList}\small\item\em cli\+Task task which invokes the Free\+R\+T\+OS C\+LI engine \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em cli\+Task task which invokes the Free\+R\+T\+OS C\+LI engine \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_f_r_c_l_i_library_8h_aa93a3d707cf3f0f26551aca2d1fcfd09}{C\+H\+\_\+\+Put\+String}} (const char $\ast$string)
+\begin{DoxyCompactList}\small\item\em C\+H\+\_\+\+Put\+String puts a character string in the send buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -68,7 +70,17 @@ Mike Mc\+Cormack (nbxmike)
 
 C\+H\+\_\+\+Init starts the user\textquotesingle{}s comm port. 
 
-C\+H\+\_\+\+Init will start the interface and clear and data that was present before it begins. Typically there will be nothing as this should start at power up, but just in case . . . \mbox{\Hypertarget{_f_r_c_l_i_library_8h_a25f3094784cfcf26d741f00c1fa59fb6}\label{_f_r_c_l_i_library_8h_a25f3094784cfcf26d741f00c1fa59fb6}} 
+C\+H\+\_\+\+Init will start the interface and clear and data that was present before it begins. Typically there will be nothing as this should start at power up, but just in case . . . \mbox{\Hypertarget{_f_r_c_l_i_library_8h_aa93a3d707cf3f0f26551aca2d1fcfd09}\label{_f_r_c_l_i_library_8h_aa93a3d707cf3f0f26551aca2d1fcfd09}} 
+\index{F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}!C\+H\+\_\+\+Put\+String@{C\+H\+\_\+\+Put\+String}}
+\index{C\+H\+\_\+\+Put\+String@{C\+H\+\_\+\+Put\+String}!F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}}
+\subsubsection{\texorpdfstring{C\+H\+\_\+\+Put\+String()}{CH\_PutString()}}
+{\footnotesize\ttfamily void C\+H\+\_\+\+Put\+String (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string }\end{DoxyParamCaption})}
+
+
+
+C\+H\+\_\+\+Put\+String puts a character string in the send buffer. 
+
+C\+H\+\_\+\+Put\+String will put a null terminated string into the output buffer of the user interface device. For arbitrary byte which may include zeros, C\+H\+\_\+\+Put\+Data is the proper interface call. In this implementation, it also checks if the U\+SB has been reset by the host and if so will run the U\+SB init routine. \mbox{\Hypertarget{_f_r_c_l_i_library_8h_a25f3094784cfcf26d741f00c1fa59fb6}\label{_f_r_c_l_i_library_8h_a25f3094784cfcf26d741f00c1fa59fb6}} 
 \index{F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}!C\+H\+\_\+\+Start\+Up@{C\+H\+\_\+\+Start\+Up}}
 \index{C\+H\+\_\+\+Start\+Up@{C\+H\+\_\+\+Start\+Up}!F\+R\+C\+L\+I\+Library.\+h@{F\+R\+C\+L\+I\+Library.\+h}}
 \subsubsection{\texorpdfstring{C\+H\+\_\+\+Start\+Up()}{CH\_StartUp()}}

@@ -1,23 +1,44 @@
 \hypertarget{globals_8h}{}\section{Source/\+Include/globals.h File Reference}
 \label{globals_8h}\index{Source/\+Include/globals.\+h@{Source/\+Include/globals.\+h}}
+
+
+Universally used prototypes and constants.  
+
+
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}{U\+S\+B\+\_\+\+U\+N\+S\+ET}}~0
-\item 
+\begin{DoxyCompactList}\small\item\em U\+SB is starting or reset. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{globals_8h_aa334566ac4c3eb8eba51c575d65d2653}{U\+S\+B\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}}~1
-\item 
+\begin{DoxyCompactList}\small\item\em Host has initialized the U\+SB. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{globals_8h_a952adebc6e2aa0120c30f05bbf7bbde0}{U\+S\+B\+\_\+\+R\+E\+C\+O\+N\+F\+I\+G\+U\+R\+ED}}~2
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em There was an intial or re configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{globals_8h_a285a341d16a041a990d35495e6c58f09}{Err\+\_\+\+Rpt}} (const char $\ast$)
+\begin{DoxyCompactList}\small\item\em Error reporting stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 volatile int \mbox{\hyperlink{globals_8h_a62852698eb538cd574dd3c16273254be}{U\+S\+B\+Configuration\+C\+DC}}
-\item 
+\begin{DoxyCompactList}\small\item\em Virtual U\+A\+RT U\+SB configuration status. \end{DoxyCompactList}\item 
 volatile int \mbox{\hyperlink{globals_8h_a5925bf50acc955d850ef1eda9a5c49c6}{U\+S\+B\+Configuration\+H\+ID}}
-\item 
+\begin{DoxyCompactList}\small\item\em U\+SB game controller configuration status. \end{DoxyCompactList}\item 
 volatile int \mbox{\hyperlink{globals_8h_af48c99f864ba8e7a88678854556d874c}{U\+S\+B\+Configuration\+Host}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em U\+SB E\+P0 configuration status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Universally used prototypes and constants. 
+
+\begin{DoxyAuthor}{Author}
+Mike Mc\+Cormack (nbxmike) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8/\+O\+C\+T/2018 
+\end{DoxyDate}
 
 
 \subsection{Macro Definition Documentation}
@@ -27,11 +48,19 @@ volatile int \mbox{\hyperlink{globals_8h_af48c99f864ba8e7a88678854556d874c}{U\+S
 \subsubsection{\texorpdfstring{U\+S\+B\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}{USB\_INITIALIZED}}
 {\footnotesize\ttfamily \#define U\+S\+B\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED~1}
 
+
+
+Host has initialized the U\+SB. 
+
 \mbox{\Hypertarget{globals_8h_a952adebc6e2aa0120c30f05bbf7bbde0}\label{globals_8h_a952adebc6e2aa0120c30f05bbf7bbde0}} 
 \index{globals.\+h@{globals.\+h}!U\+S\+B\+\_\+\+R\+E\+C\+O\+N\+F\+I\+G\+U\+R\+ED@{U\+S\+B\+\_\+\+R\+E\+C\+O\+N\+F\+I\+G\+U\+R\+ED}}
 \index{U\+S\+B\+\_\+\+R\+E\+C\+O\+N\+F\+I\+G\+U\+R\+ED@{U\+S\+B\+\_\+\+R\+E\+C\+O\+N\+F\+I\+G\+U\+R\+ED}!globals.\+h@{globals.\+h}}
 \subsubsection{\texorpdfstring{U\+S\+B\+\_\+\+R\+E\+C\+O\+N\+F\+I\+G\+U\+R\+ED}{USB\_RECONFIGURED}}
 {\footnotesize\ttfamily \#define U\+S\+B\+\_\+\+R\+E\+C\+O\+N\+F\+I\+G\+U\+R\+ED~2}
+
+
+
+There was an intial or re configuration. 
 
 \mbox{\Hypertarget{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}\label{globals_8h_a75752e5a5fb654e32e183c194cc5b2f2}} 
 \index{globals.\+h@{globals.\+h}!U\+S\+B\+\_\+\+U\+N\+S\+ET@{U\+S\+B\+\_\+\+U\+N\+S\+ET}}
@@ -41,6 +70,35 @@ volatile int \mbox{\hyperlink{globals_8h_af48c99f864ba8e7a88678854556d874c}{U\+S
 
 
 
+U\+SB is starting or reset. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{globals_8h_a285a341d16a041a990d35495e6c58f09}\label{globals_8h_a285a341d16a041a990d35495e6c58f09}} 
+\index{globals.\+h@{globals.\+h}!Err\+\_\+\+Rpt@{Err\+\_\+\+Rpt}}
+\index{Err\+\_\+\+Rpt@{Err\+\_\+\+Rpt}!globals.\+h@{globals.\+h}}
+\subsubsection{\texorpdfstring{Err\+\_\+\+Rpt()}{Err\_Rpt()}}
+{\footnotesize\ttfamily void Err\+\_\+\+Rpt (\begin{DoxyParamCaption}\item[{const char $\ast$}]{Message }\end{DoxyParamCaption})}
+
+
+
+Error reporting stream. 
+
+Used for error messages from various points in the code. ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em Message} & pointer to the character string used for the error report \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+-\/ Presently sends a string to the same virtual U\+A\+RT as the C\+LI console 
+\end{DoxyNote}
+
+
 \subsection{Variable Documentation}
 \mbox{\Hypertarget{globals_8h_a62852698eb538cd574dd3c16273254be}\label{globals_8h_a62852698eb538cd574dd3c16273254be}} 
 \index{globals.\+h@{globals.\+h}!U\+S\+B\+Configuration\+C\+DC@{U\+S\+B\+Configuration\+C\+DC}}
@@ -48,15 +106,27 @@ volatile int \mbox{\hyperlink{globals_8h_af48c99f864ba8e7a88678854556d874c}{U\+S
 \subsubsection{\texorpdfstring{U\+S\+B\+Configuration\+C\+DC}{USBConfigurationCDC}}
 {\footnotesize\ttfamily volatile int U\+S\+B\+Configuration\+C\+DC}
 
+
+
+Virtual U\+A\+RT U\+SB configuration status. 
+
 \mbox{\Hypertarget{globals_8h_a5925bf50acc955d850ef1eda9a5c49c6}\label{globals_8h_a5925bf50acc955d850ef1eda9a5c49c6}} 
 \index{globals.\+h@{globals.\+h}!U\+S\+B\+Configuration\+H\+ID@{U\+S\+B\+Configuration\+H\+ID}}
 \index{U\+S\+B\+Configuration\+H\+ID@{U\+S\+B\+Configuration\+H\+ID}!globals.\+h@{globals.\+h}}
 \subsubsection{\texorpdfstring{U\+S\+B\+Configuration\+H\+ID}{USBConfigurationHID}}
 {\footnotesize\ttfamily volatile int U\+S\+B\+Configuration\+H\+ID}
 
+
+
+U\+SB game controller configuration status. 
+
 \mbox{\Hypertarget{globals_8h_af48c99f864ba8e7a88678854556d874c}\label{globals_8h_af48c99f864ba8e7a88678854556d874c}} 
 \index{globals.\+h@{globals.\+h}!U\+S\+B\+Configuration\+Host@{U\+S\+B\+Configuration\+Host}}
 \index{U\+S\+B\+Configuration\+Host@{U\+S\+B\+Configuration\+Host}!globals.\+h@{globals.\+h}}
 \subsubsection{\texorpdfstring{U\+S\+B\+Configuration\+Host}{USBConfigurationHost}}
 {\footnotesize\ttfamily volatile int U\+S\+B\+Configuration\+Host}
+
+
+
+U\+SB E\+P0 configuration status. 
 

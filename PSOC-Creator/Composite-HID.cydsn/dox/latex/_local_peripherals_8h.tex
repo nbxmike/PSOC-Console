@@ -11,7 +11,7 @@ Constants and prototypes for the local i/o devices.
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{_local_peripherals_8h_ac32e7bee9d8c1ee37bfae3e48852535d}{S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+OD}}~5
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Number of millaseconds to wait for samples to complete. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -33,9 +33,9 @@ void \mbox{\hyperlink{_local_peripherals_8h_ac006836250558c237cbeb60393f0c1a8}{L
 \begin{DoxyCompactItemize}
 \item 
 int16 \mbox{\hyperlink{_local_peripherals_8h_a4eb09c353837052b3cc02482aa9545fc}{Analog\+Working}} \mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_a9c9958c78d8089e67e13e127325f1121}{A\+N\+A\+L\+O\+G\+\_\+\+S\+I\+ZE}}\mbox{]}
-\item 
+\begin{DoxyCompactList}\small\item\em A\+DC measurements in process. \end{DoxyCompactList}\item 
 volatile int16 \mbox{\hyperlink{_local_peripherals_8h_a5c7e5f213cd967bc4e587dfc966d7d25}{Analog\+Scaled}} \mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_a9c9958c78d8089e67e13e127325f1121}{A\+N\+A\+L\+O\+G\+\_\+\+S\+I\+ZE}}\mbox{]}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Scaled, centered A\+DC measurements. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -55,6 +55,10 @@ Mike Mc\+Cormack (nbxmike)
 \index{S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+OD@{S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+OD}!Local\+Peripherals.\+h@{Local\+Peripherals.\+h}}
 \subsubsection{\texorpdfstring{S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+OD}{SAMPLE\_PERIOD}}
 {\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+E\+\_\+\+P\+E\+R\+I\+OD~5}
+
+
+
+Number of millaseconds to wait for samples to complete. 
 
 
 
@@ -206,9 +210,17 @@ Nothing
 \subsubsection{\texorpdfstring{Analog\+Scaled}{AnalogScaled}}
 {\footnotesize\ttfamily volatile int16 Analog\+Scaled\mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_a9c9958c78d8089e67e13e127325f1121}{A\+N\+A\+L\+O\+G\+\_\+\+S\+I\+ZE}}\mbox{]}}
 
+
+
+Scaled, centered A\+DC measurements. 
+
 \mbox{\Hypertarget{_local_peripherals_8h_a4eb09c353837052b3cc02482aa9545fc}\label{_local_peripherals_8h_a4eb09c353837052b3cc02482aa9545fc}} 
 \index{Local\+Peripherals.\+h@{Local\+Peripherals.\+h}!Analog\+Working@{Analog\+Working}}
 \index{Analog\+Working@{Analog\+Working}!Local\+Peripherals.\+h@{Local\+Peripherals.\+h}}
 \subsubsection{\texorpdfstring{Analog\+Working}{AnalogWorking}}
 {\footnotesize\ttfamily int16 Analog\+Working\mbox{[}\mbox{\hyperlink{_u_s_b_joystick_8h_a9c9958c78d8089e67e13e127325f1121}{A\+N\+A\+L\+O\+G\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+A\+DC measurements in process. 
 

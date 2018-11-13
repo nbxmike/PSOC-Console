@@ -23,23 +23,24 @@
  * ========================================
  */
 /**
- * @file   PSxHost.h
+ * @file   globals.h
  * @author Mike McCormack (nbxmike)
  * @date   8/OCT/2018
- * @brief  The host interface to PlayStation 1/2 controllers prototypes and constants.
+ * @brief  Universally used prototypes and constants.
  */
 
 #ifndef PSX_GLOBALS_H
 #define PSX_GLOBALS_H
 
 /* Flags to indicate the state of USB host and sub functions */
-#define USB_UNSET        0
-#define USB_INITIALIZED  1
-#define USB_RECONFIGURED 2
-extern volatile int USBConfigurationCDC;
-extern volatile int USBConfigurationHID;
-extern volatile int USBConfigurationHost;
+#define USB_UNSET        0                //!< USB is starting or reset
+#define USB_INITIALIZED  1                //!< Host has initialized the USB
+#define USB_RECONFIGURED 2                //!< There was an intial or re configuration
+extern volatile int USBConfigurationCDC;  //!< Virtual UART USB configuration status
+extern volatile int USBConfigurationHID;  //!< USB game controller configuration status
+extern volatile int USBConfigurationHost; //!< USB EP0 configuration status
 
+extern void Err_Rpt( const char* );
 
 #endif
 /* End of File */

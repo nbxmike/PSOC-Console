@@ -35,14 +35,14 @@
 #include "timers.h"
 #include "semphr.h"
 
-volatile SemaphoreHandle_t xPSx_ACK_Semaphore = NULL;
-volatile SemaphoreHandle_t xPSx_SPI_Semaphore = NULL;
-volatile SemaphoreHandle_t xPSx_XFR_Semaphore = NULL;
-volatile SemaphoreHandle_t xCH_Semaphore = NULL;
-volatile SemaphoreHandle_t xAnalog_Semaphore = NULL;
-volatile SemaphoreHandle_t xUSBHost_Semaphore = NULL;
-volatile SemaphoreHandle_t xUSBConfig_Semaphore = NULL;
-volatile SemaphoreHandle_t xUSBJoystick_Semaphore = NULL;
+volatile SemaphoreHandle_t xPSx_ACK_Semaphore = NULL;      //!< Freed on controller ACK recived
+volatile SemaphoreHandle_t xPSx_SPI_Semaphore = NULL;      //!< Freed on SPI byte complete
+volatile SemaphoreHandle_t xPSx_XFR_Semaphore = NULL;      //!< Held the entire PSx transaction
+volatile SemaphoreHandle_t xCH_Semaphore = NULL;           //!< Freed when data is in the UART
+volatile SemaphoreHandle_t xAnalog_Semaphore = NULL;       //!< Freed when sampling completed
+volatile SemaphoreHandle_t xUSBHost_Semaphore = NULL;      //!< Freed when something happens to USB EP0
+volatile SemaphoreHandle_t xUSBConfig_Semaphore = NULL;    //!< Held when changing the USB status byte
+volatile SemaphoreHandle_t xUSBJoystick_Semaphore = NULL;  //!< Freed when something happens to USB HID EPs
 
 
 TickType_t BlinkyWakeTime;
