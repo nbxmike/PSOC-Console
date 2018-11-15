@@ -41,6 +41,7 @@ uint8 PSxOutBuffer[PSx_MAX_MESSAGE];
 uint8 PSxInBuffer[PSx_MAX_MESSAGE];
 uint8 PSxXfrBuffer[PSx_MAX_MESSAGE];
 int   Feedback0, Feedback1;
+DualShock2 AttachedPadPollData;               //!< Created as a Dual Shock as it has all registers
 
 static volatile uint8 ACK_Reg_Save;           //!< flag from ISR indicating ACK was received
 static ControllerInstance PSxControllerType;  //!< Keeps controller information after i is found
@@ -147,6 +148,155 @@ void PSx_SPI_RX_ISR_ExitCallback(void)
  * @param  Wait If non-zero, the function waits for an ACK
  * @return If zero then no ACK or did not wait, nonzero only if ACK received
  */
+int PSxParsePoll(uint8 *MsgBytes, int count) 
+{
+  int8 temp;
+
+
+  if(count < 5)
+  {
+    return 0;
+  }
+
+  xSemaphoreTake( xPSx_XFR_Semaphore, 2 );
+
+  AttachedPadPollData.Buttons0  = MsgBytes[3];
+  AttachedPadPollData.Buttons1  = MsgBytes[4];
+ 
+  if( (MsgBytes[1] & 0x0f) == 0x01 )
+  {
+    AttachedPadPollData.RightX            = 0;
+    AttachedPadPollData.RightY            = 0;
+    AttachedPadPollData.LeftX             = 0;
+    AttachedPadPollData.LeftY             = 0;
+    AttachedPadPollData.Right_Pressure    = 0;
+    AttachedPadPollData.Left_Pressure     = 0;
+    AttachedPadPollData.Up_Pressure       = 0;
+    AttachedPadPollData.Down_Pressure     = 0;
+    AttachedPadPollData.Triangle_Pressure = 0;
+    AttachedPadPollData.Circle_Pressure   = 0;
+    AttachedPadPollData.Cross_Pressure    = 0;
+    AttachedPadPollData.Square_Pressure   = 0;
+    AttachedPadPollData.L1_Pressure       = 0;
+    AttachedPadPollData.R1_Pressure       = 0;
+    AttachedPadPollData.L2_Pressure       = 0;
+    AttachedPadPollData.R2_Pressure       = 0;
+
+    temp = ~MsgBytes[3];
+    if ( temp & RIGHT_BUTTON )
+      AttachedPadPollData.Right_Pressure    = 255;
+    if ( temp & LEFT_BUTTON )
+      AttachedPadPollData.Left_Pressure     = 255;
+    if ( temp & UP_BUTTON )
+      AttachedPadPollData.Up_Pressure       = 255;
+    if ( temp & DOWN_BUTTON )
+      AttachedPadPollData.Down_Pressure     = 255;
+
+    temp = ~MsgBytes[4];
+    if ( temp & TRI_BUTTON )
+      AttachedPadPollData.Triangle_Pressure = 255;
+    if ( temp & CIR_BUTTON )
+      AttachedPadPollData.Circle_Pressure   = 255;
+    if ( temp & X_BUTTON )
+      AttachedPadPollData.Cross_Pressure    = 255;
+    if ( temp & SQR_BUTTON )
+      AttachedPadPollData.Square_Pressure   = 255;
+    if ( temp & L1_BUTTON )
+      AttachedPadPollData.L1_Pressure       = 255;
+    if ( temp & R1_BUTTON )
+      AttachedPadPollData.R1_Pressure       = 255;
+    if ( temp & L2_BUTTON )
+      AttachedPadPollData.L2_Pressure       = 255;
+    if ( temp & R2_BUTTON )
+      AttachedPadPollData.R2_Pressure       = 255;
+  }
+  else if( (MsgBytes[1] & 0x0f) == 0x03 )
+  {
+    AttachedPadPollData.RightX    = MsgBytes[5];
+    AttachedPadPollData.RightY    = MsgBytes[6];
+    AttachedPadPollData.LeftX     = MsgBytes[7];
+    AttachedPadPollData.LeftY     = MsgBytes[8];
+
+    AttachedPadPollData.Right_Pressure    = 0;
+    AttachedPadPollData.Left_Pressure     = 0;
+    AttachedPadPollData.Up_Pressure       = 0;
+    AttachedPadPollData.Down_Pressure     = 0;
+    AttachedPadPollData.Triangle_Pressure = 0;
+    AttachedPadPollData.Circle_Pressure   = 0;
+    AttachedPadPollData.Cross_Pressure    = 0;
+    AttachedPadPollData.Square_Pressure   = 0;
+    AttachedPadPollData.L1_Pressure       = 0;
+    AttachedPadPollData.R1_Pressure       = 0;
+    AttachedPadPollData.L2_Pressure       = 0;
+    AttachedPadPollData.R2_Pressure       = 0;
+
+    temp = ~MsgBytes[3];
+    if ( temp & RIGHT_BUTTON )
+      AttachedPadPollData.Right_Pressure    = 255;
+    if ( temp & LEFT_BUTTON )
+      AttachedPadPollData.Left_Pressure     = 255;
+    if ( temp & UP_BUTTON )
+      AttachedPadPollData.Up_Pressure       = 255;
+    if ( temp & DOWN_BUTTON )
+      AttachedPadPollData.Down_Pressure     = 255;
+
+    temp = ~MsgBytes[4];
+    if ( temp & TRI_BUTTON )
+      AttachedPadPollData.Triangle_Pressure = 255;
+    if ( temp & CIR_BUTTON )
+      AttachedPadPollData.Circle_Pressure   = 255;
+    if ( temp & X_BUTTON )
+      AttachedPadPollData.Cross_Pressure    = 255;
+    if ( temp & SQR_BUTTON )
+      AttachedPadPollData.Square_Pressure   = 255;
+    if ( temp & L1_BUTTON )
+      AttachedPadPollData.L1_Pressure       = 255;
+    if ( temp & R1_BUTTON )
+      AttachedPadPollData.R1_Pressure       = 255;
+    if ( temp & L2_BUTTON )
+      AttachedPadPollData.L2_Pressure       = 255;
+    if ( temp & R2_BUTTON )
+      AttachedPadPollData.R2_Pressure       = 255;
+  }
+  else if( (MsgBytes[1] & 0x0f) == 0x09 )
+  {
+    AttachedPadPollData.RightX            = MsgBytes[5];
+    AttachedPadPollData.RightY            = MsgBytes[6];
+    AttachedPadPollData.LeftX             = MsgBytes[7];
+    AttachedPadPollData.LeftY             = MsgBytes[8];
+    AttachedPadPollData.Right_Pressure    = MsgBytes[9];
+    AttachedPadPollData.Left_Pressure     = MsgBytes[10];
+    AttachedPadPollData.Up_Pressure       = MsgBytes[11];
+    AttachedPadPollData.Down_Pressure     = MsgBytes[12];
+    AttachedPadPollData.Triangle_Pressure = MsgBytes[13];
+    AttachedPadPollData.Circle_Pressure   = MsgBytes[14];
+    AttachedPadPollData.Cross_Pressure    = MsgBytes[15];
+    AttachedPadPollData.Square_Pressure   = MsgBytes[16];
+    AttachedPadPollData.L1_Pressure       = MsgBytes[17];
+    AttachedPadPollData.R1_Pressure       = MsgBytes[18];
+    AttachedPadPollData.L2_Pressure       = MsgBytes[19];
+    AttachedPadPollData.R2_Pressure       = MsgBytes[20];
+  }
+  xSemaphoreGive(xPSx_XFR_Semaphore);
+  return (MsgBytes[1] & 0x0f);
+}
+
+/**
+ * @brief Sends and receives a single byte to/from the PSx controller.
+ *
+ * PSxTrasnferByte will send a byte, and since the interface is forced to be
+ * full duplex, it will receive a byte.  If told to wait for and ACK, it will
+ * return a non-zero value if an ACK was received, otherwise it will return
+ * zero.  Generally speaking, this procedure could use better error handling
+ * especially when the dongle handles multiple interfaces errors on one will 
+ * seriously impact others if nothing is done to clean up error handling.
+ * Recommend using the NOWAIT / YESWAIT defined values as the wait parameter.
+ *
+ * @param  Out The byte to be sent to the PSx game controller
+ * @param  In Pointer to where received data from the PSx game controller is stored
+ * @param  Wait If non-zero, the function waits for an ACK
+ * @return If zero then no ACK or did not wait, nonzero only if ACK received
+ */
 int PSxTrasnferByte(uint8 Out, uint8 *In, int Wait) 
 {
   int rx_stat;
@@ -157,7 +307,7 @@ int PSxTrasnferByte(uint8 Out, uint8 *In, int Wait)
   {
     PSx_SPI_ReadRxData();
     rx_stat = PSx_SPI_GetRxBufferSize();
-    Err_Rpt("PSx SPI input buffer contained data before transfer started\r\n");
+    Err_Rpt("**PSx SPI input buffer contained data before transfer started\r\n");
   }
 
   ACK_Reg_Save = 0;
@@ -180,7 +330,7 @@ int PSxTrasnferByte(uint8 Out, uint8 *In, int Wait)
   else
   {
     *In = 0xff;
-    Err_Rpt("PSx SPI never completed\r\n");
+    Err_Rpt("**PSx SPI never completed\r\n");
   }
 
   if ( Wait !=0 )

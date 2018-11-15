@@ -32,6 +32,8 @@
  *  supports peripherals that are not part of a PlayStation controller that 
  *  are attached to the PSOC.  Examples could be configuration switches as 
  *  inputs or LEDs as outputs.
+ *  Regardless of wether the USB HID usage type is "joystick" or "game pad" the
+ *  routine names will remain Joystick.  
  */
 
 
@@ -49,9 +51,9 @@
 
 
 
-static int8  USB_Input_Data[ANALOG_SIZE + BUTTON_SIZE];  /* USB data to send to the PC */
-static uint8 USB_Output_Data[OUTPUT_SIZE];               /* USB data received from the PC */
-static int   sJoy_Startup = USB_UNSET;
+static int8  USB_Input_Data[ANALOG_SIZE + BUTTON_SIZE];  //!<  USB data to send to the PC
+static uint8 USB_Output_Data[OUTPUT_SIZE];               //!<  USB data received from the PC
+static int   sJoy_Startup = USB_UNSET;                   //!<  Status of the game controller interface
 
 
 /** @brief USBFS_EP_4_ISR_EntryCallback ISR hook for Joystick.

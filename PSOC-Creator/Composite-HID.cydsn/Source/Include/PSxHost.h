@@ -34,8 +34,6 @@
 
 #include <project.h>
 
-extern int   Feedback0, Feedback1;  
-  
 #define PSx_MAX_MESSAGE    37
 #define NOWAIT             0
 #define YESWAIT            1
@@ -45,7 +43,24 @@ extern int   Feedback0, Feedback1;
 #define LONGRESET          1
 #define SHORTRESET         0
 #define PSx_XFR_PAUSE      16
-
+  
+#define SEL_BUTTON    0x01
+#define L3_BUTTON     0x02
+#define R3_BUTTON     0x04
+#define START_BUTTON  0x08
+#define UP_BUTTON     0x10
+#define RIGHT_BUTTON  0x20
+#define DOWN_BUTTON   0x40
+#define LEFT_BUTTON   0x80
+#define L2_BUTTON     0x01
+#define R2_BUTTON     0x02
+#define L1_BUTTON     0x04
+#define R1_BUTTON     0x08
+#define TRI_BUTTON    0x10
+#define CIR_BUTTON    0x20
+#define X_BUTTON      0x40
+#define SQR_BUTTON    0x80
+  
 /*
  *   Game controllers sending back different messages
  */
@@ -136,6 +151,45 @@ typedef struct dualanalog
     uint8 LeftX;
     uint8 LeftY;
   } DualAnalog;
+
+ typedef struct dualshock
+  {
+    uint8 TypeCount;
+    uint8 Buttons0;
+    uint8 Buttons1;
+    uint8 RightX;
+    uint8 RightY;
+    uint8 LeftX;
+    uint8 LeftY;
+    uint8 FeedBack1;
+    uint8 FeedBack2;
+  } DualShock;
+ 
+ typedef struct dualshock2
+  {
+    uint8 TypeCount;
+    uint8 Buttons0;
+    uint8 Buttons1;
+    int8  RightX;
+    int8  RightY;
+    int8  LeftX;
+    int8  LeftY;
+    uint8 FeedBack1;
+    uint8 FeedBack2;
+    uint8 Right_Pressure;
+    uint8 Left_Pressure;
+    uint8 Up_Pressure;
+    uint8 Down_Pressure;
+    uint8 Triangle_Pressure;
+    uint8 Circle_Pressure;
+    uint8 Cross_Pressure;
+    uint8 Square_Pressure;
+    uint8 L1_Pressure;
+    uint8 R1_Pressure;
+    uint8 L2_Pressure;
+    uint8 R2_Pressure;
+  } DualShock2;
+ 
   
 extern void PSxInit(void);
 extern int  PSxEnPressure(int);
@@ -150,6 +204,8 @@ extern void PSxSetup(void);
 extern void PSxInit(void);
 extern void PSx_Host_Task( void* );
 
+extern int   Feedback0, Feedback1;  
+extern DualShock2 AttachedPadPollData;  
 
 #endif
 /* End of File */
