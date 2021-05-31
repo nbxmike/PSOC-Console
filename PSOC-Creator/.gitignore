@@ -6,6 +6,8 @@
 Debug/
 Release/
 Export/
+**/Archive
+**/Backup
 */codegentemp
 */Generated_Source
 *_datasheet.pdf
