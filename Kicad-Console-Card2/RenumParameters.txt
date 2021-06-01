@@ -1,0 +1,10 @@
+File Name=Console.kicad_pcb
+Top Prepend=
+Bottom Prepend=
+No Question=0
+Top Sort Direction=4
+Bottom Sort Direction=5
+Top Start Reference Designation=1
+Bottom Start Reference Designation=0
+Sort on Modules/Reference Designators=1
+Grid =0.750000

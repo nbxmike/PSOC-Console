@@ -1,0 +1,1374 @@
+EESchema Schematic File Version 2
+LIBS:aglet
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:Smart-H-cache
+EELAYER 25 0
+EELAYER END
+$Descr B 17000 11000
+encoding utf-8
+Sheet 3 3
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L USB-MICROB J1
+U 1 1 5A47ECDD
+P 14000 7325
+F 0 "J1" H 14400 7525 60  0000 C CNN
+F 1 "USB-MICROB" V 14600 7125 60  0000 C CNN
+F 2 "Aglet_Footprints:Micro_usb_b" H 13450 6925 60  0001 C CNN
+F 3 "" H 13450 6925 60  0000 C CNN
+	1    14000 7325
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 5A4836F4
+P 12825 7425
+F 0 "R2" H 12675 7465 50  0000 C CNN
+F 1 "22" H 12775 7365 50  0000 C CNN
+F 2 "Aglet_Footprints:r_0603" H 12825 7425 60  0001 C CNN
+F 3 "" H 12825 7425 60  0000 C CNN
+	1    12825 7425
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 5A483776
+P 13000 7525
+F 0 "R1" H 12850 7565 50  0000 C CNN
+F 1 "22" H 12950 7465 50  0000 C CNN
+F 2 "Aglet_Footprints:r_0603" H 13000 7525 60  0001 C CNN
+F 3 "" H 13000 7525 60  0000 C CNN
+	1    13000 7525
+	-1   0    0    -1  
+$EndComp
+Text Label 2975 7050 2    60   ~ 0
+VTARG
+$Comp
+L CONN_8 J8
+U 1 1 5A484E66
+P 13725 3425
+F 0 "J8" H 13725 3425 60  0000 C CNN
+F 1 "CONN_8" V 13775 3425 60  0001 C CNN
+F 2 "Aglet_Footprints:HEADER_8x1" H 13725 3425 60  0001 C CNN
+F 3 "" H 13725 3425 60  0000 C CNN
+	1    13725 3425
+	1    0    0    -1  
+$EndComp
+Text Label 12625 3075 0    60   ~ 0
+VTARG
+Text Label 12850 3375 0    60   ~ 0
+P3_1
+Text Label 12850 3475 0    60   ~ 0
+P3_2
+Text Label 12850 2275 0    60   ~ 0
+P0_3
+Text Label 12850 2375 0    60   ~ 0
+P0_2
+Text Label 12850 2475 0    60   ~ 0
+P0_1
+Text Label 12850 2575 0    60   ~ 0
+P0_0
+Text Label 7450 4225 0    60   ~ 0
+SWDCK
+Text Label 7450 4125 0    60   ~ 0
+SWDIO
+$Comp
+L CONN_8 J9
+U 1 1 5A483D46
+P 13725 2425
+F 0 "J9" H 13725 2425 60  0000 C CNN
+F 1 "CONN_8" V 13775 2425 60  0001 C CNN
+F 2 "Aglet_Footprints:HEADER_8x1" H 13725 2425 60  0001 C CNN
+F 3 "" H 13725 2425 60  0000 C CNN
+	1    13725 2425
+	1    0    0    -1  
+$EndComp
+Text Label 12625 2075 0    60   ~ 0
+VTARG
+Text Label 12850 3275 0    60   ~ 0
+P3_0
+Text Label 12850 3775 0    60   ~ 0
+I2C_SDA
+Text Label 12850 3675 0    60   ~ 0
+I2C_SCL
+Text Label 12850 3575 0    60   ~ 0
+P3_3
+Text Label 2950 7500 2    60   ~ 0
+VDDIO_3
+$Comp
+L C C2
+U 1 1 5A48F361
+P 1500 7925
+F 0 "C2" H 1550 8025 50  0000 L CNN
+F 1 "0.1uF" H 1550 7825 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 1500 7925 60  0001 C CNN
+F 3 "" H 1500 7925 60  0000 C CNN
+	1    1500 7925
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C C1
+U 1 1 5A48F48E
+P 1100 7925
+F 0 "C1" H 1150 8025 50  0000 L CNN
+F 1 "0.1uF" H 1150 7825 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 1100 7925 60  0001 C CNN
+F 3 "" H 1100 7925 60  0000 C CNN
+	1    1100 7925
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C C6
+U 1 1 5A48F546
+P 2300 7925
+F 0 "C6" H 2350 8025 50  0000 L CNN
+F 1 "0.1uF" H 2350 7825 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 2300 7925 60  0001 C CNN
+F 3 "" H 2300 7925 60  0000 C CNN
+	1    2300 7925
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C C3
+U 1 1 5A48F54C
+P 1900 7925
+F 0 "C3" H 1950 8025 50  0000 L CNN
+F 1 "0.1uF" H 1950 7825 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 1900 7925 60  0001 C CNN
+F 3 "" H 1900 7925 60  0000 C CNN
+	1    1900 7925
+	-1   0    0    -1  
+$EndComp
+Text Label 2950 7400 2    60   ~ 0
+VDDIO_2
+Text Label 2950 7300 2    60   ~ 0
+VDDIO_1
+Text Label 2950 7200 2    60   ~ 0
+VDDIO_0
+$Comp
+L C C4
+U 1 1 5A48FA34
+P 13675 7850
+F 0 "C4" H 13725 7950 50  0000 L CNN
+F 1 "0.1uF" H 13725 7750 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 13675 7850 60  0001 C CNN
+F 3 "" H 13675 7850 60  0000 C CNN
+	1    13675 7850
+	-1   0    0    -1  
+$EndComp
+Text Label 7625 4325 0    60   ~ 0
+KP_Rev_0
+Text Label 7625 4425 0    60   ~ 0
+KP_Rev_1
+Text Label 7625 4525 0    60   ~ 0
+KP_Rev_2
+Text Label 7625 4625 0    60   ~ 0
+KP_Rev_3
+Text Label 1725 3400 0    60   ~ 0
+KP_Rev_0
+Text Label 1725 3500 0    60   ~ 0
+KP_Rev_1
+Text Label 1725 3600 0    60   ~ 0
+KP_Rev_2
+Text Label 1725 3700 0    60   ~ 0
+KP_Rev_3
+$Comp
+L R R5
+U 1 1 5A498AD2
+P 2425 4075
+F 0 "R5" V 2475 4000 50  0000 C CNN
+F 1 "NP" V 2300 4025 50  0000 C CNN
+F 2 "Aglet_Footprints:JUMPER-OPEN" H 2425 4075 60  0001 C CNN
+F 3 "" H 2425 4075 60  0000 C CNN
+	1    2425 4075
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R6
+U 1 1 5A498AD8
+P 2625 4075
+F 0 "R6" V 2675 4000 50  0000 C CNN
+F 1 "NP" V 2500 4025 50  0000 C CNN
+F 2 "Aglet_Footprints:JUMPER-OPEN" H 2625 4075 60  0001 C CNN
+F 3 "" H 2625 4075 60  0000 C CNN
+	1    2625 4075
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R7
+U 1 1 5A498ADE
+P 2825 4075
+F 0 "R7" V 2875 4000 50  0000 C CNN
+F 1 "NP" V 2700 4025 50  0000 C CNN
+F 2 "Aglet_Footprints:JUMPER-OPEN" H 2825 4075 60  0001 C CNN
+F 3 "" H 2825 4075 60  0000 C CNN
+	1    2825 4075
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R8
+U 1 1 5A498AE4
+P 3025 4075
+F 0 "R8" V 3075 4000 50  0000 C CNN
+F 1 "0" V 2900 4025 50  0000 C CNN
+F 2 "Aglet_Footprints:JUMPER-SHORT" H 3025 4075 60  0001 C CNN
+F 3 "" H 3025 4075 60  0000 C CNN
+	1    3025 4075
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND1 #PWR7
+U 1 1 5A498BAE
+P 2500 4550
+F 0 "#PWR7" H 2500 4300 50  0001 C CNN
+F 1 "GND1" H 2500 4400 50  0000 C CNN
+F 2 "" H 2500 4550 50  0001 C CNN
+F 3 "" H 2500 4550 50  0001 C CNN
+	1    2500 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND1 #PWR6
+U 1 1 5A499802
+P 1725 8425
+F 0 "#PWR6" H 1725 8175 50  0001 C CNN
+F 1 "GND1" H 1725 8275 50  0000 C CNN
+F 2 "" H 1725 8425 50  0001 C CNN
+F 3 "" H 1725 8425 50  0001 C CNN
+	1    1725 8425
+	-1   0    0    -1  
+$EndComp
+$Comp
+L GND1 #PWR17
+U 1 1 5A499F5F
+P 14150 8275
+F 0 "#PWR17" H 14150 8025 50  0001 C CNN
+F 1 "GND1" H 14150 8125 50  0000 C CNN
+F 2 "" H 14150 8275 50  0001 C CNN
+F 3 "" H 14150 8275 50  0001 C CNN
+	1    14150 8275
+	-1   0    0    -1  
+$EndComp
+$Comp
+L GND1 #PWR16
+U 1 1 5A49A233
+P 13325 4150
+F 0 "#PWR16" H 13325 3900 50  0001 C CNN
+F 1 "GND1" H 13325 4000 50  0000 C CNN
+F 2 "" H 13325 4150 50  0001 C CNN
+F 3 "" H 13325 4150 50  0001 C CNN
+	1    13325 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C14
+U 1 1 5A49ACF0
+P 12875 1250
+F 0 "C14" H 12925 1350 50  0000 L CNN
+F 1 "1.0uF" H 12925 1150 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 12875 1250 60  0001 C CNN
+F 3 "" H 12875 1250 60  0000 C CNN
+	1    12875 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C15
+U 1 1 5A49ACF6
+P 13275 1250
+F 0 "C15" H 13325 1350 50  0000 L CNN
+F 1 "0.1uF" H 13325 1150 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 13275 1250 60  0001 C CNN
+F 3 "" H 13275 1250 60  0000 C CNN
+	1    13275 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C12
+U 1 1 5A49ACFC
+P 6775 1975
+F 0 "C12" H 6825 2075 50  0000 L CNN
+F 1 "1.0uF" H 6825 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 6775 1975 60  0001 C CNN
+F 3 "" H 6775 1975 60  0000 C CNN
+	1    6775 1975
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C13
+U 1 1 5A49AD02
+P 7175 1975
+F 0 "C13" H 7225 2075 50  0000 L CNN
+F 1 "0.1uF" H 7225 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 7175 1975 60  0001 C CNN
+F 3 "" H 7175 1975 60  0000 C CNN
+	1    7175 1975
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C10
+U 1 1 5A49B3CC
+P 5975 1975
+F 0 "C10" H 6025 2075 50  0000 L CNN
+F 1 "1.0uF" H 6025 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 5975 1975 60  0001 C CNN
+F 3 "" H 5975 1975 60  0000 C CNN
+	1    5975 1975
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C11
+U 1 1 5A49B3D2
+P 6375 1975
+F 0 "C11" H 6425 2075 50  0000 L CNN
+F 1 "0.1uF" H 6425 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 6375 1975 60  0001 C CNN
+F 3 "" H 6375 1975 60  0000 C CNN
+	1    6375 1975
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C8
+U 1 1 5A49B76F
+P 4775 1975
+F 0 "C8" H 4825 2075 50  0000 L CNN
+F 1 "0.1uF" H 4825 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 4775 1975 60  0001 C CNN
+F 3 "" H 4775 1975 60  0000 C CNN
+	1    4775 1975
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C9
+U 1 1 5A49B775
+P 5175 1975
+F 0 "C9" H 5225 2075 50  0000 L CNN
+F 1 "0.1uF" H 5225 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 5175 1975 60  0001 C CNN
+F 3 "" H 5175 1975 60  0000 C CNN
+	1    5175 1975
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C5
+U 1 1 5A49B77B
+P 3975 1975
+F 0 "C5" H 4025 2075 50  0000 L CNN
+F 1 "1.0uF" H 4025 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 3975 1975 60  0001 C CNN
+F 3 "" H 3975 1975 60  0000 C CNN
+	1    3975 1975
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C7
+U 1 1 5A49B781
+P 4375 1975
+F 0 "C7" H 4425 2075 50  0000 L CNN
+F 1 "0.1uF" H 4425 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 4375 1975 60  0001 C CNN
+F 3 "" H 4375 1975 60  0000 C CNN
+	1    4375 1975
+	1    0    0    -1  
+$EndComp
+Text Label 8050 1525 0    60   ~ 0
+VCCA
+Text Label 8050 1425 0    60   ~ 0
+VCCD
+Text Label 8050 1625 0    60   ~ 0
+VDDA
+Text Label 8050 1725 0    60   ~ 0
+VDDD
+Text Label 13975 7325 2    60   ~ 0
+VBUS
+$Comp
+L DIODESCH D1
+U 1 1 5A49E750
+P 12950 7150
+F 0 "D1" H 12950 7250 40  0000 C CNN
+F 1 "MBR0520L" H 12950 7050 40  0000 C CNN
+F 2 "Aglet_Footprints:D_SOD-123" H 12950 7150 60  0001 C CNN
+F 3 "" H 12950 7150 60  0000 C CNN
+	1    12950 7150
+	-1   0    0    -1  
+$EndComp
+Text Label 14050 6900 0    60   ~ 0
+VTARG
+$Comp
+L CONN_2 JP1
+U 1 1 5A49EAA4
+P 13625 6475
+F 0 "JP1" V 13575 6475 40  0000 C CNN
+F 1 "CONN_2" V 13675 6475 40  0000 C CNN
+F 2 "Aglet_Footprints:SIL-2" H 13625 6475 60  0001 C CNN
+F 3 "" H 13625 6475 60  0000 C CNN
+	1    13625 6475
+	0    -1   -1   0   
+$EndComp
+Text Label 1975 1800 0    60   ~ 0
+XRES
+$Comp
+L C C16
+U 1 1 5A4A266B
+P 2775 2075
+F 0 "C16" H 2825 2175 50  0000 L CNN
+F 1 "0.1uF" H 2825 1975 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 2775 2075 60  0001 C CNN
+F 3 "" H 2775 2075 60  0000 C CNN
+	1    2775 2075
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R3
+U 1 1 5A4A2965
+P 2775 1525
+F 0 "R3" V 2625 1600 50  0000 C CNN
+F 1 "4.7K" V 2825 1625 50  0000 C CNN
+F 2 "Aglet_Footprints:r_0603" H 2775 1525 60  0001 C CNN
+F 3 "" H 2775 1525 60  0000 C CNN
+	1    2775 1525
+	0    1    1    0   
+$EndComp
+Text Label 13100 6900 0    60   ~ 0
+VDDD
+Text Label 3700 7200 0    60   ~ 0
+VSSA
+$Comp
+L GND1 #PWR9
+U 1 1 5A4A6B5C
+P 4025 7300
+F 0 "#PWR9" H 4025 7050 50  0001 C CNN
+F 1 "GND1" H 4025 7150 50  0000 C CNN
+F 2 "" H 4025 7300 50  0001 C CNN
+F 3 "" H 4025 7300 50  0001 C CNN
+	1    4025 7300
+	1    0    0    -1  
+$EndComp
+Text Label 4575 7325 0    60   ~ 0
+VDDA
+Text Label 4575 7200 0    60   ~ 0
+VDDD
+Text Notes 3000 6875 0    75   ~ 0
+Seperate net while PCB is placed
+Text Label 1950 1600 0    60   ~ 0
+VDDD
+Text Label 12625 950  0    60   ~ 0
+VTARG
+$Comp
+L C C17
+U 1 1 5A68B4EB
+P 13325 7850
+F 0 "C17" H 13375 7950 50  0000 L CNN
+F 1 "1.0uF" H 13375 7750 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 13325 7850 60  0001 C CNN
+F 3 "" H 13325 7850 60  0000 C CNN
+	1    13325 7850
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C C18
+U 1 1 5A6DEFD4
+P 12675 7850
+F 0 "C18" H 12725 7950 50  0000 L CNN
+F 1 "0.1uF" H 12725 7750 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 12675 7850 60  0001 C CNN
+F 3 "" H 12675 7850 60  0000 C CNN
+	1    12675 7850
+	-1   0    0    -1  
+$EndComp
+$Comp
+L C C19
+U 1 1 5A6E03F9
+P 5575 1975
+F 0 "C19" H 5625 2075 50  0000 L CNN
+F 1 "1.0uF" H 5625 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 5575 1975 60  0001 C CNN
+F 3 "" H 5575 1975 60  0000 C CNN
+	1    5575 1975
+	1    0    0    -1  
+$EndComp
+$Comp
+L VCC #PWR10
+U 1 1 5A732E51
+P 5050 7050
+F 0 "#PWR10" H 5050 7150 30  0001 C CNN
+F 1 "VCC" H 5050 7150 30  0000 C CNN
+F 2 "" H 5050 7050 60  0000 C CNN
+F 3 "" H 5050 7050 60  0000 C CNN
+	1    5050 7050
+	1    0    0    -1  
+$EndComp
+Text Notes 2600 8750 0    60   ~ 0
+                    Routing of power\n\nVTARG and VDDIO - the I/O voltage \n    input to PSOC and souced at SWD target connector,\n    decouple each input, route together\nVDDA and VDDD are the analog and digital inputs\n    decouple seperately, route together\nVCCA and VCCD outputs of analog and digital regulators\n    decouple and route seperately, do not connect to \n    other power pins\nVSSA and VSSD are analog and digital returns \n    join, single point VSSA to other returns
+Wire Wire Line
+	13200 7525 14000 7525
+Wire Wire Line
+	14000 7425 13025 7425
+Wire Wire Line
+	12725 7425 12050 7425
+Wire Wire Line
+	12050 7525 12900 7525
+Wire Wire Line
+	2600 7050 3100 7050
+Wire Wire Line
+	12575 3075 13375 3075
+Wire Wire Line
+	12750 3375 13375 3375
+Wire Wire Line
+	12750 3475 13375 3475
+Wire Wire Line
+	12750 2275 13375 2275
+Wire Wire Line
+	12750 2375 13375 2375
+Wire Wire Line
+	12750 2475 13375 2475
+Wire Wire Line
+	12750 2575 13375 2575
+Wire Wire Line
+	7350 4225 8125 4225
+Wire Wire Line
+	7350 4125 8125 4125
+Wire Wire Line
+	12575 2075 13375 2075
+Wire Wire Line
+	12750 3275 13375 3275
+Wire Wire Line
+	12750 3775 13375 3775
+Wire Wire Line
+	12750 3675 13375 3675
+Wire Wire Line
+	12750 3575 13375 3575
+Wire Wire Line
+	13325 1550 13325 4150
+Wire Wire Line
+	13325 2175 13375 2175
+Wire Wire Line
+	13325 3175 13375 3175
+Connection ~ 13325 2175
+Wire Wire Line
+	3100 7500 2300 7500
+Wire Wire Line
+	3100 7400 1900 7400
+Wire Wire Line
+	3100 7300 1500 7300
+Wire Wire Line
+	3100 7200 1100 7200
+Wire Wire Line
+	2300 7500 2300 7725
+Wire Wire Line
+	1900 7400 1900 7725
+Wire Wire Line
+	1500 7300 1500 7725
+Wire Wire Line
+	1100 7200 1100 7725
+Wire Wire Line
+	14000 7725 13925 7725
+Wire Wire Line
+	13925 7725 13925 8200
+Wire Wire Line
+	12675 8200 14450 8200
+Wire Wire Line
+	13675 8200 13675 8050
+Wire Wire Line
+	14450 8200 14450 8125
+Connection ~ 13925 8200
+Wire Wire Line
+	14350 8125 14350 8200
+Connection ~ 14350 8200
+Wire Wire Line
+	7525 4325 8125 4325
+Wire Wire Line
+	7525 4425 8125 4425
+Wire Wire Line
+	7525 4525 8125 4525
+Wire Wire Line
+	7525 4625 8125 4625
+Wire Wire Line
+	1625 3400 3025 3400
+Wire Wire Line
+	1625 3500 2825 3500
+Wire Wire Line
+	1625 3600 2625 3600
+Wire Wire Line
+	1625 3700 2425 3700
+Wire Wire Line
+	2425 3700 2425 3975
+Wire Wire Line
+	2625 3600 2625 3975
+Wire Wire Line
+	2825 3500 2825 3975
+Wire Wire Line
+	3025 3400 3025 3975
+Wire Wire Line
+	3025 4425 3025 4275
+Wire Wire Line
+	2425 4425 3025 4425
+Wire Wire Line
+	2425 4275 2425 4425
+Wire Wire Line
+	2625 4275 2625 4425
+Wire Wire Line
+	2825 4425 2825 4275
+Wire Wire Line
+	2500 4550 2500 4425
+Wire Wire Line
+	1725 8300 1725 8425
+Wire Wire Line
+	1100 8300 2300 8300
+Wire Wire Line
+	2300 8300 2300 8125
+Wire Wire Line
+	1900 8125 1900 8300
+Connection ~ 1900 8300
+Wire Wire Line
+	1500 8300 1500 8125
+Connection ~ 1725 8300
+Wire Wire Line
+	1100 8300 1100 8125
+Connection ~ 1500 8300
+Wire Wire Line
+	14150 8275 14150 8200
+Connection ~ 14150 8200
+Connection ~ 13325 3175
+Wire Wire Line
+	6775 1725 8875 1725
+Wire Wire Line
+	6775 1725 6775 1775
+Wire Wire Line
+	7175 1775 7175 1725
+Connection ~ 7175 1725
+Wire Wire Line
+	5975 1625 9475 1625
+Wire Wire Line
+	5975 1625 5975 1775
+Wire Wire Line
+	6375 1775 6375 1625
+Connection ~ 6375 1625
+Wire Wire Line
+	4775 1425 4775 1775
+Wire Wire Line
+	5175 1775 5175 1525
+Wire Wire Line
+	3975 1425 3975 1775
+Wire Wire Line
+	4375 1425 4375 1775
+Wire Wire Line
+	3975 2275 7575 2275
+Wire Wire Line
+	3975 2275 3975 2175
+Wire Wire Line
+	4375 2175 4375 2275
+Connection ~ 4375 2275
+Wire Wire Line
+	4775 2175 4775 2275
+Connection ~ 4775 2275
+Wire Wire Line
+	5175 2175 5175 2275
+Connection ~ 5175 2275
+Wire Wire Line
+	5975 2175 5975 2275
+Connection ~ 5975 2275
+Wire Wire Line
+	6375 2175 6375 2275
+Connection ~ 6375 2275
+Wire Wire Line
+	6775 2175 6775 2275
+Connection ~ 6775 2275
+Wire Wire Line
+	7175 2275 7175 2175
+Wire Wire Line
+	12675 6900 13525 6900
+Wire Wire Line
+	13725 6900 14500 6900
+Wire Wire Line
+	13525 6900 13525 6825
+Wire Wire Line
+	13725 6825 13725 6900
+Wire Wire Line
+	1850 1800 2775 1800
+Wire Wire Line
+	2775 1625 2775 1875
+Wire Wire Line
+	14000 7325 13675 7325
+Wire Wire Line
+	13675 7150 13675 7650
+Wire Wire Line
+	13150 7150 13675 7150
+Connection ~ 13675 7325
+Wire Wire Line
+	12750 7150 12675 7150
+Wire Wire Line
+	12675 6900 12675 7650
+Wire Wire Line
+	3650 7200 4025 7200
+Wire Wire Line
+	4475 7200 5050 7200
+Wire Wire Line
+	5050 7325 4475 7325
+Wire Notes Line
+	2525 6650 5400 6650
+Wire Notes Line
+	5400 6250 5400 8850
+Wire Notes Line
+	5400 8850 2525 8850
+Wire Notes Line
+	2525 8850 2525 6250
+Wire Wire Line
+	2775 1250 2450 1250
+Wire Wire Line
+	2775 1325 2775 1250
+Connection ~ 12675 7150
+Wire Wire Line
+	12875 1550 13325 1550
+Wire Wire Line
+	13275 1550 13275 1450
+Wire Wire Line
+	12875 1550 12875 1450
+Connection ~ 13275 1550
+Wire Wire Line
+	12875 1050 12875 950 
+Wire Wire Line
+	12525 950  13275 950 
+Wire Wire Line
+	13275 950  13275 1050
+Connection ~ 12875 950 
+Wire Wire Line
+	13325 8200 13325 8050
+Connection ~ 13675 8200
+Wire Wire Line
+	13325 7650 13325 7150
+Connection ~ 13325 7150
+Wire Wire Line
+	12675 8200 12675 8050
+Connection ~ 13325 8200
+Wire Wire Line
+	5575 1525 5575 1775
+Wire Wire Line
+	5575 2175 5575 2275
+Connection ~ 5575 2275
+Wire Wire Line
+	3975 1425 9975 1425
+Connection ~ 4375 1425
+Wire Wire Line
+	5175 1525 9775 1525
+Connection ~ 5575 1525
+$Comp
+L CY8C54LP U1
+U 1 1 5A85A20B
+P 9575 6725
+F 0 "U1" H 8375 10825 60  0000 C CNN
+F 1 "CY8C54LP" H 10425 10825 60  0000 C CNN
+F 2 "Aglet_Footprints:QFP_100" H 11475 6275 60  0001 C CNN
+F 3 "" H 11475 6275 60  0001 C CNN
+	1    9575 6725
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9075 1950 9075 2475
+Text Label 9075 2400 1    60   ~ 0
+VDDIO_0
+Wire Wire Line
+	9175 1950 9175 2475
+Text Label 9175 2400 1    60   ~ 0
+VDDIO_1
+Wire Wire Line
+	9275 1950 9275 2475
+Text Label 9275 2400 1    60   ~ 0
+VDDIO_2
+Wire Wire Line
+	9375 1950 9375 2475
+Text Label 9375 2400 1    60   ~ 0
+VDDIO_3
+Wire Wire Line
+	10875 7425 11550 7425
+Wire Wire Line
+	10875 7525 11550 7525
+Wire Wire Line
+	11550 7525 12050 7425
+Wire Wire Line
+	11550 7425 12050 7525
+Connection ~ 2775 1800
+Connection ~ 4775 1425
+Wire Wire Line
+	8875 1725 8875 2475
+Wire Wire Line
+	9475 1625 9475 2475
+Wire Wire Line
+	9775 1525 9775 2475
+Wire Wire Line
+	9875 2475 9875 2325
+Wire Wire Line
+	9875 2325 9975 2325
+Wire Wire Line
+	9975 1425 9975 2475
+Connection ~ 9975 2325
+Wire Wire Line
+	8975 2350 8975 2475
+Wire Wire Line
+	8975 2350 8875 2350
+Connection ~ 8875 2350
+Text Label 1950 1900 0    60   ~ 0
+SWDCK
+Text Label 1950 2000 0    60   ~ 0
+SWDIO
+Wire Wire Line
+	1850 1900 2350 1900
+Wire Wire Line
+	1850 2000 2350 2000
+Text Label 11000 3725 0    60   ~ 0
+XRES
+Wire Wire Line
+	10875 3725 11300 3725
+$Comp
+L CONN_5 P1
+U 1 1 5A8F89F5
+P 1500 1800
+F 0 "P1" V 1450 1800 60  0000 C CNN
+F 1 "CONN_5" V 1550 1800 60  0000 C CNN
+F 2 "Aglet_Footprints:HEADER_1x05" H 1500 1750 60  0001 C CNN
+F 3 "" H 1500 1750 60  0000 C CNN
+	1    1500 1800
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1850 1700 2525 1700
+Wire Wire Line
+	2525 1700 2525 2400
+Wire Wire Line
+	2525 2400 2775 2400
+Wire Wire Line
+	2775 2400 2775 2275
+Wire Wire Line
+	2450 1250 2450 1600
+Wire Wire Line
+	2450 1600 1850 1600
+$Comp
+L GND1 #PWR8
+U 1 1 5A8F9FA4
+P 2650 2500
+F 0 "#PWR8" H 2650 2250 50  0001 C CNN
+F 1 "GND1" H 2650 2350 50  0000 C CNN
+F 2 "" H 2650 2500 50  0001 C CNN
+F 3 "" H 2650 2500 50  0001 C CNN
+	1    2650 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2650 2500 2650 2400
+Connection ~ 2650 2400
+Text Label 8775 8475 1    60   ~ 0
+VSSA
+$Comp
+L GND1 #PWR14
+U 1 1 5A8FCB24
+P 9000 8425
+F 0 "#PWR14" H 9000 8175 50  0001 C CNN
+F 1 "GND1" H 9000 8275 50  0000 C CNN
+F 2 "" H 9000 8425 50  0001 C CNN
+F 3 "" H 9000 8425 50  0001 C CNN
+	1    9000 8425
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8775 8525 8775 8175
+Wire Wire Line
+	8875 8175 8875 8300
+Wire Wire Line
+	8875 8300 9075 8300
+Wire Wire Line
+	9075 8300 9075 8175
+Wire Wire Line
+	8975 8175 8975 8300
+Connection ~ 8975 8300
+Wire Wire Line
+	9000 8425 9000 8300
+Connection ~ 9000 8300
+$Comp
+L C C20
+U 1 1 5A8FA339
+P 7575 1975
+F 0 "C20" H 7625 2075 50  0000 L CNN
+F 1 "0.1uF" H 7625 1875 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 7575 1975 60  0001 C CNN
+F 3 "" H 7575 1975 60  0000 C CNN
+	1    7575 1975
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7575 2275 7575 2175
+Wire Wire Line
+	7575 1775 7575 1725
+Connection ~ 7575 1725
+Connection ~ 7175 2275
+Connection ~ 2825 4425
+Connection ~ 2625 4425
+Connection ~ 2500 4425
+Text Label 7625 6925 0    60   ~ 0
+H-DRV0
+Text Label 7625 6825 0    60   ~ 0
+L-DRV0
+Text Label 7625 6425 0    60   ~ 0
+H-DRV1
+Text Label 7625 6325 0    60   ~ 0
+L-DRV1
+Wire Wire Line
+	7525 6925 8125 6925
+Wire Wire Line
+	7525 6825 8125 6825
+Wire Wire Line
+	7525 6425 8125 6425
+Wire Wire Line
+	7525 6325 8125 6325
+Text Label 2300 5400 0    60   ~ 0
+H-DRV0
+Text Label 2300 5500 0    60   ~ 0
+L-DRV0
+Text Label 2300 5600 0    60   ~ 0
+H-DRV1
+Text Label 2300 5700 0    60   ~ 0
+L-DRV1
+Wire Wire Line
+	2200 5400 2800 5400
+Wire Wire Line
+	2200 5500 2800 5500
+Wire Wire Line
+	2200 5600 2800 5600
+Wire Wire Line
+	2200 5700 2800 5700
+Text HLabel 2800 5400 2    60   Output ~ 0
+H-DRV0
+Text HLabel 2800 5500 2    60   Output ~ 0
+L-DRV0
+Text HLabel 2800 5600 2    60   Output ~ 0
+H-DRV1
+Text HLabel 2800 5700 2    60   Output ~ 0
+L-DRV1
+Text Label 7600 3925 0    60   ~ 0
+P0_3
+Text Label 7600 3825 0    60   ~ 0
+P0_2
+Text Label 7600 3725 0    60   ~ 0
+P0_1
+Text Label 7600 3625 0    60   ~ 0
+P0_0
+Wire Wire Line
+	7500 3925 8125 3925
+Wire Wire Line
+	7500 3825 8125 3825
+Wire Wire Line
+	7500 3725 8125 3725
+Wire Wire Line
+	7500 3625 8125 3625
+Text Label 10975 6025 0    60   ~ 0
+I2C_SDA
+Text Label 10975 5925 0    60   ~ 0
+I2C_SCL
+Wire Wire Line
+	10875 6025 11500 6025
+Wire Wire Line
+	10875 5925 11500 5925
+$Comp
+L TCAN1042 U3
+U 1 1 5A97E4C1
+P 13550 5550
+F 0 "U3" H 13350 5900 60  0000 C CNN
+F 1 "TCAN1042" H 13550 5150 60  0000 C CNN
+F 2 "Aglet_Footprints:SO8_WITH_EP" H 13550 5650 60  0001 C CNN
+F 3 "" H 13550 5650 60  0001 C CNN
+	1    13550 5550
+	1    0    0    -1  
+$EndComp
+Connection ~ 6900 14475
+Wire Wire Line
+	7125 14375 6900 14375
+Connection ~ 6900 14575
+Wire Wire Line
+	7125 14475 6900 14475
+Wire Wire Line
+	6900 14575 7125 14575
+Wire Wire Line
+	6900 14375 6900 14700
+$Comp
+L GND1 #PWR13
+U 1 1 5A49D976
+P 6900 14700
+F 0 "#PWR13" H 6900 14450 50  0001 C CNN
+F 1 "GND1" H 6900 14550 50  0000 C CNN
+F 2 "" H 6900 14700 50  0001 C CNN
+F 3 "" H 6900 14700 50  0001 C CNN
+	1    6900 14700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10875 6425 12025 6425
+Wire Wire Line
+	12025 6425 12025 5550
+Wire Wire Line
+	12025 5550 13050 5550
+Wire Wire Line
+	13050 5650 12175 5650
+Wire Wire Line
+	12175 5650 12175 6325
+Wire Wire Line
+	12175 6325 10875 6325
+Text Label 11000 6425 0    60   ~ 0
+CAN_Out
+Text Label 11000 6325 0    60   ~ 0
+CAN_In
+Wire Wire Line
+	11475 5225 10875 5225
+Text Label 10975 5225 0    60   ~ 0
+CAN_En
+Text Label 12625 5750 0    60   ~ 0
+CAN_En
+Wire Wire Line
+	12525 5750 13050 5750
+Text HLabel 5250 3300 0    60   Input ~ 0
+VAD0
+$Comp
+L R R4
+U 1 1 5A98812B
+P 5300 3125
+F 0 "R4" H 5150 3165 50  0000 C CNN
+F 1 "10K" H 5250 3065 50  0000 C CNN
+F 2 "Aglet_Footprints:r_0603" H 5300 3125 60  0001 C CNN
+F 3 "" H 5300 3125 60  0000 C CNN
+	1    5300 3125
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5025 3125 5200 3125
+Text HLabel 5025 3125 0    60   Input ~ 0
+VAD1
+$Comp
+L R R9
+U 1 1 5A9889B1
+P 5525 3300
+F 0 "R9" H 5375 3340 50  0000 C CNN
+F 1 "10K" H 5475 3240 50  0000 C CNN
+F 2 "Aglet_Footprints:r_0603" H 5525 3300 60  0001 C CNN
+F 3 "" H 5525 3300 60  0000 C CNN
+	1    5525 3300
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5250 3300 5425 3300
+Text HLabel 5475 3450 0    60   Input ~ 0
+VAD2
+$Comp
+L R R10
+U 1 1 5A988A26
+P 5750 3450
+F 0 "R10" H 5600 3490 50  0000 C CNN
+F 1 "10K" H 5700 3390 50  0000 C CNN
+F 2 "Aglet_Footprints:r_0603" H 5750 3450 60  0001 C CNN
+F 3 "" H 5750 3450 60  0000 C CNN
+	1    5750 3450
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5475 3450 5650 3450
+$Comp
+L R R11
+U 1 1 5A988C9D
+P 6175 3650
+F 0 "R11" H 6025 3690 50  0000 C CNN
+F 1 "1K" H 6125 3590 50  0000 C CNN
+F 2 "Aglet_Footprints:r_0603" H 6175 3650 60  0001 C CNN
+F 3 "" H 6175 3650 60  0000 C CNN
+	1    6175 3650
+	0    1    -1   0   
+$EndComp
+$Comp
+L R R12
+U 1 1 5A988DBC
+P 6400 3650
+F 0 "R12" H 6250 3690 50  0000 C CNN
+F 1 "1K" H 6350 3590 50  0000 C CNN
+F 2 "Aglet_Footprints:r_0603" H 6400 3650 60  0001 C CNN
+F 3 "" H 6400 3650 60  0000 C CNN
+	1    6400 3650
+	0    1    -1   0   
+$EndComp
+$Comp
+L R R13
+U 1 1 5A988EC0
+P 6625 3650
+F 0 "R13" H 6475 3690 50  0000 C CNN
+F 1 "1K" H 6575 3590 50  0000 C CNN
+F 2 "Aglet_Footprints:r_0603" H 6625 3650 60  0001 C CNN
+F 3 "" H 6625 3650 60  0000 C CNN
+	1    6625 3650
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	6175 3550 6175 3450
+Wire Wire Line
+	5950 3450 6950 3450
+Wire Wire Line
+	5725 3300 7275 3300
+Wire Wire Line
+	6400 3300 6400 3550
+Wire Wire Line
+	6625 3550 6625 3125
+Wire Wire Line
+	5500 3125 7425 3125
+$Comp
+L GND1 #PWR11
+U 1 1 5A98925F
+P 5325 2425
+F 0 "#PWR11" H 5325 2175 50  0001 C CNN
+F 1 "GND1" H 5325 2275 50  0000 C CNN
+F 2 "" H 5325 2425 50  0001 C CNN
+F 3 "" H 5325 2425 50  0001 C CNN
+	1    5325 2425
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5325 2425 5325 2275
+Connection ~ 5325 2275
+$Comp
+L GND1 #PWR12
+U 1 1 5A98941A
+P 6300 4125
+F 0 "#PWR12" H 6300 3875 50  0001 C CNN
+F 1 "GND1" H 6300 3975 50  0000 C CNN
+F 2 "" H 6300 4125 50  0001 C CNN
+F 3 "" H 6300 4125 50  0001 C CNN
+	1    6300 4125
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6175 3850 6175 4000
+Wire Wire Line
+	6175 4000 6625 4000
+Wire Wire Line
+	6625 4000 6625 3850
+Wire Wire Line
+	6400 3850 6400 4000
+Connection ~ 6400 4000
+Wire Wire Line
+	6300 4000 6300 4125
+Connection ~ 6300 4000
+Wire Wire Line
+	7425 3125 7425 3225
+Wire Wire Line
+	7425 3225 8125 3225
+Connection ~ 6625 3125
+Wire Wire Line
+	8125 3325 7275 3325
+Wire Wire Line
+	7275 3325 7275 3300
+Connection ~ 6400 3300
+Wire Wire Line
+	6950 3450 6950 3425
+Wire Wire Line
+	6950 3425 8125 3425
+Connection ~ 6175 3450
+$Comp
+L CONN_4 CAN1
+U 1 1 5A98AD90
+P 14875 5600
+F 0 "CAN1" H 14875 5850 60  0000 C CNN
+F 1 "CONN_4" V 14875 5600 60  0000 C CNN
+F 2 "Aglet_Footprints:Header-Latching-4" H 14875 5500 60  0001 C CNN
+F 3 "" H 14875 5500 60  0000 C CNN
+	1    14875 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14050 5550 14525 5550
+Wire Wire Line
+	14050 5650 14525 5650
+$Comp
+L GND1 #PWR18
+U 1 1 5A98B07C
+P 14375 5850
+F 0 "#PWR18" H 14375 5600 50  0001 C CNN
+F 1 "GND1" H 14375 5700 50  0000 C CNN
+F 2 "" H 14375 5850 50  0001 C CNN
+F 3 "" H 14375 5850 50  0001 C CNN
+	1    14375 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14375 4750 14375 5850
+$Comp
+L GND1 #PWR15
+U 1 1 5A98B251
+P 12875 5925
+F 0 "#PWR15" H 12875 5675 50  0001 C CNN
+F 1 "GND1" H 12875 5775 50  0000 C CNN
+F 2 "" H 12875 5925 50  0001 C CNN
+F 3 "" H 12875 5925 50  0001 C CNN
+	1    12875 5925
+	1    0    0    -1  
+$EndComp
+Text Label 12375 5350 0    60   ~ 0
+VDDD
+Wire Wire Line
+	12200 5350 13050 5350
+Wire Wire Line
+	12875 4750 12875 5450
+Wire Wire Line
+	12875 5450 13050 5450
+Connection ~ 12875 5350
+Wire Wire Line
+	13050 5850 12875 5850
+Wire Wire Line
+	12875 5850 12875 5925
+Wire Wire Line
+	14375 5750 14525 5750
+$Comp
+L CONN_4 CAN2
+U 1 1 5A9A07ED
+P 14875 5000
+F 0 "CAN2" H 14875 5250 60  0000 C CNN
+F 1 "CONN_4" V 14875 5000 60  0000 C CNN
+F 2 "Aglet_Footprints:Header-Latching-4" H 14875 4900 60  0001 C CNN
+F 3 "" H 14875 4900 60  0000 C CNN
+	1    14875 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14525 5150 14375 5150
+Connection ~ 14375 5750
+Wire Wire Line
+	14300 5650 14300 5050
+Wire Wire Line
+	14300 5050 14525 5050
+Connection ~ 14300 5650
+Wire Wire Line
+	14525 4950 14200 4950
+Wire Wire Line
+	14200 4950 14200 5550
+Connection ~ 14200 5550
+Wire Wire Line
+	14450 4850 14525 4850
+Wire Wire Line
+	14450 4850 14450 5450
+Wire Wire Line
+	14450 5450 14525 5450
+Text Label 7600 6025 0    60   ~ 0
+P3_1
+Text Label 7600 6125 0    60   ~ 0
+P3_2
+Text Label 7600 5925 0    60   ~ 0
+P3_0
+Text Label 7600 6225 0    60   ~ 0
+P3_3
+Wire Wire Line
+	7500 6025 8125 6025
+Wire Wire Line
+	7500 6125 8125 6125
+Wire Wire Line
+	7500 5925 8125 5925
+Wire Wire Line
+	7500 6225 8125 6225
+Wire Wire Line
+	3100 7050 3100 7500
+Connection ~ 3100 7200
+Connection ~ 3100 7300
+Connection ~ 3100 7400
+Wire Wire Line
+	4025 7200 4025 7300
+Wire Wire Line
+	5050 7050 5050 7425
+Connection ~ 5050 7200
+Text HLabel 4900 7425 0    60   Output ~ 0
+VCC-Mtr
+Wire Wire Line
+	5050 7425 4900 7425
+Connection ~ 5050 7325
+Text Label 4400 6550 0    60   ~ 0
+VTARG
+Text Label 3450 6550 0    60   ~ 0
+VDDD
+Wire Wire Line
+	3025 6550 3875 6550
+Wire Wire Line
+	4075 6550 4850 6550
+Wire Wire Line
+	3875 6550 3875 6475
+Wire Wire Line
+	4075 6475 4075 6550
+Wire Wire Line
+	3875 6475 4075 6475
+Text Notes 2900 6375 0    75   ~ 0
+No need for seperate VIO in this design
+Wire Notes Line
+	2525 6250 5400 6250
+$Comp
+L C C26
+U 1 1 5A9CA8CC
+P 13300 4975
+F 0 "C26" V 13375 4775 50  0000 L CNN
+F 1 "0.1uF" V 13225 5075 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 13300 4975 60  0001 C CNN
+F 3 "" H 13300 4975 60  0000 C CNN
+	1    13300 4975
+	0    1    -1   0   
+$EndComp
+$Comp
+L C C27
+U 1 1 5A9CABA0
+P 13500 4750
+F 0 "C27" V 13575 4550 50  0000 L CNN
+F 1 "0.1uF" V 13425 4850 50  0000 L CNN
+F 2 "Aglet_Footprints:c_0603" H 13500 4750 60  0001 C CNN
+F 3 "" H 13500 4750 60  0000 C CNN
+	1    13500 4750
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	13300 4750 12875 4750
+Wire Wire Line
+	13100 4975 12875 4975
+Connection ~ 12875 4975
+Wire Wire Line
+	14375 4750 13700 4750
+Connection ~ 14375 5150
+Wire Wire Line
+	13500 4975 13975 4975
+Wire Wire Line
+	13975 4975 13975 4750
+Connection ~ 13975 4750
+$EndSCHEMATC
