@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name ConsoleAglet)(type Legacy)(uri ${KIPRJMOD}/ConsoleAglet.lib)(options "")(descr ""))
+  (lib (name Console-10x10)(type Legacy)(uri ${KIPRJMOD}/Console-10x10.lib)(options "")(descr ""))
+)
