@@ -25,7 +25,7 @@
 #   it does not send byte by byte data.
 #  Messages from the PSx Sniffer uses the ESC (0x1b) character to delimit fields
 #   0x1b | 0x00 is the expansion of a data byte of 0x1b into encapulated data
-#   0x1b | 0x01 is the start of a new tranmission which has a header of elapsed time & message count
+#   0x1b | 0x01 is the start of a new transmission which has a header of elapsed time & message count
 #   0x1b | 0x02 is the start of MOSI data
 #   0x1b | 0x03 is the start of MISO data
 #   0x1b | 0x04 is the end of message
@@ -40,8 +40,8 @@ import termios
 #import time
 
 
-def isData():
-    return select.select([sys.stdin], [], [], 0) == ([sys.stdin], [], [])
+def isdata():
+  return select.select([sys.stdin], [], [], 0) == ([sys.stdin], [], [])
 
 if len(sys.argv) < 3
   print "Usage: python PSxReceiver.py <Controller-String> <virtualUART>"
@@ -63,7 +63,7 @@ try:
 
       c = 'A'
       while (c != '\x1b'):
-        if isData():
+        if isdata():
           c = sys.stdin.read(1)
         if PSxAnalyzer.inWaiting() > 0:
           x = ord(PSxAnalyzer.read())
