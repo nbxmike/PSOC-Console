@@ -249,8 +249,7 @@ void CH_PutChar(char8 txDataByte)
  * the FreeRTOS CLI if you need the space.
  */
 BaseType_t echoCommand(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString) {
-  (void)xWriteBufferLen;
-  strcpy(pcCommandString, pcWriteBuffer);
+  strncpy( pcWriteBuffer, pcCommandString,xWriteBufferLen);
   return (pdFALSE);
 }
 

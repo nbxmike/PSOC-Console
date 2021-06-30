@@ -133,7 +133,7 @@ void USBJoyInit(void) {
   UsbJoyCheck();
   
   xTaskCreate(                  /* Create Playstation Interface task              */
-    UsbJoyTask,              /* Function implementing the task loop            */
+    UsbJoyTask,                 /* Function implementing the task loop            */
     "PSx_Host",                 /* String to locate the task in debugger          */
     configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
     0,                          /* Number of parameters to pass to task  (none)   */
