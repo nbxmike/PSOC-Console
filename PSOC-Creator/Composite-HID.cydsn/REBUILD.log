@@ -1,4 +1,4 @@
---------------- Rebuild Started: 07/08/2021 21:29:08 Project: Composite-HID, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 07/08/2021 23:43:08 Project: Composite-HID, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\croutine.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\event_groups.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\FreeRTOS_CLI.o"
@@ -75,7 +75,6 @@ Deleting file ".\CortexM3\ARM_GCC_541\Debug\PSx_ACK_1.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Clk_100K.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Delay_10uS.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Delay_10uS_PM.o"
-Deleting file ".\CortexM3\ARM_GCC_541\Debug\Delay_10uS_isr.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\USBCOMP_Dm.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\USBCOMP_Dp.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\ADC_SAR.o"
@@ -100,6 +99,7 @@ Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_1_PM.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_1_INT.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_1_BOOT.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_1_IntClock.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Delay_1mS_isr.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Composite-HID.hex"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Composite-HID.elf"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Composite-HID.map"
@@ -302,4 +302,4 @@ Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S D:\Projects\PSOC-Console\PSOC-Creator\Composite-HID.cydsn\CortexM3\ARM_GCC_541\Debug\Composite-HID.elf
 Flash used: 22622 of 262144 bytes (8.6%).
 SRAM used: 13977 of 65536 bytes (21.3%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 07/08/2021 21:29:59 ---------------
+--------------- Rebuild Succeeded: 07/08/2021 23:43:45 ---------------
