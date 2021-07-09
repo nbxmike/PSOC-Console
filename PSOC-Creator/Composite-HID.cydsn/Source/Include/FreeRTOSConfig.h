@@ -28,7 +28,7 @@
  *  @brief  Configuration requirements and options for FreeRTOS.
  *
  *  Largely collected from FreeRTOS docs/webpages and other peoples examples, 
- *  I beleive it is not up to the point of an independant work and applying
+ *  I beleive it is up to the point of an independant work and applying
  *  my copyright and license terms.
  */
 
@@ -40,16 +40,16 @@
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION		0
 #define configUSE_TICKLESS_IDLE						0
 #define configCPU_CLOCK_HZ	  						(( unsigned long )BCLK__BUS_CLK__HZ)
-#define configTICK_RATE_HZ						  	1000
-#define configMAX_PRIORITIES				  		5
+#define configTICK_RATE_HZ						  	( ( TickType_t ) 1000 )
+#define configMAX_PRIORITIES				  		( 5 )
 #define configMINIMAL_STACK_SIZE					(( unsigned short )128)
 #define configMAX_TASK_NAME_LEN						16
 #define configUSE_16_BIT_TICKS						0
 #define configIDLE_SHOULD_YIELD						1
 #define configUSE_TASK_NOTIFICATIONS			1
-#define configUSE_MUTEXES							    0
+#define configUSE_MUTEXES							    1
 #define configUSE_RECURSIVE_MUTEXES				0
-#define configUSE_COUNTING_SEMAPHORES			0
+#define configUSE_COUNTING_SEMAPHORES			1
 #define configUSE_ALTERNATIVE_API					0 /* Deprecated! */
 #define configQUEUE_REGISTRY_SIZE					10
 #define configUSE_QUEUE_SETS					  	0
@@ -117,15 +117,16 @@
 #define INCLUDE_vTaskPrioritySet				1
 #define INCLUDE_uxTaskPriorityGet				1
 #define INCLUDE_vTaskDelete						1
+#define INCLUDE_vTaskCleanUpResources		    0
 #define INCLUDE_vTaskSuspend					1
 #define INCLUDE_xResumeFromISR					1
 #define INCLUDE_vTaskDelayUntil					1
 #define INCLUDE_vTaskDelay						1
 #define INCLUDE_xTaskGetSchedulerState			1
 #define INCLUDE_xTaskGetCurrentTaskHandle		1
-#define INCLUDE_uxTaskGetStackHighWaterMark		0
+#define INCLUDE_uxTaskGetStackHighWaterMark		1
 #define INCLUDE_xTaskGetIdleTaskHandle			0
-#define INCLUDE_eTaskGetState					0
+#define INCLUDE_eTaskGetState					1
 #define INCLUDE_xEventGroupSetBitFromISR		1
 #define INCLUDE_xTimerPendFunctionCall			0
 #define INCLUDE_xTaskAbortDelay					0
