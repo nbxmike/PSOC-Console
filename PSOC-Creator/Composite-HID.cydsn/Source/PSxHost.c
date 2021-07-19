@@ -93,8 +93,8 @@ void Delay_10uS_isr_Interrupt_InterruptCallback(void)
   static BaseType_t xHigherPriorityTaskWoken;
   xHigherPriorityTaskWoken = pdFALSE;
   
-  Delay_10uS_Stop();
-  Delay_10uS_WritePeriod(ACK_DELAY);
+  Delay_ACK_Stop();
+  Delay_ACK_WritePeriod(ACK_DELAY);
   
   if( xPSx_ACK_Semaphore != NULL )
   {
@@ -172,8 +172,8 @@ int PSxTrasnferByte(uint8 Out, uint8 *In, int Wait)
     xSemaphoreTake( xPSx_ACK_Semaphore, 0 );
     if (ACK_Reg_Save == 0)
     {
-      Delay_10uS_WritePeriod(ACK_DELAY);
-      Delay_10uS_Start();
+      Delay_ACK_WritePeriod(ACK_DELAY);
+      Delay_ACK_Start();
       xSemaphoreTake( xPSx_ACK_Semaphore, 2 );
       if (ACK_Reg_Save == 0)
       {

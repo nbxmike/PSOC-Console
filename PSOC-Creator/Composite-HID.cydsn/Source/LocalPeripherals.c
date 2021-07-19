@@ -25,7 +25,7 @@
 /** @file   LocalPeripherals.c
  *  @author Mike McCormack (nbxmike)
  *  @date   8/OCT/2018
- *  @brief  Local inputs added to or outputs derived from the USB HID information.
+ *  @brief  Local inputs added to, or outputs derived from, the USB HID information.
  *
  *  Support for peripherals that are not part of a PlayStation controller that 
  *  are attached to the PSOC.  Examples could be configuration switches as inputs

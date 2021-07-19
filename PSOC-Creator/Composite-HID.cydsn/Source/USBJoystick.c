@@ -125,7 +125,6 @@ void USBJoyClearBuffers(void) {
  * @return Nothing
  */
 void USBJoyInit(void) {
-  uint8 i;
 
   sJoy_Startup = USB_UNSET;
 

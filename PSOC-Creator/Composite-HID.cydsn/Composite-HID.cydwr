@@ -407,6 +407,7 @@
       <Data key="2c3d7bae-9912-4913-b757-d234f4eadf04" value="PSx_MOSI" />
       <Data key="3b40adf4-70b3-49f0-9f83-5e2d94b2a2f7" value="PSx_SS_0" />
       <Data key="5b358ee4-cfed-4ee5-bccf-100f7f7eab62" value="PSx_ACK_1" />
+      <Data key="5d5cad65-e884-465a-9957-df3e9a8a7b3d" value="BlueLED" />
       <Data key="6ac9ab45-89fe-4bad-8c0e-c1f4e71b9879" value="Out_2" />
       <Data key="6f6368bb-864d-4483-aca0-453b58c45ef0" value="Out_4" />
       <Data key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba" value="PSx_MISO" />
@@ -423,6 +424,7 @@
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx_1" />
       <Data key="12333173-1e13-41ab-b355-afde879898ed" value="Button_17_22" />
       <Data key="89288933-e75c-49a2-992b-271b018d1a31" value="Analog_RY" />
+      <Data key="a1de533d-cd64-4cdb-beb2-cd2e8a26062c" value="OB_Switch" />
       <Data key="beca5e2d-f70f-4900-a4db-7eca1ed3126e/8b77a6c4-10a0-4390-971c-672353e2a49c" value="USBCOMP_Dm" />
       <Data key="beca5e2d-f70f-4900-a4db-7eca1ed3126e/618a72fc-5ddd-4df5-958f-a3d55102db42" value="USBCOMP_Dp" />
       <Data key="c3b2f627-52c8-4a3d-a916-3ee4c1a164d2" value="PSx_MOSI" />
@@ -3532,14 +3534,14 @@
         <Data key="Port Format" value="0,1" />
       </Group>
     </Group>
-    <Group key="01ac0c3a-3d9d-47a6-a349-f7077b05bb42">
-      <Group key="0">
-        <Data key="Port Format" value="2,2" />
-      </Group>
-    </Group>
     <Group key="2ad67761-2fb7-4219-8260-fa4170f6a29e">
       <Group key="0">
         <Data key="Port Format" value="15,4" />
+      </Group>
+    </Group>
+    <Group key="5d5cad65-e884-465a-9957-df3e9a8a7b3d">
+      <Group key="0">
+        <Data key="Port Format" value="2,1" />
       </Group>
     </Group>
     <Group key="6ac9ab45-89fe-4bad-8c0e-c1f4e71b9879">
@@ -3618,6 +3620,11 @@
         <Data key="Port Format" value="0,4" />
       </Group>
     </Group>
+    <Group key="a1de533d-cd64-4cdb-beb2-cd2e8a26062c">
+      <Group key="0">
+        <Data key="Port Format" value="2,2" />
+      </Group>
+    </Group>
     <Group key="beca5e2d-f70f-4900-a4db-7eca1ed3126e/8b77a6c4-10a0-4390-971c-672353e2a49c">
       <Group key="0">
         <Data key="Port Format" value="15,7" />
@@ -3631,11 +3638,6 @@
     <Group key="c3b2f627-52c8-4a3d-a916-3ee4c1a164d2">
       <Group key="0">
         <Data key="Port Format" value="12,5" />
-      </Group>
-    </Group>
-    <Group key="d3a34553-233c-4c64-ac91-14cc4402bb4a">
-      <Group key="0">
-        <Data key="Port Format" value="2,1" />
       </Group>
     </Group>
     <Group key="d5b1a0fe-f197-4107-b1da-3fc893488c47">
@@ -3680,6 +3682,7 @@
     </Group>
     <Group key="UnAssigned Pins">
       <Group key="01ac0c3a-3d9d-47a6-a349-f7077b05bb42">
+        <Data key="0" value="132711288839399001" />
         <Data key="1" value="132700629102036469" />
       </Group>
       <Group key="d3a7879f-a2fd-4e31-87c3-7d085eb68331">
@@ -3691,6 +3694,9 @@
         <Data key="5" value="131830435702141205" />
         <Data key="6" value="131806622327176713" />
         <Data key="7" value="131806622327176713" />
+      </Group>
+      <Group key="d3a34553-233c-4c64-ac91-14cc4402bb4a">
+        <Data key="0" value="132711288472511924" />
       </Group>
     </Group>
     <Group key="Unlocked Pins">

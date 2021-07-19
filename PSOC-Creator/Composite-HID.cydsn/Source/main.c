@@ -38,6 +38,7 @@
 #include "USBHost.h"
 #include "LocalPeripherals.h"
 #include "PSxHost.h"
+#include "LEDsOut.h"
 
 /* Flags to indicate the state of USB host and sub functions */
 volatile int USBConfigurationHost = USB_UNSET;
@@ -73,12 +74,14 @@ int main(void) {
   Setup_System();
   FRInit();
   
-  USBHostInit();
-  CH_Init();
-  PSxInit();
-  USBJoyInit();
-  LocalAnalogInit();
+  //USBHostInit();
+  //CH_Init();
+  //PSxInit();
+  //USBJoyInit();
+  //LocalAnalogInit();
+  LEDSOut_Init();
 
+  LEDSOut_Set( 7 , LEDSOUT_SLOW );
 
 
   vTaskStartScheduler();    // Had best never return
