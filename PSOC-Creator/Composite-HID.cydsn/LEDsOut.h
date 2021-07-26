@@ -48,6 +48,7 @@ typedef struct
 {
     uint16_t count;
     uint8_t mode;
+    uint8_t onOff;
     uint8_t state;
 } LED_Output_t ;
 
