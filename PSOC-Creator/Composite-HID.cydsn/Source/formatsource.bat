@@ -1,0 +1,1 @@
+find Projects/PSOC-Console/PSOC-Creator/Composite-HID.cydsn/Source -iname *.h -o -iname *.c | xargs clang-format -i

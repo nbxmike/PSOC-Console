@@ -1,4 +1,4 @@
---------------- Rebuild Started: 07/18/2021 20:38:10 Project: Composite-HID, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 03/28/2022 12:42:43 Project: Composite-HID, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\croutine.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\event_groups.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\FreeRTOS_CLI.o"
@@ -105,6 +105,11 @@ Deleting file ".\CortexM3\ARM_GCC_541\Debug\Delay_ACK.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Delay_ACK_PM.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Clk_100K_1.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\PSx_ACK_Time_isr.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\OB_Switch.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\PushButton.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\LocalLED.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\LocalLED_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\BlueLED.o"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Composite-HID.hex"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Composite-HID.elf"
 Deleting file ".\CortexM3\ARM_GCC_541\Debug\Composite-HID.map"
@@ -123,7 +128,7 @@ ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_10 is 
 HDL Generation...
 Synthesis...
 Tech Mapping...
-ADD: pft.M0040: information: The following 26 pin(s) will be assigned a location by the fitter: BlueLED(0), DigInp(1), DigInp(2), DigInp(3), DigInp(4), DigInp(5), DigInp(6), DigInp(7), DigInp(8), DigInp(9), DigInp(10), DigInp(11), DigInp(12), DigInp(13), DigInp(14), DigInp(15), OB_Switch(0), PSx_ACK_0(0), PSx_ACK_1(0), PSx_MISO(0), PSx_MOSI(0), PSx_SCLK(0), PSx_SS_0(0), PSx_SS_1(0), Rx_1(0), Tx_1(0)
+ADD: pft.M0040: information: The following 26 pin(s) will be assigned a location by the fitter: DigInp(0), DigInp(1), DigInp(2), DigInp(3), DigInp(4), DigInp(5), DigInp(6), DigInp(7), DigInp(8), DigInp(9), DigInp(10), DigInp(11), DigInp(12), DigInp(13), DigInp(14), DigInp(15), Out_8(0), PSx_ACK_0(0), PSx_ACK_1(0), PSx_MISO(0), PSx_MOSI(0), PSx_SCLK(0), PSx_SS_0(0), PSx_SS_1(0), Rx_1(0), Tx_1(0)
 Analog Placement...
 Info: apr.M0002: Analog signal "Net_512" is connected to one terminal only. (App=cydsfit)
 Info: apr.M0002: Analog signal "Net_513" is connected to one terminal only. (App=cydsfit)
@@ -190,7 +195,6 @@ Bitstream Generation...
 Bitstream Verification...
 Static timing analysis...
 Warning: sta.M0021: Composite-HID_timing.html: Warning-1350: Asynchronous path(s) exist from "Clk_100K_1(routed)" to "CyBUS_CLK". See the timing report for details. (File=D:\Projects\PSOC-Console\PSOC-Creator\Composite-HID.cydsn\Composite-HID_timing.html)
-Warning: sta.M0019: Composite-HID_timing.html: Warning-1366: Setup time violation found in a path from clock ( PSx_SPI_IntClock ) to clock ( CyBUS_CLK ). (File=D:\Projects\PSOC-Console\PSOC-Creator\Composite-HID.cydsn\Composite-HID_timing.html)
 API Generation...
 Dependency Generation...
 Cleanup...
@@ -211,10 +215,6 @@ arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\in
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/LocalPeripherals.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\LocalPeripherals.c -o .\CortexM3\ARM_GCC_541\Debug\LocalPeripherals.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/PSxHost.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\PSxHost.c -o .\CortexM3\ARM_GCC_541\Debug\PSxHost.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/USBJoystick.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\USBJoystick.c -o .\CortexM3\ARM_GCC_541\Debug\USBJoystick.o
-Source\USBJoystick.c: In function 'USBJoyInit':
-Source\USBJoystick.c:128:9: warning: unused variable 'i' [-Wunused-variable]
-   uint8 i;
-         ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/USBHost.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Source\USBHost.c -o .\CortexM3\ARM_GCC_541\Debug\USBHost.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/LEDsOut.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c LEDsOut.c -o .\CortexM3\ARM_GCC_541\Debug\LEDsOut.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\Source\Include -I.\FreeRTOS\include -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cyfitter_cfg.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\cyfitter_cfg.c -o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
@@ -317,6 +317,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S D:\Projects\PSOC-Console\PSOC-Creator\Composite-HID.cydsn\CortexM3\ARM_GCC_541\Debug\Composite-HID.elf
-Flash used: 10774 of 262144 bytes (4.1%).
-SRAM used: 13273 of 65536 bytes (20.3%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 07/18/2021 20:39:19 ---------------
+Flash used: 10350 of 262144 bytes (3.9%).
+SRAM used: 13321 of 65536 bytes (20.3%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 03/28/2022 12:43:26 ---------------

@@ -23,7 +23,7 @@
  * ========================================
  */
 /**
- * @file   PSxHost.h
+ * @file   globals.h
  * @author Mike McCormack (nbxmike)
  * @date   8/OCT/2018
  * @brief  The host interface to PlayStation 1/2 controllers prototypes and constants.

@@ -1,0 +1,22 @@
+﻿---
+BasedOnStyle: Microsoft
+AlignAfterOpenBracket: Align
+AlignConsecutiveMacros: 'true'
+AlignTrailingComments: 'true'
+AllowAllArgumentsOnNextLine: 'false'
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: 'false'
+BreakBeforeBraces: Allman
+IndentCaseLabels: 'true'
+IndentWidth: '4'
+SpaceAfterCStyleCast: 'true'
+SpaceAfterLogicalNot: 'true'
+SpaceBeforeAssignmentOperators: 'true'
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: 'false'
+SpacesInCStyleCastParentheses: 'false'
+UseTab: Never
+
+...
