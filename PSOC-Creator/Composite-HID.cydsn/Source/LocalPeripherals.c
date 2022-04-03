@@ -27,11 +27,10 @@
  *  @date   8/OCT/2018
  *  @brief  Local inputs added to, or outputs derived from, the USB HID information.
  *
- *  Support for peripherals that are not part of a PlayStation controller that 
+ *  Support for peripherals that are not part of a PlayStation controller that
  *  are attached to the PSOC.  Examples could be configuration switches as inputs
  *  or LEDs as outputs.
  */
-
 
 #include <project.h>
 #include "FreeRTOS.h"
@@ -41,35 +40,37 @@
 #include "semphr.h"
 #include "FRSupport.h"
 
+#define ANALOG_OFFSET        (-127)
+#define ANALOG_UPPER_LIMIT   (127)
+#define ANALOG_LOWER_LIMIT   (-127)
+#define ANALOG_RANGE_ADJUST  (4)
 
-int16 AnalogWorking[ANALOG_SIZE];                /* ADC measurements in process       */
-volatile int16 AnalogScaled[ANALOG_SIZE];        /* Scaled, centered ADC measurements */
+int16 AnalogWorking[ANALOG_SIZE];         /* ADC measurements in process       */
+volatile int16 AnalogScaled[ANALOG_SIZE]; /* Scaled, centered ADC measurements */
 volatile uint8 ButtonBuffer[BUTTON_SIZE];
 volatile uint8 IndicatorBuffer;
-
 
 /**
  * @brief Releases the foreground waiting on ADC to end.
  *
- * Hopefully, this is called when one complete ADC cycle, that is all 
+ * Hopefully, this is called when one complete ADC cycle, that is all
  * ADCs inputs are sampled, is completed.
  * @param  None, IRQ
  * @return Nothing, IRQ
  */
 void ADC_IRQ_Interrupt_InterruptCallback(void)
 {
-  static BaseType_t xHigherPriorityTaskWoken;
-  xHigherPriorityTaskWoken = pdFALSE;
-    
-  if( xAnalog_Semaphore != NULL )
-  {
-    xSemaphoreGiveFromISR( xAnalog_Semaphore, &xHigherPriorityTaskWoken );
-    if (xHigherPriorityTaskWoken == pdTRUE)
+    static BaseType_t xHigherPriorityTaskWoken;
+    xHigherPriorityTaskWoken = pdFALSE;
+
+    if (xAnalog_Semaphore != NULL)
     {
-      portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+        xSemaphoreGiveFromISR(xAnalog_Semaphore, &xHigherPriorityTaskWoken);
+        if (xHigherPriorityTaskWoken == pdTRUE)
+        {
+            portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+        }
     }
-  }  
-  
 }
 
 /**
@@ -85,23 +86,25 @@ void ADC_IRQ_Interrupt_InterruptCallback(void)
  * @param  None
  * @return Nothing
  */
-void LocalAnalogRead(void) {
-  int i;
+void LocalAnalogRead(void)
+{
+    int i;
 
-  for (i = 0; i < ANALOG_SIZE; i++)             // Adjust the data in one array
-  {                                             // then copy the final result to the buffer
-    AnalogWorking[i] = ADC_GetResult16(i) >> 4;
-    AnalogWorking[i] = AnalogWorking[i] - 127;  /* Center the reading about zero            */
-    if (AnalogWorking[i] > 127) {
-      AnalogWorking[i] = 127;
+    for (i = 0; i < ANALOG_SIZE; i++) // Adjust the data in one array
+    {                                 // then copy the final result to the buffer
+        AnalogWorking[i] = ADC_GetResult16(i) >> ANALOG_RANGE_ADJUST;
+        AnalogWorking[i] = AnalogWorking[i] + ANALOG_OFFSET; /* Center the reading about zero            */
+        if (AnalogWorking[i] > ANALOG_UPPER_LIMIT)
+        {
+            AnalogWorking[i] = ANALOG_UPPER_LIMIT;
+        }
+        else if (AnalogWorking[i] < ANALOG_LOWER_LIMIT)
+        {
+            AnalogWorking[i] = ANALOG_LOWER_LIMIT;
+        }
     }
-    else if (AnalogWorking[i] < -127) {
-      AnalogWorking[i] = -127;
-    }
-  }
-  LocalAnalogCopy();
+    LocalAnalogCopy();
 }
-
 
 /**
  * @brief Copies data from the working to the shared array.
@@ -113,33 +116,32 @@ void LocalAnalogRead(void) {
  * @param  None
  * @return Nothing
  */
-void LocalAnalogCopy(void) 
+void LocalAnalogCopy(void)
 {
-  int i;
+    int i;
 
-  for (i = 0; i < ANALOG_SIZE; i++)  {
-    AnalogScaled[i] = AnalogWorking[i];
-  }
+    for (i = 0; i < ANALOG_SIZE; i++)
+    {
+        AnalogScaled[i] = AnalogWorking[i];
+    }
 }
-
 
 /**
  * @brief Pulls from the digital input register.
  *
- * This will pull data from the the digital registers that are connected to 
- * buttons and switches.  Yes, some other task could get data from two 
+ * This will pull data from the the digital registers that are connected to
+ * buttons and switches.  Yes, some other task could get data from two
  * sample periods, but as we are talking with human interoperations, it really
  * does not matter.
  *
  * @param  None
  * @return Nothing
  */
-void LocalButtonsRead(void) {    // Move from I/O registers to memory
-  ButtonBuffer[0] = ButtonReg1_Read();     /* First button byte is after the last analog value */
-  ButtonBuffer[1] = ButtonReg2_Read();
+void LocalButtonsRead(void)
+{                                        // Move from I/O registers to memory
+    ButtonBuffer[0] = ButtonReg1_Read(); /* First button byte is after the last analog value */
+    ButtonBuffer[1] = ButtonReg2_Read();
 }
-
-
 
 /**
  * @brief Programs the local indicators with USB host data.
@@ -149,8 +151,9 @@ void LocalButtonsRead(void) {    // Move from I/O registers to memory
  * @param  None
  * @return Nothing
  */
-void LocalOutputsSet(void) {
-  Indicators_Write(IndicatorBuffer);
+void LocalOutputsSet(void)
+{
+    Indicators_Write(IndicatorBuffer);
 }
 
 /**
@@ -162,11 +165,11 @@ void LocalOutputsSet(void) {
  * @param  None
  * @return Nothing
  */
-void LocalAnalogStartUp(void) {
-  
-  ADC_Start();                                      /* Initialize ADC */
-  ADC_StartConvert();                               /* End ADC conversion */
+void LocalAnalogStartUp(void)
+{
 
+    ADC_Start();        /* Initialize ADC */
+    ADC_StartConvert(); /* End ADC conversion */
 }
 
 /**
@@ -178,21 +181,19 @@ void LocalAnalogStartUp(void) {
  * @param None
  * @return None
  */
-void LocalAnalogInit(void) 
+void LocalAnalogInit(void)
 {
 
-  LocalAnalogStartUp();
-  
-  xTaskCreate(                  /* Create Playstation Interface task              */
-    LocalPeripheralsTask,       /* Function implementing the task loop            */
-    "LocalPeripherals",         /* String to locate the task in debugger          */
-    configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
-    0,                          /* Number of parameters to pass to task  (none)   */
-    3,                          /* Task's priority (medium)                       */
-    0);                         /* Task handle (not used)                         */
+    LocalAnalogStartUp();
+
+    xTaskCreate(                          /* Create Playstation Interface task              */
+                LocalPeripheralsTask,     /* Function implementing the task loop            */
+                "LocalPeripherals",       /* String to locate the task in debugger          */
+                configMINIMAL_STACK_SIZE, /* Task's stack size (FreeTROS allocates)         */
+                0,                        /* Number of parameters to pass to task  (none)   */
+                3,                        /* Task's priority (medium)                       */
+                0);                       /* Task handle (not used)                         */
 }
-
-
 
 /**
  * @brief FreeRTOS task to handle peripherals on the PSOC.
@@ -202,18 +203,19 @@ void LocalAnalogInit(void)
  * @param  None
  * @return Nothing
  */
-void LocalPeripheralsTask(void *arg) {
-  (void)arg;
-  TickType_t xPeripheralWakeTime;
-  
-  xPeripheralWakeTime = xTaskGetTickCount();
-  while (1)
-  {
-    vTaskDelayUntil( &xPeripheralWakeTime, SAMPLE_PERIOD );  
-    LocalAnalogRead();
-    LocalButtonsRead();
-    LocalOutputsSet();
-  }
+void LocalPeripheralsTask(void *arg)
+{
+    (void) arg;
+    TickType_t xPeripheralWakeTime;
+
+    xPeripheralWakeTime = xTaskGetTickCount();
+    while (1)
+    {
+        vTaskDelayUntil(&xPeripheralWakeTime, SAMPLE_PERIOD);
+        LocalAnalogRead();
+        LocalButtonsRead();
+        LocalOutputsSet();
+    }
 }
 
 /* End of File */

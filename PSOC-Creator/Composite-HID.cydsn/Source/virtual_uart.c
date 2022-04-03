@@ -38,16 +38,14 @@
 #include "FreeRTOS.h"
 #include "virtual_uart.h"
 
+void vuInit(void)
+{
 
-void vuInit(void) {
-
-  USBCOMP_CDC_Init();
-  while(USBCOMP_DataIsReady())
-  {
-    USBCOMP_GetChar();
-  }
-  
+    USBCOMP_CDC_Init();
+    while (USBCOMP_DataIsReady())
+    {
+        USBCOMP_GetChar();
+    }
 }
-
 
 /* [] END OF FILE */

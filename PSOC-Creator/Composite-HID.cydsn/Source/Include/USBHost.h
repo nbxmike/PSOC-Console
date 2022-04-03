@@ -31,10 +31,10 @@
 #ifndef USBHOST_H
 #define USBHOST_H
 
-#define USBHOST_TRANSACTION_WAIT  100   // Wait 100 for the next transaction
-#define USBHOST_CONFIG_WAIT       2     // No one holds the config data longer
-  
-void USBHostInit(void) ;
+#define USBHOST_TRANSACTION_WAIT 100 // Wait 100 for the next transaction
+#define USBHOST_CONFIG_WAIT      2   // No one holds the config data longer
+
+void USBHostInit(void);
 void USBHostTask(void *);
 
 #endif

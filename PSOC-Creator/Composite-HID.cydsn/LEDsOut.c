@@ -32,6 +32,9 @@
 #define LEDSOUT_SLOW_ON           (0)
 #define LEDSOUT_SLOW_OFF          (1)
 
+#define LEDOUTPUT_ON              (1)
+#define LEDOUTPUT_OFF             (0)
+
 #define LEDSOUT_FAST_ON           (0)
 #define LEDSOUT_FAST_OFF          (1)
 #define LEDSOUT_DOUBLE_ONE_ON     (0)
@@ -68,24 +71,24 @@ static int LEDsOut_DashDot(LED_Output_t *Led);
 
 
 int (*state_function[LEDSOUT_MODE_INVALID]) (LED_Output_t *Led) = {
-LEDsOut_Off,
-LEDsOut_SteadyOn,
-LEDsOut_Slow,
-LEDsOut_Fast,
-LEDsOut_Double,
-LEDsOut_Triple,
-LEDsOut_DashDot
+    LEDsOut_Off,
+    LEDsOut_SteadyOn,
+    LEDsOut_Slow,
+    LEDsOut_Fast,
+    LEDsOut_Double,
+    LEDsOut_Triple,
+    LEDsOut_DashDot
 };
 
 static int LEDsOut_Off(LED_Output_t *Led)
 {
-    Led->onOff = 0;
+    Led->onOff = LEDOUTPUT_OFF;
     return Led->onOff;
 }
 
 static int LEDsOut_SteadyOn(LED_Output_t *Led)
 {
-    Led->onOff = 1;
+    Led->onOff = LEDOUTPUT_ON;
     return Led->onOff;
 }
 
@@ -95,7 +98,7 @@ static int LEDsOut_Slow(LED_Output_t *Led)
     switch (Led->state)
     {
         case LEDSOUT_SLOW_ON:
-            Led->onOff = 1;
+            Led->onOff = LEDOUTPUT_ON;
             Led->count = Led->count + LEDSOUT_RATE_TICK;
             if (Led->count >= LEDSOUT_RATE_SLOW)
             {
@@ -104,7 +107,7 @@ static int LEDsOut_Slow(LED_Output_t *Led)
             }
             break;
         case LEDSOUT_SLOW_OFF:
-            Led->onOff = 0;
+            Led->onOff = LEDOUTPUT_OFF;
             Led->count = Led->count + LEDSOUT_RATE_TICK;
             if (Led->count >= LEDSOUT_RATE_SLOW)
             {
@@ -126,7 +129,7 @@ static int LEDsOut_Fast(LED_Output_t *Led)
     switch (Led->state)
     {
         case LEDSOUT_FAST_ON:
-            Led->onOff = 1;
+            Led->onOff = LEDOUTPUT_ON;
             Led->count = Led->count + LEDSOUT_RATE_TICK;
             if (Led->count >= LEDSOUT_RATE_FAST)
             {
@@ -135,7 +138,7 @@ static int LEDsOut_Fast(LED_Output_t *Led)
             }
             break;
         case LEDSOUT_FAST_OFF:
-            Led->onOff = 0;
+            Led->onOff = LEDOUTPUT_OFF;
             Led->count = Led->count + LEDSOUT_RATE_TICK;
             if (Led->count >= LEDSOUT_RATE_FAST)
             {
@@ -157,60 +160,54 @@ static int LEDsOut_Double(LED_Output_t *Led)
     switch (Led->state)
     {
         case LEDSOUT_DOUBLE_ONE_ON:
-            Led->onOff = 1;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_DOUBLE_ONE_OFF;
-                        Led->count = 0;
-                    }
-                
+            Led->onOff = LEDOUTPUT_ON;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_DOUBLE_ONE_OFF;
+                Led->count = 0;
+            }   
             break;
         case LEDSOUT_DOUBLE_ONE_OFF:
-            Led->onOff = 0;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_DOUBLE_TWO_ON;
-                        Led->count = 0;
-                    }
-                
+            Led->onOff = LEDOUTPUT_OFF;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_DOUBLE_TWO_ON;
+                Led->count = 0;
+            }   
             break;
         case LEDSOUT_DOUBLE_TWO_ON:
-            Led->onOff = 1;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_DOUBLE_TWO_OFF;
-                        Led->count = 0;
-                    }
-                
+            Led->onOff = LEDOUTPUT_ON;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_DOUBLE_TWO_OFF;
+                Led->count = 0;
+            }   
             break;
         case LEDSOUT_DOUBLE_TWO_OFF:
-            Led->onOff = 0;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_DOUBLE_PAUSE;
-                        Led->count = 0;
-                    }
-                
+            Led->onOff = LEDOUTPUT_OFF;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_DOUBLE_PAUSE;
+                Led->count = 0;
+            }
             break;
         case LEDSOUT_DOUBLE_PAUSE:
-            Led->onOff = 0;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_SLOW)
-                    {
-                        Led->state = LEDSOUT_DOUBLE_ONE_ON;
-                        Led->count = 0;
-                    }
-                
+            Led->onOff = LEDOUTPUT_OFF;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_SLOW)
+            {
+                Led->state = LEDSOUT_DOUBLE_ONE_ON;
+                Led->count = 0;
+            }
             break;
         default:
-                    Led->state = LEDSOUT_DOUBLE_ONE_ON;
-                
+            Led->state = LEDSOUT_DOUBLE_ONE_ON;
             break;
-            }
+    }
     
     return Led->onOff;
 }
@@ -219,85 +216,74 @@ static int LEDsOut_Double(LED_Output_t *Led)
 static int LEDsOut_Triple(LED_Output_t *Led)
 {
     switch (Led->state)
+    {
+        case LEDSOUT_TRIPLE_ONE_ON:
+            Led->onOff = LEDOUTPUT_ON;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
             {
-                case LEDSOUT_TRIPLE_ONE_ON:
-            Led->onOff = 1;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_TRIPLE_ONE_OFF;
-                        Led->count = 0;
-                    }
-                
-                
-                break;
-                case LEDSOUT_TRIPLE_ONE_OFF:
-            Led->onOff = 0;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_TRIPLE_TWO_ON;
-                        Led->count = 0;
-                    }
-                
-                break;
-                case LEDSOUT_TRIPLE_TWO_ON:
-            Led->onOff = 1;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_TRIPLE_TWO_OFF;
-                        Led->count = 0;
-                    }
-                
-                
-                break;
-                case LEDSOUT_TRIPLE_TWO_OFF:
-            Led->onOff = 0;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_TRIPLE_THREE_ON;
-                        Led->count = 0;
-                    }
-                
-                break;
-                case LEDSOUT_TRIPLE_THREE_ON:
-            Led->onOff = 1;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_TRIPLE_THREE_OFF;
-                        Led->count = 0;
-                    }
-                
-                
-                break;
-                case LEDSOUT_TRIPLE_THREE_OFF:
-            Led->onOff = 0;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_TRIPLE_PAUSE;
-                        Led->count = 0;
-                    }
-          
-                break;
-                case LEDSOUT_TRIPLE_PAUSE:
-            Led->onOff = 0;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_TRIPLE_ONE_ON;
-                        Led->count = 0;
-                    }
-                
-                break;
-                default:
-                    Led->state = LEDSOUT_TRIPLE_ONE_ON;
-                
-                break;
+                Led->state = LEDSOUT_TRIPLE_ONE_OFF;
+                Led->count = 0;
             }
+            break;
+        case LEDSOUT_TRIPLE_ONE_OFF:
+            Led->onOff = LEDOUTPUT_OFF;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_TRIPLE_TWO_ON;
+                Led->count = 0;
+            }
+            break;
+        case LEDSOUT_TRIPLE_TWO_ON:
+            Led->onOff = LEDOUTPUT_ON;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_TRIPLE_TWO_OFF;
+                Led->count = 0;
+            }
+            break;
+        case LEDSOUT_TRIPLE_TWO_OFF:
+            Led->onOff = LEDOUTPUT_OFF;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_TRIPLE_THREE_ON;
+                Led->count = 0;
+            }
+            break;
+        case LEDSOUT_TRIPLE_THREE_ON:
+            Led->onOff = LEDOUTPUT_ON;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_TRIPLE_THREE_OFF;
+                Led->count = 0;
+            }
+            break;
+        case LEDSOUT_TRIPLE_THREE_OFF:
+            Led->onOff = LEDOUTPUT_OFF;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_TRIPLE_PAUSE;
+                Led->count = 0;
+            }
+            break;
+        case LEDSOUT_TRIPLE_PAUSE:
+            Led->onOff = LEDOUTPUT_OFF;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_TRIPLE_ONE_ON;
+                Led->count = 0;
+            }
+            break;
+        default:
+            Led->state = LEDSOUT_TRIPLE_ONE_ON;
+            break;
+    }
     
     return Led->onOff;
 }
@@ -308,50 +294,45 @@ static int LEDsOut_DashDot(LED_Output_t *Led)
     switch (Led->state)
     {
         case LEDSOUT_DASH_ON:
-            Led->onOff = 1;
+            Led->onOff = LEDOUTPUT_ON;
             Led->count = Led->count + LEDSOUT_RATE_TICK;
             if (Led->count >= LEDSOUT_RATE_SLOW)
-                    {
-                        Led->state = LEDSOUT_DASH_OFF;
-                        Led->count = 0;
-                    }
-          
-                break;
-                case LEDSOUT_DASH_OFF:
-            Led->onOff = 0;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_DOT_ON;
-                        Led->count = 0;
-                    }
-          
-                break;
-                case LEDSOUT_DOT_ON:
-            Led->onOff = 1;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_FAST)
-                    {
-                        Led->state = LEDSOUT_DOT_OFF;
-                        Led->count = 0;
-                    }
-          
-                break;
-                case LEDSOUT_DOT_OFF:
-            Led->onOff = 0;
-                    Led->count = Led->count + LEDSOUT_RATE_TICK;
-                    if (Led->count >= LEDSOUT_RATE_SLOW)
-                    {
-                        Led->state = LEDSOUT_DASH_ON;
-                        Led->count = 0;
-                    }
-                
-                break;
-                default:
-                    Led->state = LEDSOUT_DASH_ON;
-                
-                break;
-        }     
+            {
+                Led->state = LEDSOUT_DASH_OFF;
+                Led->count = 0;
+            }
+            break;
+        case LEDSOUT_DASH_OFF:
+            Led->onOff = LEDOUTPUT_OFF;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_DOT_ON;
+                Led->count = 0;
+            }
+            break;
+        case LEDSOUT_DOT_ON:
+            Led->onOff = LEDOUTPUT_ON;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_FAST)
+            {
+                Led->state = LEDSOUT_DOT_OFF;
+                Led->count = 0;
+            }
+            break;
+        case LEDSOUT_DOT_OFF:
+            Led->onOff = LEDOUTPUT_OFF;
+            Led->count = Led->count + LEDSOUT_RATE_TICK;
+            if (Led->count >= LEDSOUT_RATE_SLOW)
+            {
+                Led->state = LEDSOUT_DASH_ON;
+                Led->count = 0;
+            }
+            break;
+        default:
+            Led->state = LEDSOUT_DASH_ON;
+            break;
+    }     
     
     return Led->onOff;
 }
@@ -370,17 +351,17 @@ void LEDSOut_Init(void)
 
   for (int i = 0; i < LEDSOUT_COUNT; ++i)
     {
-        Leds[i].mode = LEDSOUT_OFF;
+        Leds[i].mode = LEDOUTPUT_OFF;
         Leds[i].count = 0;        
     }
   
-  xTaskCreate(                  /* Create Playstation Interface task              */
-    LEDSOut_Task,               /* Function implementing the task loop            */
-    "LED_Out_Task",             /* String to locate the task in debugger          */
-    configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
-    0,                          /* Number of parameters to pass to task  (none)   */
-    3,                          /* Task's priority (medium)                       */
-    0);                         /* Task handle (not used)                         */
+    xTaskCreate(                  /* Create Playstation Interface task              */
+        LEDSOut_Task,               /* Function implementing the task loop            */
+        "LED_Out_Task",             /* String to locate the task in debugger          */
+        configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
+        0,                          /* Number of parameters to pass to task  (none)   */
+        3,                          /* Task's priority (medium)                       */
+        0);                         /* Task handle (not used)                         */
 }
 
 
@@ -395,23 +376,23 @@ void LEDSOut_Init(void)
  */
 int LEDSOut_Set(unsigned int LEDNumber, unsigned int mode) 
 {
-  int retCode = 0;
+    int retCode = 0;
     
-  if (mode >= LEDSOUT_MODE_INVALID)
-  {
-    retCode = -1;
-  }
-  else if (LEDNumber >= LEDSOUT_COUNT)
-  {
-    retCode = -2;
-  }
-  else
-  {
-    Leds[LEDNumber].mode = mode;
-    Leds[LEDNumber].count = 0;    
-    Leds[LEDNumber].state = 0;    
-    retCode = 0;
-  }
+    if (mode >= LEDSOUT_MODE_INVALID)
+    {
+        retCode = -1;
+    }
+    else if (LEDNumber >= LEDSOUT_COUNT)
+    {
+        retCode = -2;
+    }
+    else
+    {
+        Leds[LEDNumber].mode = mode;
+        Leds[LEDNumber].count = 0;    
+        Leds[LEDNumber].state = 0;    
+        retCode = 0;
+    }
 
   return retCode;
 }
@@ -440,11 +421,11 @@ void LEDSOut_Task(void *arg) {
         {
             if (0 != (*state_function[Leds[i].mode]) (&Leds[i]))
             {
-            tempOutput |= OrMasks[i];
+                tempOutput |= OrMasks[i];
             }
             else
             {
-            tempOutput &= AndMasks[i];
+                tempOutput &= AndMasks[i];
             }
         }
     }
@@ -453,9 +434,5 @@ void LEDSOut_Task(void *arg) {
     vTaskDelayUntil( &xLastTransactionTime, pdMS_TO_TICKS(LEDSOUT_RATE_TICK) );
   }
 }
-
-
-
-
 
 /* [] END OF FILE */

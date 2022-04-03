@@ -28,23 +28,21 @@
  *  @brief Support library and port of CLI task to Cypress PSOC 5LP
  *
  *  Support library for the FreeRTOS command line interpreter and port of their
- *  CLI task to Cypress PSOC 5LP.  All the CH_xxx deal with the CLI Human 
+ *  CLI task to Cypress PSOC 5LP.  All the CH_xxx deal with the CLI Human
  *  interface device.  This will typically be a real or virtual UART device;
  *  here it is a USB virtual UART.
  */
 
 #include "project.h"
-#include "FreeRTOS.h"
 #include <stdio.h>
 #include <string.h>
+#include "FreeRTOS.h"
 #include "timers.h"
 #include "semphr.h"
 #include "FRSupport.h"
 #include "FreeRTOS_CLI.h"
 #include "USBHost.h"
 #include "globals.h"
-
-
 
 /** @brief ISR callback for all EP0 activities
  *
@@ -54,16 +52,16 @@
  */
 void USBCOMP_EP_0_ISR_ExitCallback(void)
 {
-  static BaseType_t xHigherPriorityTaskWoken;
-  xHigherPriorityTaskWoken = pdFALSE;
-  if( xUSBHost_Semaphore != NULL )
-  {
-    xSemaphoreGiveFromISR( xUSBHost_Semaphore, &xHigherPriorityTaskWoken );
-    if (xHigherPriorityTaskWoken == pdTRUE)
+    static BaseType_t xHigherPriorityTaskWoken;
+    xHigherPriorityTaskWoken = pdFALSE;
+    if (xUSBHost_Semaphore != NULL)
     {
-      portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+        xSemaphoreGiveFromISR(xUSBHost_Semaphore, &xHigherPriorityTaskWoken);
+        if (xHigherPriorityTaskWoken == pdTRUE)
+        {
+            portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+        }
     }
-  }
 }
 
 /** @brief USBHost_Init sets up USB interface used by the HID and Serial port
@@ -71,20 +69,20 @@ void USBCOMP_EP_0_ISR_ExitCallback(void)
  * Actually, very little done here other than starting the hardware and
  * creating the FreeRTOS task.
  */
-void USBHostInit(void) 
+void USBHostInit(void)
 {
-  USBCOMP_Start(0u, USBCOMP_5V_OPERATION);
-  USBConfigurationHost = USB_UNSET;
-  USBConfigurationCDC  = USB_UNSET;
-  USBConfigurationHID  = USB_UNSET;
+    USBCOMP_Start(0u, USBCOMP_5V_OPERATION);
+    USBConfigurationHost = USB_UNSET;
+    USBConfigurationCDC = USB_UNSET;
+    USBConfigurationHID = USB_UNSET;
 
-  xTaskCreate(                  /* Create Playstation Interface task              */
-    USBHostTask,              /* Function implementing the task loop            */
-    "USB_Host",                 /* String to locate the task in debugger          */
-    configMINIMAL_STACK_SIZE,   /* Task's stack size (FreeTROS allocates)         */
-    0,                          /* Number of parameters to pass to task  (none)   */
-    4,                          /* Task's priority (high)                       */
-    0);                         /* Task handle (not used)                         */
+    xTaskCreate(                          /* Create Playstation Interface task              */
+                USBHostTask,              /* Function implementing the task loop            */
+                "USB_Host",               /* String to locate the task in debugger          */
+                configMINIMAL_STACK_SIZE, /* Task's stack size (FreeTROS allocates)         */
+                0,                        /* Number of parameters to pass to task  (none)   */
+                4,                        /* Task's priority (high)                       */
+                0);                       /* Task handle (not used)                         */
 }
 
 /** @brief cliTask task which invokes the FreeRTOS CLI engine
@@ -92,33 +90,33 @@ void USBHostInit(void)
  * USBHostTask jsut checks to see if the interface has been configured and/or if
  * the host has reconfigured the interface.
  */
-void USBHostTask(void *arg) {
-  (void)arg;
-  
-  while (1)
-  {
-    if (USBCOMP_GetConfiguration() != 0)
-    {  
-      xSemaphoreTake( xUSBConfig_Semaphore, USBHOST_CONFIG_WAIT );
-      USBConfigurationHost |= USB_INITIALIZED;
-      USBConfigurationCDC  |= USB_INITIALIZED;
-      USBConfigurationHID  |= USB_INITIALIZED;
+void USBHostTask(void *arg)
+{
+    (void) arg;
 
-      if (USBCOMP_IsConfigurationChanged())
-      {
-        USBConfigurationCDC  |= USB_RECONFIGURED;
-        USBConfigurationHID  |= USB_RECONFIGURED;
-      }
-    }
-    else
+    while (1)
     {
-      xSemaphoreTake( xUSBConfig_Semaphore, USBHOST_CONFIG_WAIT );
-      USBConfigurationHost = USB_UNSET;
-      USBConfigurationCDC  = USB_UNSET;
-      USBConfigurationHID  = USB_UNSET;
+        if (USBCOMP_GetConfiguration() != 0)
+        {
+            xSemaphoreTake(xUSBConfig_Semaphore, USBHOST_CONFIG_WAIT);
+            USBConfigurationHost |= USB_INITIALIZED;
+            USBConfigurationCDC |= USB_INITIALIZED;
+            USBConfigurationHID |= USB_INITIALIZED;
+
+            if (USBCOMP_IsConfigurationChanged())
+            {
+                USBConfigurationCDC |= USB_RECONFIGURED;
+                USBConfigurationHID |= USB_RECONFIGURED;
+            }
+        }
+        else
+        {
+            xSemaphoreTake(xUSBConfig_Semaphore, USBHOST_CONFIG_WAIT);
+            USBConfigurationHost = USB_UNSET;
+            USBConfigurationCDC = USB_UNSET;
+            USBConfigurationHID = USB_UNSET;
+        }
+        xSemaphoreGive(xUSBConfig_Semaphore);
+        xSemaphoreTake(xUSBHost_Semaphore, USBHOST_TRANSACTION_WAIT);
     }
-    xSemaphoreGive(xUSBConfig_Semaphore);
-    xSemaphoreTake(xUSBHost_Semaphore, USBHOST_TRANSACTION_WAIT );
-    
-  }
 }

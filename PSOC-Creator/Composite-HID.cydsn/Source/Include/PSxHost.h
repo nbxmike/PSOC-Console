@@ -27,6 +27,9 @@
  * @author Mike McCormack (nbxmike)
  * @date   8/OCT/2018
  * @brief  The host interface to PlayStation 1/2 controllers prototypes and constants.
+ *
+ * Also contains the constants associated with the hardware block of the FPGA that
+ * controls the Playstation Interface.
  */
 
 #ifndef PSXHOST_H
@@ -34,53 +37,66 @@
 
 #include <project.h>
 
-extern int   Feedback0, Feedback1;  
-  
-#define PSx_MAX_MESSAGE    37
-#define NOWAIT             0
-#define YESWAIT            1
-#define ACK_DELAY          16 // 10uS counts, so 160uS
-#define ENTERCONFIG        1
-#define EXITCONFIG         0
-#define LONGRESET          1
-#define SHORTRESET         0
-#define PSx_XFR_PAUSE      16
+/* The controller selection discrete logic ensures that the PSx joystick sees
+ * a continious low (it stays selected) during the multibyte SPI transaction.
+ * Electrically, the target will be selected if the SPI block is transfering
+ * data or if the control register is enabled.
+ */
+#define PSX_CONTROL_REG_ENABLE       (0x00)
+#define PSX_CONTROL_REG_DISABLE      (0x01)
+#define PSX_CONTROL_REG_ENABLE_MASK  (0xFE)
+#define PSX_CONTROL_REG_JOYSTICK_1   (0x00)
+#define PSX_CONTROL_REG_JOYSTICK_2   (0x02)
+    
+#define PSX_ACK_REG_JOYSTICK_1 (0x01)
+#define PSX_ACK_REG_JOYSTICK_2 (0x02)
+    
+
+#define PSx_MAX_MESSAGE 37
+#define NOWAIT          0
+#define YESWAIT         1
+#define ACK_DELAY       16 // 10uS counts, so 160uS
+#define ENTERCONFIG     1
+#define EXITCONFIG      0
+#define LONGRESET       1
+#define SHORTRESET      0
+#define PSx_XFR_PAUSE   16
 
 /*
  *   Game controllers sending back different messages
  */
-#define NOTPRESENT 0     //
-#define MOUSE      1     // SCPH-1030
-#define NEGCON     2     // Namco SLPH-00001
-#define GUNK       3     // Konami SLPH-00014 
-#define DIGITAL16  4     // SCPH-1080, 1150, 1180, 1200, 10100, 10520
-#define ANALOGJOY  5     // SCPH-1110, 1150, 1180
-#define GUNN       6     // Namco SLPH-00034 
-#define DUALANALOG 7     // SCPH-1150, 1180, 1200, 10100, 10520
-#define MULTITAP0  8     // SCPH-1070
-#define DUALSHOCK2 0x17  // SCPH-10100
+#define NOTPRESENT 0    //
+#define MOUSE      1    // SCPH-1030
+#define NEGCON     2    // Namco SLPH-00001
+#define GUNK       3    // Konami SLPH-00014
+#define DIGITAL16  4    // SCPH-1080, 1150, 1180, 1200, 10100, 10520
+#define ANALOGJOY  5    // SCPH-1110, 1150, 1180
+#define GUNN       6    // Namco SLPH-00034
+#define DUALANALOG 7    // SCPH-1150, 1180, 1200, 10100, 10520
+#define MULTITAP0  8    // SCPH-1070
+#define DUALSHOCK2 0x17 // SCPH-10100
 
 typedef struct controllerinstance
-  {
+{
     uint8 Type;
     uint8 Model;
     uint8 Actuators;
     uint8 Modes;
     uint8 CurrentMode;
     uint8 SupportsConfig;
-  } ControllerInstance;
-  
+} ControllerInstance;
+
 typedef struct mousedata
-  {
+{
     uint8 TypeCount;
     uint8 Buttons0;
     uint8 Buttons1;
     uint8 Xaxis;
     uint8 Yaxis;
-  } MouseData;
-  
+} MouseData;
+
 typedef struct negcon
-  {
+{
     uint8 TypeCount;
     uint8 Buttons0;
     uint8 Buttons1;
@@ -88,24 +104,24 @@ typedef struct negcon
     uint8 I_Button;
     uint8 II_Button;
     uint8 L_Button;
-  } NegCon;
+} NegCon;
 
 typedef struct gunk
-  {
+{
     uint8 TypeCount;
     uint8 Buttons0;
     uint8 Buttons1;
-  } GunK;
-  
+} GunK;
+
 typedef struct digital16
-  {
+{
     uint8 TypeCount;
     uint8 Buttons0;
     uint8 Buttons1;
-  } Digital16;
+} Digital16;
 
 typedef struct analogjoy
-  {
+{
     uint8 TypeCount;
     uint8 Buttons0;
     uint8 Buttons1;
@@ -113,10 +129,10 @@ typedef struct analogjoy
     uint8 RightY;
     uint8 LeftX;
     uint8 LeftY;
-  } AnalogJoy;
-  
+} AnalogJoy;
+
 typedef struct gunn
-  {
+{
     uint8 TypeCount;
     uint8 Buttons0;
     uint8 Buttons1;
@@ -124,10 +140,10 @@ typedef struct gunn
     uint8 XHigh;
     uint8 YLow;
     uint8 YHigh;
-  } GunN;
-  
+} GunN;
+
 typedef struct dualanalog
-  {
+{
     uint8 TypeCount;
     uint8 Buttons0;
     uint8 Buttons1;
@@ -135,21 +151,23 @@ typedef struct dualanalog
     uint8 RightY;
     uint8 LeftX;
     uint8 LeftY;
-  } DualAnalog;
-  
+} DualAnalog;
+
+extern int Feedback0;
+extern int Feedback1;
+
 extern void PSxInit(void);
-extern int  PSxEnPressure(int);
-extern int  PSxMotorPoll(int, int);
-extern int  PSxConfigPoll(int);
-extern int  PSxGetModel(void);
+extern int PSxEnPressure(int);
+extern int PSxMotorPoll(int, int);
+extern int PSxConfigPoll(int);
+extern int PSxGetModel(void);
 extern void PSxReset(int);
-extern int  PSxGetCtlrType(void);
-extern int  PSxTrasnferString(uint8* , uint8* , int, int );
-extern int  PSxTrasnferByte(uint8, uint8*, int);
+extern int PSxGetCtlrType(void);
+extern int PSxTrasnferString(uint8 *, uint8 *, int, int);
+extern int PSxTrasnferByte(uint8, uint8 *, int);
 extern void PSxSetup(void);
 extern void PSxInit(void);
-extern void PSx_Host_Task( void* );
-
+extern void PSx_Host_Task(void *);
 
 #endif
 /* End of File */

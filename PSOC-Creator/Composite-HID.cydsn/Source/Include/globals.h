@@ -40,6 +40,5 @@ extern volatile int USBConfigurationCDC;
 extern volatile int USBConfigurationHID;
 extern volatile int USBConfigurationHost;
 
-
 #endif
 /* End of File */

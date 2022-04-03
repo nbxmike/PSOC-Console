@@ -33,9 +33,9 @@
 
 #include <project.h>
 #include "USBJoystick.h"
-  
+
 #define SAMPLE_PERIOD 5
-  
+
 extern int16 AnalogWorking[ANALOG_SIZE];         /* ADC measurements in process       */
 volatile extern int16 AnalogScaled[ANALOG_SIZE]; /* Scaled, centered ADC measurements */
 
@@ -45,9 +45,7 @@ extern void LocalAnalogRead(void);        /* Read analog joysticks and sliders  
 extern void LocalAnalogCopy(void);        /* Create to force the compiler's hand        */
 extern void LocalButtonsRead(void);       /* Read digital inputs                        */
 extern void LocalOutputsSet(void);        /* Put the PCs data in tha digital outputs    */
-extern void LocalPeripheralsTask(void*);  /* */
-
-
+extern void LocalPeripheralsTask(void *); /* */
 
 #endif
 /* End of File */

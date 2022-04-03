@@ -31,11 +31,10 @@
 
 #ifndef FRSUPPORT
 #define FRSUPPORT
-  
+
 #include "semphr.h"
 
-
-#define CORTEX_INTERRUPT_BASE    (16)
+#define CORTEX_INTERRUPT_BASE (16)
 
 /* all semaphores are initialized in FRSupport */
 extern volatile SemaphoreHandle_t xPSx_ACK_Semaphore;
@@ -47,7 +46,6 @@ extern volatile SemaphoreHandle_t xUSBHost_Semaphore;
 extern volatile SemaphoreHandle_t xUSBConfig_Semaphore;
 extern volatile SemaphoreHandle_t xUSBJoystick_Semaphore;
 
-  
 /* Defined in FreeRTOS's port.c but not provided in any include file ???  */
 extern void xPortPendSVHandler(void);
 extern void xPortSysTickHandler(void);
@@ -55,7 +53,6 @@ extern void vPortSVCHandler(void);
 
 extern void FRInit();
 extern void Blinky_Task(void *arg);
-
 
 #endif
 /* [] END OF FILE */

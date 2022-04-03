@@ -1,1 +1,2 @@
-find Projects/PSOC-Console/PSOC-Creator/Composite-HID.cydsn/Source -iname *.h -o -iname *.c | xargs clang-format -i
+forfiles /s /m *.c /c "cmd /c clang-format --verbose -i -style=file:clang-format.clang-format @FILE"
+forfiles /s /m *.h /c "cmd /c clang-format --verbose -i -style=file:clang-format.clang-format @FILE"

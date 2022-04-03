@@ -42,24 +42,22 @@
 
 /* Flags to indicate the state of USB host and sub functions */
 volatile int USBConfigurationHost = USB_UNSET;
-volatile int USBConfigurationCDC  = USB_UNSET;
-volatile int USBConfigurationHID  = USB_UNSET;
-
+volatile int USBConfigurationCDC = USB_UNSET;
+volatile int USBConfigurationHID = USB_UNSET;
 
 /**
  * @brief Sets up things by calling all init functions.
  *
  * This just provides one place for all of the initialization routines
- * to be placed for easy long term care.  
+ * to be placed for easy long term care.
  * @param None
  * @return None
  * @note - we might want to make this return even if USB doesn't quite start
  */
 void Setup_System(void)
 {
-  Indicators_Write(0xff);    // Turn off all LEDs
+    Indicators_Write(0xff); // Turn off all LEDs
 }
-
 
 /**
  * @brief Very little happens in main, .
@@ -68,27 +66,27 @@ void Setup_System(void)
  * @param None
  * @return None
  */
-int main(void) {
-  CyGlobalIntEnable;   /* Enable global interrupts. */
+int main(void)
+{
+    CyGlobalIntEnable; /* Enable global interrupts. */
 
-  Setup_System();
-  FRInit();
-  
-  //USBHostInit();
-  //CH_Init();
-  //PSxInit();
-  //USBJoyInit();
-  //LocalAnalogInit();
-  LEDSOut_Init();
+    Setup_System();
+    FRInit();
 
-  LEDSOut_Set( 7 , LEDSOUT_SLOW );
+    // USBHostInit();
+    // CH_Init();
+    // PSxInit();
+    // USBJoyInit();
+    // LocalAnalogInit();
+    LEDSOut_Init();
 
+    LEDSOut_Set(7, LEDSOUT_SLOW);
 
-  vTaskStartScheduler();    // Had best never return
+    vTaskStartScheduler(); // Had best never return
 
-  while (1)
-  {
-  }
+    while (1)
+    {
+    }
 }
 
 /* [] END OF FILE */
